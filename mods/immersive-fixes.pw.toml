@@ -1,0 +1,13 @@
+name = "Immersive Fixes"
+filename = "immersivefixes-1.8.0.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/AWRXGq2t/versions/OaJlmGHG/immersivefixes-1.8.0.jar"
+hash-format = "sha512"
+hash = "e554b5dcf63f40d22e4c4d0caf3779d54e4cac28b1e606b9b1ff443f553c5542f38e1fad7f762ab5bff40310bd751260cbbd35a2010bb7640efdad67570818b4"
+
+[update]
+[update.modrinth]
+mod-id = "AWRXGq2t"
+version = "OaJlmGHG"

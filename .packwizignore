@@ -1,0 +1,6 @@
+# repository files, not part of the pack
+README.md
+LICENSE
+tools/
+.github/
+.gitignore

@@ -1,0 +1,13 @@
+name = "NaNny Reforked"
+filename = "nanny-1.0.6.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "5068781fe88867337611a12058fc9bef73245ff1"
+url = "https://mediafilez.forgecdn.net/files/6671/993/nanny-1.0.6.jar"
+
+[update]
+[update.curseforge]
+file-id = 6671993
+project-id = 1289695
