@@ -15,7 +15,7 @@ The server and every client read the same `pack.toml`, so they always run the sa
 | where | how |
 |---|---|
 | PC, Steam Deck | [Prism Launcher](https://prismlauncher.org/) instance with [packwiz-installer](https://github.com/packwiz/packwiz-installer) as its pre-launch command: `"$INST_JAVA" -jar packwiz-installer-bootstrap.jar -g <pack.toml URL>`; it updates the mods on every start |
-| Android | [Amethyst::Dras](https://github.com/andras-tim/Amethyst-Android/tree/dras) (an Amethyst fork with packwiz support): open `amethyst://profile/import?url=<pack.toml URL>`; the pack is synced on every Play |
+| Android | [Amethyst::Dras](https://github.com/andras-tim/Amethyst-Android/tree/dras) (an Amethyst fork with packwiz support): open `amethyst://profile/import?url=<pack.toml URL>`; the pack is synced on every Play. `tools/phone-qr.py` shows a QR code for the APK and one for this link |
 | server | [itzg/minecraft-server](https://github.com/itzg/docker-minecraft-server) with `TYPE=FORGE`, the versions of `pack.toml`, and `PACKWIZ_URL=<pack.toml URL>` |
 
 Pack URLs (GitHub raw): `https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/<tag>/pack.toml`. The server
@@ -41,6 +41,8 @@ pins a release tag (`1.20.1-<n>`); clients follow the `stable` tag, which moves 
 | `mods/*.pw.toml` | one per mod: download URL, hash, side (`both`, `client`, `server`) |
 | `tools/cf_direct_urls.py` | rewrites packwiz's CurseForge metafiles to the direct CDN URL (see below) |
 | `tools/check_deps.py` | every mod's mandatory dependencies and incompatibilities, per side, from the jars' `mods.toml` |
+| `tools/phone-qr.py` | QR codes for a phone: the launcher APK, then the profile import link |
+| `branding/` | the profile icon |
 | `tools/smoke-test.sh` | boots a dedicated server from the checkout the way the real server does and waits for "Done" |
 
 ## Changing the pack
