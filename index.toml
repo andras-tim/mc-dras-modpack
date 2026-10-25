@@ -176,6 +176,11 @@ hash = "8c27d9349cec07836726adb8bee34639bc1a166481bdb6ffc2c9b9633e9fd47c"
 metafile = true
 
 [[files]]
+file = "mods/journeymap.pw.toml"
+hash = "835d6d6bddde13bcf095b424fc1bd0de8061093968bdb63052f9b98274a58846"
+metafile = true
+
+[[files]]
 file = "mods/lendercataclysm.pw.toml"
 hash = "ef5a921557afd351626bc18da3675aafe32f3fd4d4552fbf84ee80840f91ffca"
 metafile = true
