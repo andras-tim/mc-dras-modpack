@@ -16,6 +16,8 @@ import urllib.parse
 APK_URL = 'https://github.com/andras-tim/Amethyst-Android/releases/latest/download/amethyst-dras.apk'
 RAW = 'https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/{ref}/{path}'
 PROFILE_NAME = 'mc.dras.hu'
+# Java heap of the profile: enough for the pack, safe on the 8 GB phones (tested with 4 GB)
+PROFILE_RAM_MB = 4096
 
 
 def import_link(ref):
@@ -23,6 +25,7 @@ def import_link(ref):
         'url': RAW.format(ref=ref, path='pack.toml'),
         'name': PROFILE_NAME,
         'icon': RAW.format(ref=ref, path='branding/profile-icon.png'),
+        'ram': PROFILE_RAM_MB,
     })
     return 'amethyst://profile/import?' + query
 
