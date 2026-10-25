@@ -21,6 +21,18 @@ The server and every client read the same `pack.toml`, so they always run the sa
 Pack URLs (GitHub raw): `https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/<tag>/pack.toml`. The server
 pins a release tag (`1.20.1-<n>`); clients follow the `stable` tag, which moves to a release after the server runs it.
 
+## Known limitations
+
+- **Ad Astra space stations** (1.15.21): an orbit is empty until you build a station from the rocket's planet screen
+  ("Space Stations" → "Construct", the materials in the inventory; the in-game Astrodux book explains it).
+  - A rocket can miss a freshly built station and leave you floating, mostly when the station is the first place you
+    visit in space ([#475](https://github.com/terrarium-earth/Ad-Astra/issues/475), open). Visit the orbit once
+    before building it. When it happens, the station's coordinates are in the planet screen's tooltip ("Land on space
+    station in … at [x, z]"): fly there in creative, or `/tp @s <x> <y> <z>` inside the orbit dimension.
+  - Only the owner can land on a station. Argonauts parties would share it, but that does not work on a dedicated
+    server ([#535](https://github.com/terrarium-earth/Ad-Astra/issues/535),
+    [#762](https://github.com/terrarium-earth/Ad-Astra/issues/762), open), so it is not in the pack.
+
 ## Layout
 
 | path | what |
