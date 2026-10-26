@@ -12,6 +12,9 @@ stored here.
 
 The server and every client read the same `pack.toml`, so they always run the same mods.
 
+**Phone setup page: <https://andras-tim.github.io/mc-dras-modpack/>** (the launcher download and the profile link;
+the page lives in `docs/`).
+
 | where | how |
 |---|---|
 | PC, Steam Deck | [Prism Launcher](https://prismlauncher.org/) instance with [packwiz-installer](https://github.com/packwiz/packwiz-installer) as its pre-launch command: `"$INST_JAVA" -jar packwiz-installer-bootstrap.jar -g <pack.toml URL>`; it updates the mods on every start |
@@ -20,6 +23,11 @@ The server and every client read the same `pack.toml`, so they always run the sa
 
 Pack URLs (GitHub raw): `https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/<tag>/pack.toml`. The server
 pins a release tag (`1.20.1-<n>`); clients follow the `stable` tag, which moves to a release after the server runs it.
+
+On Android the first start takes three steps, all expected: Play downloads the mods (about 210 MB); the Forge
+installer runs and the app closes without a message (the launcher runs Java in its own process and exits after
+every Java program); Play again downloads Minecraft itself once (about 700 MB) and starts the game. Later starts only
+fetch what changed.
 
 ## Known limitations
 
@@ -43,11 +51,12 @@ pins a release tag (`1.20.1-<n>`); clients follow the `stable` tag, which moves 
 | `tools/check_deps.py` | every mod's mandatory dependencies and incompatibilities, per side, from the jars' `mods.toml` |
 | `tools/phone-qr.py` | QR codes for a phone: the launcher APK, then the profile import link |
 | `branding/` | the profile icon |
+| `docs/` | the phone setup page (GitHub Pages) |
 | `tools/smoke-test.sh` | boots a dedicated server from the checkout the way the real server does and waits for "Done" |
 
 ## Changing the pack
 
-The tools run from the pack root; packwiz itself may run from a container.
+The tools run from the pack root; `tools/packwiz` runs packwiz from a container (pinned in `tools/packwiz.Dockerfile`).
 
 1. Check that the mod's author allows third-party downloads (CurseForge "Mod Distribution: Allowed"). A mod that
    forbids it can only join if we host its file ourselves.

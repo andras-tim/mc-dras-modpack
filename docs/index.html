@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>mc.dras.hu</title>
+  <meta name="description" content="A mc.dras.hu családi Minecraft-szerver: telepítés telefonra">
+  <link rel="icon" href="https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/stable/branding/profile-icon.png">
+  <style>
+    :root {
+      --bg: #f4f6f2; --fg: #1d2a1f; --muted: #5b6b5e; --card: #ffffff; --line: #d8e0d6;
+      --accent: #2e8b3a; --accent-fg: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121812; --fg: #e4ece2; --muted: #9aaa9b; --card: #1b241c; --line: #2c3a2d;
+        --accent: #4caf50; --accent-fg: #0b130b;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--fg);
+      font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    main { max-width: 34rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+    header { display: flex; align-items: center; gap: .9rem; margin-bottom: 1.5rem; }
+    header img { width: 56px; height: 56px; image-rendering: pixelated; }
+    h1 { font-size: 1.6rem; margin: 0; }
+    header p { margin: .1rem 0 0; color: var(--muted); }
+    section { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1.1rem 1.1rem;
+              margin-bottom: 1rem; }
+    h2 { font-size: 1.1rem; margin: 0 0 .6rem; }
+    .step { display: inline-block; min-width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--accent);
+            color: var(--accent-fg); text-align: center; font-weight: 700; margin-right: .4rem; }
+    a.button { display: block; text-align: center; background: var(--accent); color: var(--accent-fg);
+               font-weight: 700; text-decoration: none; padding: .9rem 1rem; border-radius: 10px; margin: .8rem 0 .3rem; }
+    .note { color: var(--muted); font-size: .92rem; margin: .3rem 0 0; }
+    ol { margin: .4rem 0 0; padding-left: 1.3rem; }
+    li { margin: .25rem 0; }
+    code { font-size: .9em; word-break: break-all; }
+    footer { color: var(--muted); font-size: .85rem; margin-top: 1.5rem; }
+    footer a { color: inherit; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/stable/branding/profile-icon.png" alt="">
+    <div>
+      <h1>mc.dras.hu</h1>
+      <p>Családi Minecraft-szerver: telepítés Android telefonra</p>
+    </div>
+  </header>
+
+  <section>
+    <h2><span class="step">1</span>Az alkalmazás</h2>
+    <a class="button" id="apk" href="https://github.com/andras-tim/Amethyst-Android/releases/latest">Amethyst::Dras letöltése</a>
+    <p class="note" id="apk-note">A legfrissebb kiadás. Letöltés után nyisd meg és telepítsd; ha a telefon kéri,
+      engedélyezd a telepítést a böngészőnek.</p>
+  </section>
+
+  <section>
+    <h2><span class="step">2</span>Bejelentkezés</h2>
+    <p class="note">Nyisd meg az Amethyst::Dras-t, és jelentkezz be a Microsoft-fiókkal, amelyikhez a Minecraft tartozik.</p>
+  </section>
+
+  <section>
+    <h2><span class="step">3</span>A mc.dras.hu profil</h2>
+    <a class="button" id="profile" href="amethyst://profile/import?url=https%3A%2F%2Fraw.githubusercontent.com%2Fandras-tim%2Fmc-dras-modpack%2Fstable%2Fpack.toml&amp;name=mc.dras.hu&amp;icon=https%3A%2F%2Fraw.githubusercontent.com%2Fandras-tim%2Fmc-dras-modpack%2Fstable%2Fbranding%2Fprofile-icon.png&amp;ram=4096">mc.dras.hu profil hozzáadása</a>
+    <p class="note">Az alkalmazás megmutatja, mit ad hozzá; erősítsd meg a „Add” gombbal.</p>
+  </section>
+
+  <section>
+    <h2><span class="step">4</span>Az első indítás</h2>
+    <ol>
+      <li><b>Play</b>: letölti a modokat (kb. 210 MB).</li>
+      <li>Elindul a Forge telepítője, majd az alkalmazás üzenet nélkül bezárul. Ez így rendben van.</li>
+      <li>Nyisd meg újra, <b>Play</b>: egyszer letölti magát a Minecraftot (kb. 700 MB, wifin), és indul a játék.</li>
+      <li>Később minden indításnál csak a változások jönnek le.</li>
+    </ol>
+  </section>
+
+  <footer>
+    A modok listája és leírása: <a href="https://github.com/andras-tim/mc-dras-modpack">mc-dras-modpack</a>.
+    Az alkalmazás: <a href="https://github.com/andras-tim/Amethyst-Android">Amethyst::Dras</a>, az Amethyst launcher
+    egy változata.
+  </footer>
+</main>
+<script>
+  // The release APK has a versioned file name; link the latest one directly, else the release page stays the link
+  fetch('https://api.github.com/repos/andras-tim/Amethyst-Android/releases/latest')
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(release => {
+      const apk = release.assets.find(a => a.name.startsWith('amethyst-dras-') && a.name.endsWith('.apk'));
+      if (!apk) return;
+      const link = document.getElementById('apk');
+      link.href = apk.browser_download_url;
+      link.textContent = 'Amethyst::Dras letöltése (' + release.tag_name + ', '
+        + Math.round(apk.size / 1048576) + ' MB)';
+    })
+    .catch(() => {});
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+#!/bin/sh
+# packwiz from a container (tools/packwiz.Dockerfile, built on first use), on the pack in the current directory;
+# its download cache is ~/.cache/mc-dras/packwiz
+set -eu
+image=mc-dras-packwiz:170b22d
+tools=$(dirname "$0")
+docker image inspect "$image" >/dev/null 2>&1 || docker build -q -t "$image" -f "$tools/packwiz.Dockerfile" "$tools" >/dev/null
+mkdir -p "$HOME/.cache/mc-dras/packwiz"
+exec docker run --rm -i -u "$(id -u):$(id -g)" -e HOME=/home/pw -v "$HOME/.cache/mc-dras/packwiz:/home/pw/.cache/packwiz" \
+    -v "$PWD":/pack "$image" "$@"
