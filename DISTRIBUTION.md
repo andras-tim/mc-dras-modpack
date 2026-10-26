@@ -26,7 +26,7 @@ button that fits the device.
 | **CurseForge zip** (`packwiz curseforge export`) | standard import, update from a URL | import, a new profile each time | manual | the zip names files by CurseForge ID only, so the client needs a CurseForge API key |
 | **zip with the jars inside** | import | import | manual re-import | the jars may only be shared privately (several mods do not allow redistribution) |
 | **publishing on Modrinth or CurseForge** | install from the launcher's search, update button | install from search | manual | public, moderated per file; CurseForge requires the manifest its own app generates |
-| **AutoModpack** (a mod that syncs the client from the server) | any launcher | any launcher | automatic on joining | an extra mod in the pack; its Android fix was only in a release candidate |
+| **AutoModpack** (a mod that syncs the client from the server) | any launcher | any launcher | automatic on joining | an extra mod in the pack; the Android fix is only in the 5.0 line, which is all beta (`5.0.0-rc.*`); the stable 4.0.7 lacks it |
 | **FCL / HMCL "server pack"** | HMCL instead of Prism | Fold Craft Launcher instead of Amethyst | automatic | changing launchers; FCL's interface was rejected |
 | **one link for both launchers** (`prismlauncher://import`, with Amethyst::Dras reading Prism instance zips) | standard | needs a Prism instance importer in the fork | as packwiz | more launcher changes for the same result as the setup page |
 
