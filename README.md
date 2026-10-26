@@ -15,6 +15,8 @@ The server and every client read the same `pack.toml`, so they always run the sa
 **Phone setup page: <https://andras-tim.github.io/mc-dras-modpack/>** (the launcher download and the profile link;
 the page lives in `docs/`).
 
+Why packwiz, and the alternatives that were considered: [DISTRIBUTION.md](DISTRIBUTION.md).
+
 | where | how |
 |---|---|
 | PC, Steam Deck | [Prism Launcher](https://prismlauncher.org/) instance with [packwiz-installer](https://github.com/packwiz/packwiz-installer) as its pre-launch command: `"$INST_JAVA" -jar packwiz-installer-bootstrap.jar -g <pack.toml URL>`; it updates the mods on every start |

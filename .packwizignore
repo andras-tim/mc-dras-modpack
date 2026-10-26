@@ -6,3 +6,4 @@ tools/
 .gitignore
 branding/
 docs/
+DISTRIBUTION.md
