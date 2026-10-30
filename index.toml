@@ -1,6 +1,62 @@
 hash-format = "sha256"
 
 [[files]]
+file = "config/alexsmobs.toml"
+hash = "da751b84809873123bd908fc85339afed6c2bf085d3c35fa19e76bba6eaf171e"
+
+[[files]]
+file = "config/create_new_age-common.toml"
+hash = "2261906202fb7669a18bbc9906eb09e4b20255edb068ba54fa39d0ab83d1a88c"
+
+[[files]]
+file = "config/jei/jei-client.ini"
+hash = "4cae976989e94a3d4c0002c3ac48c00fed81947da9103d85429458478c49383c"
+
+[[files]]
+file = "config/lmft.json"
+hash = "616b89227e557c16754a9d89ac5b28bf18da1607cea770e2b92eb95a91c6538e"
+
+[[files]]
+file = "config/modernfix-mixins.properties"
+hash = "ca0d680afeefa8b509742587ac56f23b1ec3f91e8159d7a093083453cffb1398"
+
+[[files]]
+file = "config/packetfixer.properties"
+hash = "2b3545fc92fa14f0190a3fb817a6036f1bde41ee859cc9029907fc4a2386a094"
+
+[[files]]
+file = "config/paxi/datapacks/mc-dras-fixes/data/create/recipes/crushing/deepslate_calorite_ore.json"
+hash = "84d78b200f25390c9dbb8ab6ab1b94429b9a3f0ca9fae34dea242a41c9d22052"
+
+[[files]]
+file = "config/paxi/datapacks/mc-dras-fixes/data/create/recipes/crushing/deepslate_desh_ore.json"
+hash = "84d78b200f25390c9dbb8ab6ab1b94429b9a3f0ca9fae34dea242a41c9d22052"
+
+[[files]]
+file = "config/paxi/datapacks/mc-dras-fixes/data/create/recipes/crushing/deepslate_ostrum_ore.json"
+hash = "84d78b200f25390c9dbb8ab6ab1b94429b9a3f0ca9fae34dea242a41c9d22052"
+
+[[files]]
+file = "config/paxi/datapacks/mc-dras-fixes/data/create/recipes/crushing/glacio_ice_shard_ore.json"
+hash = "84d78b200f25390c9dbb8ab6ab1b94429b9a3f0ca9fae34dea242a41c9d22052"
+
+[[files]]
+file = "config/paxi/datapacks/mc-dras-fixes/data/create/recipes/crushing/mars_ostrum_ore.json"
+hash = "84d78b200f25390c9dbb8ab6ab1b94429b9a3f0ca9fae34dea242a41c9d22052"
+
+[[files]]
+file = "config/paxi/datapacks/mc-dras-fixes/data/create/recipes/crushing/moon_desh_ore.json"
+hash = "84d78b200f25390c9dbb8ab6ab1b94429b9a3f0ca9fae34dea242a41c9d22052"
+
+[[files]]
+file = "config/paxi/datapacks/mc-dras-fixes/data/create/recipes/crushing/venus_calorite_ore.json"
+hash = "84d78b200f25390c9dbb8ab6ab1b94429b9a3f0ca9fae34dea242a41c9d22052"
+
+[[files]]
+file = "config/paxi/datapacks/mc-dras-fixes/pack.mcmeta"
+hash = "c97d29120aa84c227e4dd617964dd68b043d8c7834d41d8fc4feee9d1c22c3f8"
+
+[[files]]
 file = "mods/ad-astra.pw.toml"
 hash = "08a7c6d39cf9e99ea09659c40f4515b2865d5e7e6849c8b60d3da92e78d86798"
 metafile = true
@@ -43,11 +99,6 @@ metafile = true
 [[files]]
 file = "mods/create-ad-astra-compatibility.pw.toml"
 hash = "d05650de0e933f7aa71d7cad3ad6ccf4da2b05a3d611aa17f01dc702a536a570"
-metafile = true
-
-[[files]]
-file = "mods/create-air-forge.pw.toml"
-hash = "bb73f0912dc81dba0999526c3e8b8d4096878a12142bedab435beebf11a9acc8"
 metafile = true
 
 [[files]]
@@ -126,6 +177,11 @@ hash = "e46b1a86a669d2326960a9f7745bb474d8b71f1a68524f6ba4bc53cb1cc93d14"
 metafile = true
 
 [[files]]
+file = "mods/embeddium.pw.toml"
+hash = "5ec0c37f3f4ad07a40c10376668bca80334ddb7ad2bab06eb4de8f7aac339c8e"
+metafile = true
+
+[[files]]
 file = "mods/feature-recycler.pw.toml"
 hash = "06b1b3d6c3c42a649691015ef9de837b0755fb2b96ad5362e070bd87304bba1a"
 metafile = true
@@ -141,11 +197,6 @@ hash = "71bf1b28d29d8f5611937b16488f38322a3132aa67015368adcc26b7e80e4c32"
 metafile = true
 
 [[files]]
-file = "mods/fullstack-watchdog.pw.toml"
-hash = "bbd5cd3c34549cbb6ecff2ecf4abd44af5776df33e539c00a94a3f0b131e0a62"
-metafile = true
-
-[[files]]
 file = "mods/geckolib.pw.toml"
 hash = "fd4c8d93c79872378e73e3046191456c6c51076059e66afff4ec8893b9ddd87e"
 metafile = true
@@ -153,6 +204,11 @@ metafile = true
 [[files]]
 file = "mods/glitchcore.pw.toml"
 hash = "b21423fb5f178ff8f84487e9273df56e08d539eeb0f1683edaee5a368c4ca5ac"
+metafile = true
+
+[[files]]
+file = "mods/immediatelyfast.pw.toml"
+hash = "bba599b8bc2c44d133972011ac5aa11d8eb19fa4a0759fe41b12fb7ee8cad175"
 metafile = true
 
 [[files]]
@@ -221,6 +277,11 @@ hash = "45b6c548cf33e16da26288df634ae3742c2986734eccf53dfe654a5215608b21"
 metafile = true
 
 [[files]]
+file = "mods/paxi.pw.toml"
+hash = "3c6ff72b67c3c8080b9a6b4819dab9bf4fa6f9aa784698abcc91a45db3492fe3"
+metafile = true
+
+[[files]]
 file = "mods/puzzles-lib.pw.toml"
 hash = "2229330c70a52968c6f9b9ce888ceaf5245fde8087506864dbf45b44dd4593f3"
 metafile = true
@@ -256,6 +317,11 @@ hash = "8d3d8423e83c23a07831671b9b41ed4a32019e2bfad91cd25719cccf5691931b"
 metafile = true
 
 [[files]]
-file = "mods/thin-air.pw.toml"
-hash = "3cebe0d87808943c1e0a1fdfd7ea72fc795a5256afc99bc7045a520d1caca4e2"
+file = "mods/yungs-api.pw.toml"
+hash = "675b8e04389d46f1d077a6ef662928d46b00144397e7778de537bcb8341bd3eb"
 metafile = true
+
+[[files]]
+file = "options.txt"
+hash = "f9510dbe1c21604c8be911c23f47eab64fe0fad455da1b0a32f8f1e0a4f154a7"
+preserve = true
