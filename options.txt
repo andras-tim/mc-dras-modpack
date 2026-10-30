@@ -3,3 +3,4 @@ simulationDistance:6
 graphicsMode:0
 particles:2
 maxFps:60
+maxFps:60
