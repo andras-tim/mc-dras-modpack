@@ -1,6 +1,6 @@
 name = "mc.dras.hu"
 author = "andras-tim"
-version = "1.20.1-1"
+version = "1.20.1-2"
 pack-format = "packwiz:1.1.0"
 
 [index]
