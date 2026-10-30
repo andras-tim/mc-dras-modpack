@@ -30,7 +30,10 @@
     section { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1.1rem 1.1rem;
               margin-bottom: 1rem; }
     h2 { font-size: 1.1rem; margin: 0 0 .6rem; }
-    h2.group { font-size: 1.25rem; margin: 1.6rem 0 .7rem; }
+    details { margin-bottom: .8rem; }
+    summary { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1rem 1.1rem;
+              font-size: 1.2rem; font-weight: 700; cursor: pointer; }
+    details[open] summary { margin-bottom: .8rem; }
     .step { display: inline-block; min-width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--accent);
             color: var(--accent-fg); text-align: center; font-weight: 700; margin-right: .4rem; }
     a.button { display: block; text-align: center; background: var(--accent); color: var(--accent-fg);
@@ -58,7 +61,8 @@
     </div>
   </header>
 
-  <h2 class="group">Android telefon</h2>
+  <details>
+    <summary>Android telefon</summary>
 
   <section>
     <h2><span class="step">1</span>Az alkalmazás</h2>
@@ -101,7 +105,10 @@
     </ol>
   </section>
 
-  <h2 class="group">Gép vagy Steam Deck</h2>
+  </details>
+
+  <details>
+    <summary>Gép vagy Steam Deck</summary>
 
   <section>
     <h2><span class="step">1</span>Prism Launcher</h2>
@@ -116,6 +123,8 @@
     <p class="note">Ha a gomb nem nyitja meg, a Prismben: Add Instance, Import, és illeszd be ezt a címet. A
       modok minden indításkor maguktól frissülnek.</p>
   </section>
+
+  </details>
 
   <footer>
     A modok listája és leírása: <a href="https://github.com/andras-tim/mc-dras-modpack">mc-dras-modpack</a>.
