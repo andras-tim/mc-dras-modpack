@@ -39,7 +39,7 @@ def import_link(ref):
         'name': PROFILE_NAME,
         'icon': RAW.format(ref=ref, path='branding/profile-icon.png'),
         'ram': PROFILE_RAM_MB,
-    })
+    }, safe=':/')  # plain URLs make the QR code smaller
     return 'amethyst://profile/import?' + query
 
 

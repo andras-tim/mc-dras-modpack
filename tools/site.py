@@ -26,7 +26,7 @@ def import_link():
 
 
 def qr_svg(text):
-    return subprocess.run(['qrencode', '-t', 'SVG', '--inline', '--svg-path', '-m', '2', '-o', '-', text],
+    return subprocess.run(['qrencode', '-t', 'SVG', '--inline', '--svg-path', '-l', 'L', '-m', '1', '-o', '-', text],
                           check=True, capture_output=True, text=True).stdout
 
 
