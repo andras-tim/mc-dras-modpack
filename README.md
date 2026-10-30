@@ -49,9 +49,13 @@ fetch what changed.
 |---|---|
 | `pack.toml`, `index.toml` | pack name, version, Minecraft and Forge version; the list of files with their hashes |
 | `mods/*.pw.toml` | one per mod: download URL, hash, side (`both`, `client`, `server`) |
+| `config/` | only the keys we change: the mods add the rest with their defaults, so a mod update keeps its new defaults |
+| `config/paxi/datapacks/mc-dras-fixes/` | our datapack, Paxi loads it into every world: drops Ad Astra's crushing recipes that collide with `create_ad_astra_compat` and `cp_tweaks` |
+| `options.txt` | first-start graphics defaults for the phones (`preserve`: never overwrites a player's settings) |
 | `tools/cf_direct_urls.py` | rewrites packwiz's CurseForge metafiles to the direct CDN URL (see below) |
 | `tools/check_deps.py` | every mod's mandatory dependencies and incompatibilities, per side, from the jars' `mods.toml` |
 | `tools/phone-qr.py` | QR codes for a phone: the launcher APK, then the profile import link |
+| `tools/prism-instance.py` | builds a Prism instance zip that needs no manual setup: versions, pre-launch command, memory |
 | `branding/` | the profile icon |
 | `docs/` | the phone setup page (GitHub Pages) |
 | `tools/smoke-test.sh` | boots a dedicated server from the checkout the way the real server does and waits for "Done" |
@@ -75,3 +79,27 @@ The tools run from the pack root; `tools/packwiz` runs packwiz from a container 
 
 A world outlives the mods in it: back up before every change, change one mod at a time, never remove a mod whose
 blocks are in use (Create contraptions and trains included) without disassembling them first.
+
+## Staying close to the reference pack
+
+SteamPunk [LPS] v19 is the reference, because it carries much of the maintenance: what it solves, we solve the same
+way, with the same mod file or setting where we have the same mod. Before adding a fix of our own, check twice that it
+has no solution for it already.
+
+Deliberate differences:
+
+| topic | difference | why |
+|---|---|---|
+| map | JourneyMap instead of Xaero's | the kids' favourite |
+| Immersive Engineering + Immersive Fixes | added | our own choice |
+| Almost Unified | added, default config | Immersive Engineering, Ad Astra and Create add the same materials |
+| Thin Air, Create Air | left out | no suffocation on Earth |
+| FullStack Watchdog | left out | server-only, but declares no `displayTest`: every client sees a red "Incompatible" mark |
+| Ad Astra temperature | stays on | the reference turned it off for Cold Sweat, which we do not have; planets stay dangerous, Earth is normal |
+| Packet Fixer `timeout` | 15 instead of 120 | it also sets the keep-alive period: with 120 the server sends none for 2 minutes, and a client on the death screen, which sends nothing, is dropped after 30 s |
+| monorail recipe | stays enabled | no known bug behind the reference's ban |
+| Alex's Mobs start book | stays | for the kids |
+| Embeddium | added | phone performance; Flywheel declares support for it |
+| versions | 9 mods are newer | fixes, see the changelogs of those mods |
+
+An idea for later: a server-side web map for the admin (Dynmap or BlueMap); JourneyMap's web map runs on the client.
