@@ -6,7 +6,7 @@ Usage (from the pack root): python3 -I tools/servers-dat.py, then tools/packwiz 
 import struct
 
 SERVER_NAME = 'mc.dras.hu'
-SERVER_ADDRESS = 'srv-mc.dras.hu'
+SERVER_ADDRESS = 'mc-srv.dras.hu'
 TAG_END, TAG_STRING, TAG_LIST, TAG_COMPOUND = 0, 8, 9, 10
 
 
