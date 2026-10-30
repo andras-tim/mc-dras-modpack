@@ -328,5 +328,5 @@ preserve = true
 
 [[files]]
 file = "servers.dat"
-hash = "9eafe039dbb4766fc070f4339240c668c65ef0f2aea72ab682a1462ddbcccb76"
+hash = "39b24ce1ba97249aadd5b20a4dd5088dfe905de62a7a9cb37c6a648a71b6e8cc"
 preserve = true
