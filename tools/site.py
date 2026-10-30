@@ -13,6 +13,8 @@ import urllib.parse
 SITE_URL = 'https://andras-tim.github.io/mc-dras-modpack/'
 APK_URL = 'https://github.com/andras-tim/Amethyst-Android/releases/latest/download/amethyst-dras.apk'
 PRISM_ZIP = 'mc.dras.hu.zip'
+# Measured on a Snapdragon 855+ phone: about 59 FPS at render distance 6, the launcher's default is much slower
+RESOLUTION_LINK = 'amethyst://settings/set?resolutionRatio=50'
 
 
 def import_link():
@@ -40,6 +42,8 @@ def main():
         'APK_QR': qr_svg(APK_URL),
         'PROFILE_LINK': profile_link.replace('&', '&amp;'),
         'PROFILE_QR': qr_svg(profile_link),
+        'RESOLUTION_LINK': RESOLUTION_LINK,
+        'RESOLUTION_QR': qr_svg(RESOLUTION_LINK),
         'PRISM_ZIP_URL': prism_zip_url,
         'PRISM_LINK': 'prismlauncher://import?url=' + urllib.parse.quote(prism_zip_url, safe=''),
     }
