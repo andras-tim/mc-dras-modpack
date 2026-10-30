@@ -61,7 +61,7 @@
     </div>
   </header>
 
-  <details>
+  <details id="android" name="platform">
     <summary>Android telefon</summary>
 
   <section>
@@ -83,20 +83,11 @@
     <div class="qr">@@PROFILE_QR@@</div>
     <a class="button" href="@@PROFILE_LINK@@">Profil hozzáadása</a>
     <code class="link">@@PROFILE_LINK@@</code>
-    <p class="note">Az alkalmazás megmutatja, mit ad hozzá; erősítsd meg az „Add” gombbal.</p>
+    <p class="note">Az alkalmazás megmutatja, mit állít be, a telefonhoz illő felbontást is; erősítsd meg az „Add” gombbal.</p>
   </section>
 
   <section>
-    <h2><span class="step">4</span>Felbontás</h2>
-    <div class="qr">@@RESOLUTION_QR@@</div>
-    <a class="button" href="@@RESOLUTION_LINK@@">Felbontás beállítása</a>
-    <code class="link">@@RESOLUTION_LINK@@</code>
-    <p class="note">50%-ra állítja a játék felbontását, így a telefon jóval gyorsabb lesz. Az érték később az
-      alkalmazás beállításaiban módosítható.</p>
-  </section>
-
-  <section>
-    <h2><span class="step">5</span>Az első indítás</h2>
+    <h2><span class="step">4</span>Az első indítás</h2>
     <ol>
       <li><b>Play</b>: letölti a modokat (kb. 210 MB).</li>
       <li>Elindul a Forge telepítője, majd az alkalmazás üzenet nélkül bezárul. Ez így rendben van.</li>
@@ -107,7 +98,7 @@
 
   </details>
 
-  <details>
+  <details id="pc" name="platform">
     <summary>Gép vagy Steam Deck</summary>
 
   <section>
@@ -132,5 +123,19 @@
     egy változata.
   </footer>
 </main>
+<script>
+  // The open part is in the address (#android, #pc), so it can be bookmarked or shared
+  const parts = document.querySelectorAll('details');
+  function openFromAddress() {
+    const part = document.getElementById(location.hash.slice(1));
+    if (part && part.tagName === 'DETAILS') part.open = true;
+  }
+  parts.forEach(part => part.addEventListener('toggle', () => {
+    if (part.open) history.replaceState(null, '', '#' + part.id);
+    else if (location.hash === '#' + part.id) history.replaceState(null, '', location.pathname);
+  }));
+  addEventListener('hashchange', openFromAddress);
+  openFromAddress();
+</script>
 </body>
 </html>
