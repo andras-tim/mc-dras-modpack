@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Build a Prism Launcher instance zip of this pack: Minecraft and Forge from pack.toml, packwiz-installer-bootstrap
-inside and set as the pre-launch command, so importing the zip leaves nothing to fill in by hand.
+"""Build a Prism Launcher instance zip of this pack, so importing it leaves nothing to fill in by hand.
 
-Prism imports it from a file or a URL (Add Instance, Import). The zip holds no secret.
+The settings live in prism/: instance.cfg (memory, pre-launch command) and options.txt (the graphics of a new PC
+install). This tool adds the Minecraft and Forge versions from pack.toml and packwiz-installer-bootstrap.
+
+Prism imports the zip from a file or a URL (Add Instance, Import). The zip holds no secret.
 Usage: python3 -I tools/prism-instance.py -o <file.zip> [--url <pack.toml URL>] [--name <instance name>]
        (from the pack root; default URL: the stable tag on GitHub)
 """
@@ -16,8 +18,6 @@ import zipfile
 
 PACK_URL = 'https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/stable/pack.toml'
 INSTANCE_NAME = 'mc.dras.hu'
-# Same heap as the phone profile, see phone-qr.py
-INSTANCE_RAM_MB = 4096
 
 BOOTSTRAP_NAME = 'packwiz-installer-bootstrap.jar'
 # https://github.com/packwiz/packwiz-installer-bootstrap/releases
@@ -32,23 +32,6 @@ def bootstrap_jar():
     if hashlib.sha256(jar).hexdigest() != BOOTSTRAP_SHA256:
         sys.exit(f'{BOOTSTRAP_URL}: unexpected sha256')
     return jar
-
-
-def instance_cfg(name, pack_url):
-    command = f'"$INST_JAVA" -jar {BOOTSTRAP_NAME} -g {pack_url}'
-    # Prism reads this file as QSettings INI: a value with inner quotes must be quoted and escaped
-    escaped = command.replace('\\', '\\\\').replace('"', '\\"')
-    return '\n'.join([
-        '[General]',
-        'ConfigVersion=1.2',
-        'InstanceType=OneSix',
-        f'name={name}',
-        'OverrideCommands=true',
-        f'PreLaunchCommand="{escaped}"',
-        'OverrideMemory=true',
-        f'MaxMemAlloc={INSTANCE_RAM_MB}',
-        '',
-    ])
 
 
 def mmc_pack(versions):
@@ -70,10 +53,13 @@ def main():
 
     with open('pack.toml', 'rb') as f:
         versions = tomllib.load(f)['versions']
+    with open('prism/instance.cfg') as f:
+        instance_cfg = f.read().replace('@NAME@', args.name).replace('@PACK_URL@', args.url)
     jar = bootstrap_jar()
     with zipfile.ZipFile(args.output, 'w', zipfile.ZIP_DEFLATED) as z:
-        z.writestr('instance.cfg', instance_cfg(args.name, args.url))
+        z.writestr('instance.cfg', instance_cfg)
         z.writestr('mmc-pack.json', mmc_pack(versions))
+        z.write('prism/options.txt', '.minecraft/options.txt')
         z.writestr(f'.minecraft/{BOOTSTRAP_NAME}', jar)
     print(args.output)
 

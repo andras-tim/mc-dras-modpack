@@ -92,6 +92,7 @@ Only the changed keys are in `config/`; everything else is each mod's default.
 | `config/` | only the keys we change: the mods add the rest with their defaults, so a mod update keeps its new defaults |
 | `config/paxi/datapacks/mc-dras-fixes/` | our datapack, Paxi loads it into every world: drops Ad Astra's crushing recipes that collide with `create_ad_astra_compat` and `cp_tweaks` |
 | `options.txt` | first-start graphics defaults (`preserve`: never overwrites a player's settings) |
+| `prism/` | settings of a new PC install: `instance.cfg` (memory, pre-launch command), `options.txt` (view distance 10) |
 | `branding/` | the profile icon |
 | `docs/` | the phone setup page (GitHub Pages) |
 | `tools/` | maintenance scripts |
