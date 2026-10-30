@@ -10,7 +10,7 @@ import subprocess
 import sys
 import urllib.parse
 
-SITE_URL = 'https://andras-tim.github.io/mc-dras-modpack/'
+SITE_URL = 'https://mc.dras.hu/'
 APK_URL = 'https://github.com/andras-tim/Amethyst-Android/releases/latest/download/amethyst-dras.apk'
 PRISM_ZIP = 'mc.dras.hu.zip'
 
