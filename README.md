@@ -1,6 +1,6 @@
 # mc.dras.hu modpack
 
-A small [packwiz](https://packwiz.infra.link/) modpack for a family Minecraft server: Minecraft 1.20.1, Forge
+A small [packwiz](https://packwiz.infra.link/) modpack for a private Minecraft server: Minecraft 1.20.1, Forge
 47.4.20, Create with its addons, Ad Astra, Immersive Engineering, Alex's Mobs, L_Ender's Cataclysm and Biomes O'
 Plenty, plus a layer of stability fixes.
 
@@ -14,8 +14,6 @@ The server and every client read the same `pack.toml`, so they always run the sa
 
 **Phone setup page: <https://andras-tim.github.io/mc-dras-modpack/>** (the launcher download and the profile link;
 the page lives in `docs/`).
-
-Why packwiz, and the alternatives that were considered: [DISTRIBUTION.md](DISTRIBUTION.md).
 
 | where | how |
 |---|---|
@@ -31,10 +29,52 @@ installer runs and the app closes without a message (the launcher runs Java in i
 every Java program); Play again downloads Minecraft itself once (about 700 MB) and starts the game. Later starts only
 fetch what changed.
 
+## What is in the pack
+
+| group | mods |
+|---|---|
+| Create | Create, Connected, Deco, Easy Structures, Enchantment Industry, Interiors, New Age, Optical, Prismatic Shine, Steam 'n' Rails, Dynamic Village |
+| space | Ad Astra, Create: Ad Astra Compatibility, Create Planetary Tweaks |
+| industry | Immersive Engineering, Immersive Fixes |
+| world and mobs | Alex's Mobs, L_Ender's Cataclysm, Biomes O' Plenty |
+| tools | Just Enough Items, JourneyMap, Patchouli, Almost Unified |
+| stability, server and both sides | AllTheLeaks, Clumps, Cupboard, DEUF, Dimensional Sync Fixes, Feature Recycler, FerriteCore, Load My F***ing Tags, ModernFix, NaNny Reforked, Neruina, Packet Fixer, spark, Structure Essentials, Structure Layout Optimizer |
+| client only | Embeddium, ImmediatelyFast, fix GPU memory leak |
+| libraries | Botarium, Citadel, Curios API, GeckoLib, GlitchCore, Lionfish API, Paxi, Puzzles Lib, Resourceful Config, Resourceful Lib, TerraBlender, YUNG's API |
+
+Earth is harmless: the pack has no air or temperature mechanic there. Ad Astra's planets and orbits are dangerous:
+
+| place | air | temperature | what you need |
+|---|---|---|---|
+| Earth | yes | 15 °C | nothing |
+| Glacio | yes | -20 °C | not tested |
+| Moon, Mars | no | -173 °C, -65 °C | space suit with oxygen |
+| Mercury, Venus | no | 167 °C, 464 °C | netherite or jet suit with oxygen |
+| orbits | no | -270 °C | space suit with oxygen |
+
+## Settings
+
+Only the changed keys are in `config/`; everything else is each mod's default.
+
+| file | setting | why |
+|---|---|---|
+| `create_new_age-common.toml` | `maxPathfindingDepth = 32` | as in the reference pack |
+| `alexsmobs.toml` | `transmutingExperienceCost = 25`, `mimicreamRepair = false` | as in the reference pack |
+| `lmft.json` | `disableIngameError = true` | as in the reference pack |
+| `modernfix-mixins.properties` | `dynamic_resources`, `faster_item_rendering` on; branding, the missing-mods warning and `release_protochunks` off | as in the reference pack |
+| `packetfixer.properties` | larger packet sizes, as in the reference pack; `timeout = 15` | see below |
+| `jei/jei-client.ini` | `LowMemorySlowSearchEnabled = true` | saves memory on phones |
+| `options.txt` | view and simulation distance 6, fast graphics, minimal particles, 60 FPS limit | defaults of a new install |
+| `paxi/datapacks/mc-dras-fixes/` | disables Ad Astra's 7 Create crushing recipes that collide with `create_ad_astra_compat` and `cp_tweaks` | one recipe per ore |
+
 ## Known limitations
 
-- **Ad Astra space stations** (1.15.21): an orbit is empty until you build a station from the rocket's planet screen
-  ("Space Stations" → "Construct", the materials in the inventory; the in-game Astrodux book explains it).
+- **Ad Astra space stations** (1.15.21): an orbit is empty until you build a station from the rocket's planet screen:
+  choose the planet, then the `+` next to "Space Stations", with the materials in your inventory (Earth: 64 iron plates,
+  32 steel ingots, 32 desh ingots, 32 desh plates). The `+` builds at once and takes you there. Choosing "Land" without
+  a station leaves you floating in empty space.
+  - You arrive in a lander: **hold space from about 240 blocks on** and keep holding until it stops, or it explodes on
+    the station and you die. The station is below your arrival point, so keep flying straight down.
   - A rocket can miss a freshly built station and leave you floating, mostly when the station is the first place you
     visit in space ([#475](https://github.com/terrarium-earth/Ad-Astra/issues/475), open). Visit the orbit once
     before building it. When it happens, the station's coordinates are in the planet screen's tooltip ("Land on space
@@ -49,29 +89,28 @@ fetch what changed.
 |---|---|
 | `pack.toml`, `index.toml` | pack name, version, Minecraft and Forge version; the list of files with their hashes |
 | `mods/*.pw.toml` | one per mod: download URL, hash, side (`both`, `client`, `server`) |
-| `tools/cf_direct_urls.py` | rewrites packwiz's CurseForge metafiles to the direct CDN URL (see below) |
-| `tools/check_deps.py` | every mod's mandatory dependencies and incompatibilities, per side, from the jars' `mods.toml` |
-| `tools/phone-qr.py` | QR codes for a phone: the launcher APK, then the profile import link |
+| `config/` | only the keys we change: the mods add the rest with their defaults, so a mod update keeps its new defaults |
+| `config/paxi/datapacks/mc-dras-fixes/` | our datapack, Paxi loads it into every world: drops Ad Astra's crushing recipes that collide with `create_ad_astra_compat` and `cp_tweaks` |
+| `options.txt` | first-start graphics defaults (`preserve`: never overwrites a player's settings) |
 | `branding/` | the profile icon |
 | `docs/` | the phone setup page (GitHub Pages) |
-| `tools/smoke-test.sh` | boots a dedicated server from the checkout the way the real server does and waits for "Done" |
+| `tools/` | maintenance scripts |
 
-## Changing the pack
+## Differences from the reference pack
 
-The tools run from the pack root; `tools/packwiz` runs packwiz from a container (pinned in `tools/packwiz.Dockerfile`).
+The pack follows SteamPunk [LPS] v19 in mod versions and settings where it has the same mods, with its own files and
+these differences:
 
-1. Check that the mod's author allows third-party downloads (CurseForge "Mod Distribution: Allowed"). A mod that
-   forbids it can only join if we host its file ourselves.
-2. Add or update it at an exact file: `packwiz curseforge add --addon-id <project> --file-id <file>` (or
-   `packwiz modrinth add --project-id <slug> --version-id <id>`). Prefer a version that other maintained packs ship
-   together with our other mods; read the changelogs and issue trackers of every version in between.
-3. `python3 -I tools/cf_direct_urls.py`, then `packwiz refresh`. packwiz writes `mode = "metadata:curseforge"` for
-   CurseForge files, which makes clients ask the CurseForge API for the download; the tool replaces it with the file's
-   CDN URL after checking the distribution flag and the hash, so no client needs an API key.
-4. Set `side` in the `.pw.toml` when the mod belongs to one side only.
-5. `python3 -I tools/check_deps.py` and `tools/smoke-test.sh` must pass; then start a client on PC and on a phone.
-6. Configs and datapacks are written for this pack. Other packs are a source of ideas (what to tune, which versions
-   work together, known pitfalls), never of files.
-
-A world outlives the mods in it: back up before every change, change one mod at a time, never remove a mod whose
-blocks are in use (Create contraptions and trains included) without disassembling them first.
+| topic | difference | why |
+|---|---|---|
+| map | JourneyMap instead of Xaero's | the players' choice |
+| Immersive Engineering + Immersive Fixes | added | more industry |
+| Almost Unified | added, default config | Immersive Engineering, Ad Astra and Create add the same materials |
+| Thin Air, Create Air | left out | no suffocation on Earth |
+| FullStack Watchdog | left out | server-only, but declares no `displayTest`: every client sees a red "Incompatible" mark |
+| Ad Astra temperature | stays on | the reference turned it off for Cold Sweat, which we do not have; planets stay dangerous, Earth is normal |
+| Packet Fixer `timeout` | 15 instead of 120 | it also sets the keep-alive period: with 120 the server sends none for 2 minutes, and a client on the death screen, which sends nothing, is dropped after 30 s |
+| monorail recipe | stays enabled | no known bug behind the reference's ban |
+| Alex's Mobs start book | stays | useful for new players |
+| Embeddium | added | chunk rendering on phones; Flywheel declares support for it |
+| versions | 9 mods are newer | fixes, see the changelogs of those mods |
