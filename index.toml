@@ -325,3 +325,8 @@ metafile = true
 file = "options.txt"
 hash = "f9510dbe1c21604c8be911c23f47eab64fe0fad455da1b0a32f8f1e0a4f154a7"
 preserve = true
+
+[[files]]
+file = "servers.dat"
+hash = "9eafe039dbb4766fc070f4339240c668c65ef0f2aea72ab682a1462ddbcccb76"
+preserve = true

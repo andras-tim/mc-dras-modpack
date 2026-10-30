@@ -64,6 +64,7 @@ Only the changed keys are in `config/`; everything else is each mod's default.
 | `packetfixer.properties` | larger packet sizes, as in the reference pack; `timeout = 15` | see below |
 | `jei/jei-client.ini` | `LowMemorySlowSearchEnabled = true` | saves memory on phones |
 | `options.txt` | view and simulation distance 6, fast graphics, minimal particles, 60 FPS limit | defaults of a new install |
+| `servers.dat` | the server in the multiplayer list of a new install (`preserve`), written by `tools/servers-dat.py` |
 | `paxi/datapacks/mc-dras-fixes/` | disables Ad Astra's 7 Create crushing recipes that collide with `create_ad_astra_compat` and `cp_tweaks` | one recipe per ore |
 
 ## Known limitations
