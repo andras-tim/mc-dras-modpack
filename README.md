@@ -12,8 +12,7 @@ stored here.
 
 The server and every client read the same `pack.toml`, so they always run the same mods.
 
-**Phone setup page: <https://andras-tim.github.io/mc-dras-modpack/>** (the launcher download and the profile link;
-the page lives in `docs/`).
+**Phone setup page: <https://andras-tim.github.io/mc-dras-modpack/>** (the launcher download and the profile link).
 
 | where | how |
 |---|---|
@@ -94,7 +93,8 @@ Only the changed keys are in `config/`; everything else is each mod's default.
 | `options.txt` | first-start graphics defaults (`preserve`: never overwrites a player's settings) |
 | `prism/` | settings of a new PC install: `instance.cfg` (memory, pre-launch command), `options.txt` (view distance 10) |
 | `branding/` | the profile icon |
-| `docs/` | the phone setup page (GitHub Pages) |
+| `docs/index.html` | template of the setup site for phones and PCs |
+| `tools/site.py` | builds the site with its QR codes and the Prism zip; CI publishes it on GitHub Pages from `main` |
 | `tools/` | maintenance scripts |
 
 ## Differences from the reference pack

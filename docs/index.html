@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>mc.dras.hu</title>
-  <meta name="description" content="A mc.dras.hu családi Minecraft-szerver: telepítés telefonra">
+  <meta name="description" content="A mc.dras.hu családi Minecraft-szerver: telepítés telefonra és gépre">
   <link rel="icon" href="https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/stable/branding/profile-icon.png">
   <style>
     :root {
@@ -30,6 +30,7 @@
     section { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1.1rem 1.1rem;
               margin-bottom: 1rem; }
     h2 { font-size: 1.1rem; margin: 0 0 .6rem; }
+    h2.group { font-size: 1.25rem; margin: 1.6rem 0 .7rem; }
     .step { display: inline-block; min-width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--accent);
             color: var(--accent-fg); text-align: center; font-weight: 700; margin-right: .4rem; }
     a.button { display: block; text-align: center; background: var(--accent); color: var(--accent-fg);
@@ -38,6 +39,11 @@
     ol { margin: .4rem 0 0; padding-left: 1.3rem; }
     li { margin: .25rem 0; }
     code { font-size: .9em; word-break: break-all; }
+    .qr { display: block; width: min(15rem, 100%); margin: .9rem auto .5rem; padding: .4rem; background: #fff;
+          border-radius: 10px; }
+    .qr svg { display: block; width: 100%; height: auto; }
+    .link { display: block; font-size: .78rem; color: var(--muted); user-select: all; word-break: break-all;
+            margin-top: .3rem; }
     footer { color: var(--muted); font-size: .85rem; margin-top: 1.5rem; }
     footer a { color: inherit; }
   </style>
@@ -48,15 +54,19 @@
     <img src="https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/stable/branding/profile-icon.png" alt="">
     <div>
       <h1>mc.dras.hu</h1>
-      <p>Családi Minecraft-szerver: telepítés Android telefonra</p>
+      <p>Családi Minecraft-szerver: telepítés</p>
     </div>
   </header>
 
+  <h2 class="group">Android telefon</h2>
+
   <section>
     <h2><span class="step">1</span>Az alkalmazás</h2>
-    <a class="button" id="apk" href="https://github.com/andras-tim/Amethyst-Android/releases/latest">Amethyst::Dras letöltése</a>
-    <p class="note" id="apk-note">A legfrissebb kiadás. Letöltés után nyisd meg és telepítsd; ha a telefon kéri,
-      engedélyezd a telepítést a böngészőnek.</p>
+    <div class="qr">@@APK_QR@@</div>
+    <a class="button" href="@@APK_URL@@">Amethyst::Dras letöltése</a>
+    <code class="link">@@APK_URL@@</code>
+    <p class="note">A legfrissebb kiadás. Letöltés után nyisd meg és telepítsd; ha a telefon kéri, engedélyezd a
+      telepítést a böngészőnek.</p>
   </section>
 
   <section>
@@ -66,8 +76,10 @@
 
   <section>
     <h2><span class="step">3</span>A mc.dras.hu profil</h2>
-    <a class="button" id="profile" href="amethyst://profile/import?url=https%3A%2F%2Fraw.githubusercontent.com%2Fandras-tim%2Fmc-dras-modpack%2Fstable%2Fpack.toml&amp;name=mc.dras.hu&amp;icon=https%3A%2F%2Fraw.githubusercontent.com%2Fandras-tim%2Fmc-dras-modpack%2Fstable%2Fbranding%2Fprofile-icon.png&amp;ram=4096">mc.dras.hu profil hozzáadása</a>
-    <p class="note">Az alkalmazás megmutatja, mit ad hozzá; erősítsd meg a „Add” gombbal.</p>
+    <div class="qr">@@PROFILE_QR@@</div>
+    <a class="button" href="@@PROFILE_LINK@@">Profil hozzáadása</a>
+    <code class="link">@@PROFILE_LINK@@</code>
+    <p class="note">Az alkalmazás megmutatja, mit ad hozzá; erősítsd meg az „Add” gombbal.</p>
   </section>
 
   <section>
@@ -80,25 +92,27 @@
     </ol>
   </section>
 
+  <h2 class="group">Gép vagy Steam Deck</h2>
+
+  <section>
+    <h2><span class="step">1</span>Prism Launcher</h2>
+    <p class="note">Telepítsd a <a href="https://prismlauncher.org/">Prism Launchert</a>, és jelentkezz be a
+      Microsoft-fiókkal.</p>
+  </section>
+
+  <section>
+    <h2><span class="step">2</span>A mc.dras.hu példány</h2>
+    <a class="button" href="@@PRISM_LINK@@">Megnyitás a Prism Launcherben</a>
+    <code class="link">@@PRISM_ZIP_URL@@</code>
+    <p class="note">Ha a gomb nem nyitja meg, a Prismben: Add Instance, Import, és illeszd be ezt a címet. A
+      modok minden indításkor maguktól frissülnek.</p>
+  </section>
+
   <footer>
     A modok listája és leírása: <a href="https://github.com/andras-tim/mc-dras-modpack">mc-dras-modpack</a>.
     Az alkalmazás: <a href="https://github.com/andras-tim/Amethyst-Android">Amethyst::Dras</a>, az Amethyst launcher
     egy változata.
   </footer>
 </main>
-<script>
-  // The release APK has a versioned file name; link the latest one directly, else the release page stays the link
-  fetch('https://api.github.com/repos/andras-tim/Amethyst-Android/releases/latest')
-    .then(r => r.ok ? r.json() : Promise.reject(r.status))
-    .then(release => {
-      const apk = release.assets.find(a => a.name.startsWith('amethyst-dras-') && a.name.endsWith('.apk'));
-      if (!apk) return;
-      const link = document.getElementById('apk');
-      link.href = apk.browser_download_url;
-      link.textContent = 'Amethyst::Dras letöltése (' + release.tag_name + ', '
-        + Math.round(apk.size / 1048576) + ' MB)';
-    })
-    .catch(() => {});
-</script>
 </body>
 </html>
