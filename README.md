@@ -12,7 +12,7 @@ stored here.
 
 The server and every client read the same `pack.toml`, so they always run the same mods.
 
-**Phone setup page: <https://mc.dras.hu/>** (the launcher download and the profile link).
+**Phone setup page: <https://andras-tim.github.io/mc-dras-modpack/>** (the launcher download and the profile link).
 
 | where | how |
 |---|---|
