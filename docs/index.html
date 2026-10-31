@@ -38,6 +38,8 @@
             color: var(--accent-fg); text-align: center; font-weight: 700; margin-right: .4rem; }
     a.button { display: block; text-align: center; background: var(--accent); color: var(--accent-fg);
                font-weight: 700; text-decoration: none; padding: .9rem 1rem; border-radius: 10px; margin: .8rem 0 .3rem; }
+    section.highlight { border: 2px solid var(--accent); }
+    section.highlight p { margin: .3rem 0; }
     .note { color: var(--muted); font-size: .92rem; margin: .3rem 0 0; }
     ol { margin: .4rem 0 0; padding-left: 1.3rem; }
     li { margin: .25rem 0; }
@@ -83,11 +85,23 @@
     <div class="qr">@@PROFILE_QR@@</div>
     <a class="button" href="@@PROFILE_LINK@@">Profil hozzáadása</a>
     <code class="link">@@PROFILE_LINK@@</code>
-    <p class="note">Az alkalmazás megmutatja, mit állít be, a telefonhoz illő felbontást is; erősítsd meg az „Add” gombbal.</p>
+    <p class="note">Az alkalmazás megmutatja, mit állít be; erősítsd meg az „Add” gombbal.</p>
+  </section>
+
+  <section class="highlight">
+    <h2><span class="step">4</span>Felbontás beállítása</h2>
+    <p>Indítás előtt állítsd be, különben a játék lassú lesz:</p>
+    <ol>
+      <li>Az alkalmazásban a jobb felső ikonnal nyisd meg a beállításokat.</li>
+      <li><b>Videó és renderelő</b></li>
+      <li><b>Felbontás skálája</b>: <b>50 %</b></li>
+    </ol>
+    <p class="note">Ez az alkalmazás beállítása, minden profilra érvényes. Az 50% egy tesztelt telefonon vált be: lassabb
+      telefonon kevesebb, élesebb kijelzőn más érték is jobb lehet.</p>
   </section>
 
   <section>
-    <h2><span class="step">4</span>Az első indítás</h2>
+    <h2><span class="step">5</span>Az első indítás</h2>
     <ol>
       <li><b>Play</b>: letölti a modokat (kb. 210 MB).</li>
       <li>Elindul a Forge telepítője, majd az alkalmazás üzenet nélkül bezárul. Ez így rendben van.</li>
