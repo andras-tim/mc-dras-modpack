@@ -18,6 +18,8 @@ import zipfile
 
 PACK_URL = 'https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/stable/pack.toml'
 INSTANCE_NAME = 'mc.dras.hu'
+# Prism installs the file of the instance root named after instance.cfg's iconKey
+ICON = 'mc-dras-hu.png'
 
 BOOTSTRAP_NAME = 'packwiz-installer-bootstrap.jar'
 # https://github.com/packwiz/packwiz-installer-bootstrap/releases
@@ -59,6 +61,7 @@ def main():
     with zipfile.ZipFile(args.output, 'w', zipfile.ZIP_DEFLATED) as z:
         z.writestr('instance.cfg', instance_cfg)
         z.writestr('mmc-pack.json', mmc_pack(versions))
+        z.write('branding/profile-icon.png', ICON)
         z.write('prism/options.txt', '.minecraft/options.txt')
         z.writestr(f'.minecraft/{BOOTSTRAP_NAME}', jar)
     print(args.output)

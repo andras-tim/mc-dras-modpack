@@ -12,7 +12,7 @@ import urllib.parse
 
 SITE_URL = 'https://mc.dras.hu/'
 APK_URL = 'https://github.com/andras-tim/Amethyst-Android/releases/latest/download/amethyst-dras.apk'
-PRISM_ZIP = 'mc.dras.hu.zip'
+PRISM_ZIP = 'mc-dras-hu-prism-instance.zip'
 
 
 def import_link():
