@@ -21,8 +21,9 @@ RAW = 'https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/{ref}/{path}
 PROFILE_NAME = 'mc.dras.hu'
 # Java heap of the profile: enough for the pack, safe on the 8 GB phones (tested with 4 GB)
 PROFILE_RAM_MB = 4096
-# Advice only, the launcher shows it: a link never writes an app setting. Measured on one Snapdragon 855+ phone
-SUGGESTED_RESOLUTION = 50
+# Advice only, the launcher shows the scale for its display: a link never writes an app setting
+# Measured on one Snapdragon 855+ phone with a 1080 line display
+SUGGESTED_RESOLUTION_LINES = 540
 
 
 def latest_apk():
@@ -41,7 +42,7 @@ def import_link(ref):
         'name': PROFILE_NAME,
         'icon': RAW.format(ref=ref, path='branding/profile-icon.png'),
         'ram': PROFILE_RAM_MB,
-        'suggest.resolutionRatio': SUGGESTED_RESOLUTION,
+        'suggest.resolutionLines': SUGGESTED_RESOLUTION_LINES,
     }, safe=':/')  # plain URLs make the QR code smaller
     return 'amethyst://profile/import?' + query
 
