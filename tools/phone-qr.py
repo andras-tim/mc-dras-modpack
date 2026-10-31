@@ -17,7 +17,9 @@ import urllib.parse
 import urllib.request
 
 LATEST_RELEASE = 'https://api.github.com/repos/andras-tim/Amethyst-Android/releases/latest'
-RAW = 'https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/{ref}/{path}'
+RAW = 'https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/{ref}/'
+# The released pack, published by tools/site.py
+RELEASED = 'https://mc.dras.hu/pack/'
 PROFILE_NAME = 'MC dras.hu'
 # Java heap of the profile: enough for the pack, safe on the 8 GB phones (tested with 4 GB)
 PROFILE_RAM_MB = 4096
@@ -34,11 +36,13 @@ def latest_apk():
 
 
 def import_link(ref):
+    base = RELEASED if ref == 'stable' else RAW.format(ref=ref)
     query = urllib.parse.urlencode({
-        'url': RAW.format(ref=ref, path='pack.toml'),
+        'url': base + 'pack.toml',
         'name': PROFILE_NAME,
-        'icon': RAW.format(ref=ref, path='branding/profile-icon.png'),
+        'icon': base + 'branding/profile-icon.png',
         'ram': PROFILE_RAM_MB,
+        'control': base + 'mc-dras-controls.json',
     }, safe=':/')  # plain URLs make the QR code smaller
     return 'amethyst://profile/import?' + query
 
@@ -58,7 +62,7 @@ def main():
     version, apk_url = latest_apk()
     show(f'1/2  Scan with the camera, download and install the APK ({version})', apk_url)
     input('Enter for the next code...')
-    show('2/2  After installing: scan, open with Amethyst::Dras, confirm "Add"', import_link(args.ref))
+    show('2/2  After installing: scan, open with Amethyst::Dras, confirm "Save"', import_link(args.ref))
 
 
 if __name__ == '__main__':

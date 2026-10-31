@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    tags:
+      - stable
   workflow_dispatch:
 
 permissions:
@@ -22,7 +24,12 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # the site comes from main, the pack in it from the stable tag
       - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          fetch-tags: true
 
       - name: Install qrencode
         run: sudo apt-get update && sudo apt-get install -y qrencode

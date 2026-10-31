@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
-"""Build the setup site: docs/index.html with its links and QR codes, and the Prism profile zip next to it.
+"""Build the setup site: docs/index.html with its links and QR codes, the Prism profile zip and the released pack.
 
 The main branch's CI publishes it on GitHub Pages. Needs `qrencode`.
 Usage (from the pack root): python3 -I tools/site.py <output dir>
 """
 import importlib.util
+import io
 import os
+import shutil
 import subprocess
 import sys
+import tarfile
+import tomllib
 import urllib.parse
 
 SITE_URL = 'https://mc.dras.hu/'
@@ -28,9 +32,22 @@ def qr_svg(text):
                           check=True, capture_output=True, text=True).stdout
 
 
+def publish_pack(output):
+    """The files of the `stable` tag under pack/: the launchers get what is released, never main."""
+    index = tomllib.loads(subprocess.run(['git', 'show', 'stable:index.toml'], check=True, capture_output=True,
+                                         text=True).stdout)
+    paths = ['pack.toml', 'index.toml', 'branding/profile-icon.png'] + [item['file'] for item in index['files']]
+    archive = subprocess.run(['git', 'archive', 'stable', '--', *paths], check=True, capture_output=True).stdout
+    with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
+        tar.extractall(os.path.join(output, 'pack'), filter='data')
+    # the launcher's touch layout, not a game file: it goes out with the site, before the next release
+    shutil.copy('mc-dras-controls.json', os.path.join(output, 'pack'))
+
+
 def main():
     output = sys.argv[1]
     os.makedirs(output, exist_ok=True)
+    publish_pack(output)
     subprocess.run([sys.executable, '-I', 'tools/prism-profile.py', '-o', os.path.join(output, PRISM_ZIP)], check=True)
 
     profile_link = import_link()
