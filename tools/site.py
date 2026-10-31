@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the setup site: docs/index.html with its links and QR codes, and the Prism instance zip next to it.
+"""Build the setup site: docs/index.html with its links and QR codes, and the Prism profile zip next to it.
 
 The main branch's CI publishes it on GitHub Pages. Needs `qrencode`.
 Usage (from the pack root): python3 -I tools/site.py <output dir>
@@ -12,7 +12,7 @@ import urllib.parse
 
 SITE_URL = 'https://mc.dras.hu/'
 APK_URL = 'https://github.com/andras-tim/Amethyst-Android/releases/latest/download/amethyst-dras.apk'
-PRISM_ZIP = 'mc-dras-hu-prism-instance.zip'
+PRISM_ZIP = 'mc-dras-hu-prism-profile.zip'
 
 
 def import_link():
@@ -31,7 +31,7 @@ def qr_svg(text):
 def main():
     output = sys.argv[1]
     os.makedirs(output, exist_ok=True)
-    subprocess.run([sys.executable, '-I', 'tools/prism-instance.py', '-o', os.path.join(output, PRISM_ZIP)], check=True)
+    subprocess.run([sys.executable, '-I', 'tools/prism-profile.py', '-o', os.path.join(output, PRISM_ZIP)], check=True)
 
     profile_link = import_link()
     prism_zip_url = SITE_URL + PRISM_ZIP

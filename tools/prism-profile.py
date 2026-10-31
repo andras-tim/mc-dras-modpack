@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Build a Prism Launcher instance zip of this pack, so importing it leaves nothing to fill in by hand.
+"""Build a Prism Launcher profile zip of this pack, so importing it leaves nothing to fill in by hand.
 
 The settings live in prism/: instance.cfg (memory, pre-launch command) and options.txt (the graphics of a new PC
 install). This tool adds the Minecraft and Forge versions from pack.toml and packwiz-installer-bootstrap.
 
 Prism imports the zip from a file or a URL (Add Instance, Import). The zip holds no secret.
-Usage: python3 -I tools/prism-instance.py -o <file.zip> [--url <pack.toml URL>] [--name <instance name>]
+Usage: python3 -I tools/prism-profile.py -o <file.zip> [--url <pack.toml URL>] [--name <profile name>]
        (from the pack root; default URL: the stable tag on GitHub)
 """
 import argparse
@@ -17,7 +17,7 @@ import urllib.request
 import zipfile
 
 PACK_URL = 'https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/stable/pack.toml'
-INSTANCE_NAME = 'mc.dras.hu'
+PROFILE_NAME = 'mc.dras.hu'
 # Prism installs the file of the instance root named after instance.cfg's iconKey
 ICON = 'mc-dras-hu.png'
 
@@ -49,8 +49,8 @@ def mmc_pack(versions):
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('-o', '--output', required=True, help='zip file to write')
-    parser.add_argument('--url', default=PACK_URL, help='pack.toml URL the instance follows')
-    parser.add_argument('--name', default=INSTANCE_NAME, help=f'instance name (default: {INSTANCE_NAME})')
+    parser.add_argument('--url', default=PACK_URL, help='pack.toml URL the profile follows')
+    parser.add_argument('--name', default=PROFILE_NAME, help=f'profile name (default: {PROFILE_NAME})')
     args = parser.parse_args()
 
     with open('pack.toml', 'rb') as f:
