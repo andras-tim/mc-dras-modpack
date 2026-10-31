@@ -17,7 +17,7 @@ import urllib.request
 import zipfile
 
 PACK_URL = 'https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/stable/pack.toml'
-PROFILE_NAME = 'mc.dras.hu'
+PROFILE_NAME = 'MC dras.hu'
 # Prism installs the file of the instance root named after instance.cfg's iconKey
 ICON = 'mc-dras-hu.png'
 

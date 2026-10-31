@@ -3,7 +3,7 @@
 
 1. The Amethyst::Dras APK of the latest release (its versioned file, looked up on GitHub): scan with the phone's
    camera, download, install.
-2. The import link of this pack: scan after installing; the launcher adds the mc.dras.hu profile and asks first.
+2. The import link of this pack: scan after installing; the launcher adds the MC dras.hu profile and asks first.
 
 Neither code holds a secret. Needs `qrencode`.
 Usage: python3 -I tools/phone-qr.py [--ref <git tag or branch of the pack>]   (default: stable)
@@ -18,7 +18,7 @@ import urllib.request
 
 LATEST_RELEASE = 'https://api.github.com/repos/andras-tim/Amethyst-Android/releases/latest'
 RAW = 'https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/{ref}/{path}'
-PROFILE_NAME = 'mc.dras.hu'
+PROFILE_NAME = 'MC dras.hu'
 # Java heap of the profile: enough for the pack, safe on the 8 GB phones (tested with 4 GB)
 PROFILE_RAM_MB = 4096
 
