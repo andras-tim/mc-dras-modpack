@@ -212,7 +212,7 @@
       "cornerRadius": 100,
       "displayInGame": true,
       "displayInMenu": true,
-      "dynamicX": "1.0 * ${screen_width} - (px(69.6) / 100.0 * ${preferred_scale})",
+      "dynamicX": "1.0 * ${screen_width} - (px(40) / 100.0 * ${preferred_scale})",
       "dynamicY": "0.0",
       "height": 40,
       "isSwipeable": false,
@@ -223,12 +223,12 @@
         0,
         0
       ],
-      "name": "Hide\nGUI",
+      "name": "\u25b2",
       "opacity": 1,
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 69.6
+      "width": 40
     },
     {
       "bgColor": 1291845632,
