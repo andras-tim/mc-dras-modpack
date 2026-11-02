@@ -36,12 +36,14 @@ def publish_pack(output):
     """The files of the `stable` tag under pack/: the launchers get what is released, never main."""
     index = tomllib.loads(subprocess.run(['git', 'show', 'stable:index.toml'], check=True, capture_output=True,
                                          text=True).stdout)
-    paths = ['pack.toml', 'index.toml', 'branding/profile-icon.png'] + [item['file'] for item in index['files']]
+    paths = ['pack.toml', 'index.toml'] + [item['file'] for item in index['files']]
     archive = subprocess.run(['git', 'archive', 'stable', '--', *paths], check=True, capture_output=True).stdout
     with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
         tar.extractall(os.path.join(output, 'pack'), filter='data')
-    # the launcher's touch layout, not a game file: it goes out with the site, before the next release
+    # the launcher's touch layout and the profile icon are not game files: they go out with the site, before a release
     shutil.copy('mc-dras-controls.json', os.path.join(output, 'pack'))
+    os.makedirs(os.path.join(output, 'pack', 'branding'), exist_ok=True)
+    shutil.copy('branding/profile-icon.png', os.path.join(output, 'pack', 'branding'))
 
 
 def main():

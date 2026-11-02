@@ -22,7 +22,8 @@ The server and every client read the same `pack.toml`, so they always run the sa
 
 Released pack for the launchers: `https://mc.dras.hu/pack/pack.toml`, published from the `stable` tag. Next to it is
 `mc-dras-controls.json`, the touch layout of Amethyst::Dras: the app's default layout with a Map button (`J`) in the More
-drawer. It is not a game file, so packwiz ignores it.
+drawer. It is not a game file, so packwiz ignores it, and the site publishes it from `main`, as the profile icon
+`branding/profile-icon.png`.
 
 Pack URLs (GitHub raw): `https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/<tag>/pack.toml`. The server
 pins a release tag (`1.20.1-<n>`); clients follow the `stable` tag, which moves to a release after the server runs it.
