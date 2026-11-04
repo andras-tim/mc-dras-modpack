@@ -172,15 +172,16 @@
 
   <div class="panel" id="panel-android-rest">
   <x-step-login app="Az @@AMETHYST@@"
-      add="Koppints a bal felső sarokban a <b>+&nbsp;Fiók&nbsp;hozzáadása</b> sorra, majd a <b>Microsoft Account</b> gombra."
+      add="Koppints a bal felső sarokban a <b>+&nbsp;Fiók&nbsp;hozzáadása</b> sorra, majd a <b>Microsoft-fiók</b> gombra."
       login="Jelentkezz be a megnyíló oldalon. Gyorsabb, ha a jobb felső sarokban megjelenő <svg class='inline-icon' viewBox='0 0 24 24' aria-hidden='true'><path d='M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3z'/></svg> ikonnal a telefon böngészőjében nyitod meg."
-      help="Passkey-vel csak a telefon böngészőjében tudsz belépni: koppints a jobb felső sarokban megjelenő <svg class='inline-icon' viewBox='0 0 24 24' aria-hidden='true'><path d='M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3z'/></svg> ikonra."></x-step-login>
+      help="<b>Passkey</b>: csak a telefon böngészőjében tudsz vele belépni, koppints a jobb felső sarokban megjelenő <svg class='inline-icon' viewBox='0 0 24 24' aria-hidden='true'><path d='M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3z'/></svg> ikonra."
+      more="<b>Angol felirat</b>: Android 13-tól a <b>Beállítások › Alkalmazások › Amethyst::Dras › Nyelv</b> alatt állítsd magyarra, és a launcher beállításaiban az <b>Angol nyelv kényszerítése</b> legyen kikapcsolva."></x-step-login>
 
   <x-step-link step="profile" title="MC dras.hu profil hozzáadása" label="Profil hozzáadása" href="@@PROFILE_LINK@@"
       qr="@@PROFILE_QR@@" do="Az alkalmazás megmutatja, mit állít be; erősítsd meg a <b>Mentés</b> gombbal."
-      manual="A <b>Play</b> gomb feletti profilválasztóban: <b>+ Új profil létrehozása</b> › <b>Create packwiz pack profile (URL)</b>"
+      manual="A <b>Play</b> gomb feletti profilválasztóban: <b>+ Új profil létrehozása</b> › <b>Packwiz profil létrehozása (URL)</b>"
       manual-url="@@PROFILE_PACK_URL@@"
-      more="Erősítsd meg a <b>Mentés</b> gombbal, majd a profil szerkesztésében állítsd be: <b>Memory (MB)</b>: @@PROFILE_RAM_MB@@."></x-step-link>
+      more="Erősítsd meg a <b>Mentés</b> gombbal, majd a profil szerkesztésében állítsd be: <b>Memória (MB)</b>: @@PROFILE_RAM_MB@@."></x-step-link>
 
   <section data-step="first-start">
     <h2 class="step"><a class="num" href="#"></a>Első indítás</h2>
