@@ -302,6 +302,11 @@ hash = "4cc99d1459144e615846e251204019ba239121a8100d5366f14506f2a06b4ee9"
 metafile = true
 
 [[files]]
+file = "mods/statboard.pw.toml"
+hash = "4012f46bcddde6335cf32c1483d9a2ca7ede4a4fd8f0da03e3b24bfa728ca713"
+metafile = true
+
+[[files]]
 file = "mods/structure-essentials-forge-fabric.pw.toml"
 hash = "2b95cac6c57b318fc21911f7481bfe2370d85bad5775e7880c3ff11fa609d4ad"
 metafile = true

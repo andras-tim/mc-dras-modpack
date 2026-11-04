@@ -41,7 +41,7 @@ fetch what changed.
 | space | Ad Astra, Create: Ad Astra Compatibility, Create Planetary Tweaks |
 | industry | Immersive Engineering, Immersive Fixes |
 | world and mobs | Alex's Mobs, L_Ender's Cataclysm, Biomes O' Plenty |
-| tools | Just Enough Items, JourneyMap, Patchouli, Almost Unified |
+| tools | Just Enough Items, JourneyMap, Patchouli, Almost Unified, Statboard |
 | stability, server and both sides | AllTheLeaks, Clumps, Cupboard, DEUF, Dimensional Sync Fixes, Feature Recycler, FerriteCore, Load My F***ing Tags, ModernFix, NaNny Reforked, Neruina, Packet Fixer, spark, Structure Essentials, Structure Layout Optimizer |
 | client only | Embeddium, ImmediatelyFast, fix GPU memory leak |
 | libraries | Botarium, Citadel, Curios API, GeckoLib, GlitchCore, Lionfish API, Paxi, Puzzles Lib, Resourceful Config, Resourceful Lib, TerraBlender, YUNG's API |
@@ -55,6 +55,10 @@ Earth is harmless: the pack has no air or temperature mechanic there. Ad Astra's
 | Moon, Mars | no | -173 °C, -65 °C | space suit with oxygen |
 | Mercury, Venus | no | 167 °C, 464 °C | netherite or jet suit with oxygen |
 | orbits | no | -270 °C | space suit with oxygen |
+
+Statboard records every player's statistics on the server and shows them with leaderboards: `B`, or `/stats` in the
+chat (phones have no `B` key). Its optional PixelView2 interface runs only on Windows, so it is not in the pack; the
+dashboard uses the vanilla interface.
 
 ## Settings
 

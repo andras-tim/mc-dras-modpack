@@ -1,0 +1,13 @@
+name = "Statboard | Leaderboards, Statistics & Metrics"
+filename = "statboard-forge-1.20.1-0.2.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "cb40cabd35551c7d773864d6bedc4f3d2ace6423"
+url = "https://mediafilez.forgecdn.net/files/9323/63/statboard-forge-1.20.1-0.2.1.jar"
+
+[update]
+[update.curseforge]
+file-id = 9323063
+project-id = 1642411
