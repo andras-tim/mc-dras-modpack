@@ -60,9 +60,12 @@
     main:has([name="mode"]:checked) #panel-android-rest { display: block; }
     /* step numbers count the shown steps only, so every path is numbered from 1 */
     .steps { counter-reset: step; }
-    h2.step::before { counter-increment: step; content: counter(step); display: inline-block; min-width: 1.6rem;
-                      height: 1.6rem; border-radius: 50%; background: var(--accent); color: var(--accent-fg);
-                      text-align: center; font-weight: 700; margin-right: .4rem; }
+    /* the number links to its step with the route of the picks, so a step can be shared */
+    h2.step .num { display: inline-block; min-width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--accent);
+                   color: var(--accent-fg); text-align: center; font-weight: 700; margin-right: .4rem;
+                   text-decoration: none; }
+    h2.step .num::before { counter-increment: step; content: counter(step); }
+    section[data-step] { scroll-margin-top: 1rem; }
     a.button { display: block; text-align: center; background: var(--accent); color: var(--accent-fg);
                font-weight: 700; text-decoration: none; padding: .9rem 1rem; border-radius: 10px; margin: .8rem 0 .3rem; }
     .optional { font-size: .9rem; font-weight: 400; }
@@ -146,15 +149,16 @@
 
   <div class="panel" id="panel-android-data">
   <section class="warn">
-    <p class="note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 2.5 20h19z"/><path d="M12 10v4.5M12 17.3v.2"/></svg><b>Wifi ajánlott:</b> a telepítés és az első indítás összesen <b class="nowrap">~1100 MiB-ot</b> tölt le.</p>
+    <p class="note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 2.5 20h19z"/><path d="M12 10v4.5M12 17.3v.2"/></svg><b>Wifi ajánlott</b><br>
+      A telepítés és az első indítás összesen <span class="nowrap"><b>~1100 MiB</b>-ot</span> tölt le.</p>
   </section>
   </div>
 
   <div class="panel" id="panel-obtainium">
-  <x-step-apk title="Az Obtainium telepítése" label="Obtainium letöltése" url="@@OBTAINIUM_APK_URL@@"
+  <x-step-apk step="install-obtainium" title="Obtainium telepítése" label="Obtainium letöltése" url="@@OBTAINIUM_APK_URL@@"
       qr="@@OBTAINIUM_APK_QR@@"></x-step-apk>
 
-  <x-step-link title="Az Amethyst::Dras telepítése az Obtainiummal" label="Amethyst::Dras hozzáadása"
+  <x-step-link step="install" title="Amethyst::Dras telepítése Obtainiummal" label="Amethyst::Dras hozzáadása"
       href="@@OBTAINIUM_LINK@@" qr="@@OBTAINIUM_QR@@"
       do="Erősítsd meg az importálást, majd koppints az @@AMETHYST@@-ra és a <b>Telepítés</b> gombra."
       manual="Az <b>Obtainiumban</b>: <b>Hozzáadás</b>" manual-url="@@APP_REPO_URL@@" android="yes"
@@ -162,7 +166,7 @@
   </div>
 
   <div class="panel" id="panel-apk">
-  <x-step-apk title="Az Amethyst::Dras telepítése" label="Amethyst::Dras letöltése" url="@@APK_URL@@"
+  <x-step-apk step="install" title="Amethyst::Dras telepítése" label="Amethyst::Dras letöltése" url="@@APK_URL@@"
       qr="@@APK_QR@@" after="Mindig a legfrissebb kiadás jön le innen: frissíteni ugyanígy lehet."></x-step-apk>
   </div>
 
@@ -172,14 +176,14 @@
       login="Jelentkezz be a megnyíló oldalon. Gyorsabb, ha a jobb felső sarokban megjelenő <svg class='inline-icon' viewBox='0 0 24 24' aria-hidden='true'><path d='M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3z'/></svg> ikonnal a telefon böngészőjében nyitod meg."
       help="Passkey-vel csak a telefon böngészőjében tudsz belépni: koppints a jobb felső sarokban megjelenő <svg class='inline-icon' viewBox='0 0 24 24' aria-hidden='true'><path d='M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3z'/></svg> ikonra."></x-step-login>
 
-  <x-step-link title="Az MC dras.hu profil hozzáadása" label="Profil hozzáadása" href="@@PROFILE_LINK@@"
+  <x-step-link step="profile" title="MC dras.hu profil hozzáadása" label="Profil hozzáadása" href="@@PROFILE_LINK@@"
       qr="@@PROFILE_QR@@" do="Az alkalmazás megmutatja, mit állít be; erősítsd meg a <b>Mentés</b> gombbal."
       manual="A <b>Play</b> gomb feletti profilválasztóban: <b>+ Új profil létrehozása</b> › <b>Create packwiz pack profile (URL)</b>"
       manual-url="@@PROFILE_PACK_URL@@"
       more="Erősítsd meg a <b>Mentés</b> gombbal, majd a profil szerkesztésében állítsd be: <b>Memory (MB)</b>: @@PROFILE_RAM_MB@@."></x-step-link>
 
-  <section>
-    <h2 class="step">Az első indítás</h2>
+  <section data-step="first-start">
+    <h2 class="step"><a class="num" href="#"></a>Első indítás</h2>
     <p class="note">Az első indításkor a játék több lépésben tölti le, amire szüksége van, ezért a <b>Play</b> gombot
       többször is meg kell nyomni.</p>
     <ol class="note">
@@ -208,14 +212,14 @@
   </div>
 
   <div class="panel" id="panel-prism">
-  <x-step-download title="A Prism Launcher telepítése" label="Prism Launcher letöltése"
+  <x-step-download step="install" title="Prism Launcher telepítése" label="Prism Launcher letöltése"
       url="https://prismlauncher.org/download/" do="Töltsd le, és telepítsd a gépedhez illő változatot."></x-step-download>
 
   <x-step-login app="A @@PRISM@@"
       add="Kattints a jobb felső sarokban a fiók gombra, majd <b>Manage Accounts…</b> › <b>Add Microsoft</b>."
       login="Jelentkezz be a megnyíló böngészőben."></x-step-login>
 
-  <x-step-link title="Az MC dras.hu profil hozzáadása" label="Profil hozzáadása" href="@@PRISM_LINK@@"
+  <x-step-link step="profile" title="MC dras.hu profil hozzáadása" label="Profil hozzáadása" href="@@PRISM_LINK@@"
       manual="A @@PRISM@@ menüjében: <b>Add Instance › Import</b>" manual-url="@@PRISM_ZIP_URL@@"
       after="A modok minden indításkor maguktól frissülnek."></x-step-link>
   </div>
@@ -229,7 +233,8 @@
   </footer>
 </main>
 <script>
-  // The route of the choices is in the address (#android-amethyst-obtainium, #pc-prism, ...), so it can be bookmarked
+  // The route of the choices is in the address (#android-amethyst-obtainium, #pc-prism, ...), a step's key may follow
+  // it after an underscore (#android-amethyst-obtainium_login), so a page or a step can be bookmarked or shared
   const choices = [...document.querySelectorAll('input[data-key]')];
   const parentOf = input => document.getElementById(input.dataset.parent);
   function route(input) {
@@ -241,6 +246,8 @@
     for (let p = parentOf(input); p; p = parentOf(p)) if (!p.checked) return false;
     return true;
   }
+  // the deepest choice of the shown chain
+  const deepest = () => choices.filter(c => c.checked && chainChecked(c)).pop();
   // a shown choice with one option (e.g. the only launcher of a platform) is picked by itself
   function pickSingles() {
     for (let picked = true; picked;) {
@@ -251,16 +258,27 @@
       });
     }
   }
+  function updateStepLinks() {
+    const base = deepest() ? route(deepest()) + '_' : '';
+    document.querySelectorAll('section[data-step] .num').forEach(num => {
+      num.href = '#' + base + num.closest('section').dataset.step;
+    });
+  }
   function chooseFromAddress() {
-    let input = choices.find(c => route(c) === location.hash.slice(1));
+    const [path, step] = location.hash.slice(1).split('_');
+    let input = choices.find(c => route(c) === path);
     for (; input; input = parentOf(input)) input.checked = true;
     pickSingles();
+    updateStepLinks();
+    if (step) {
+      const section = [...document.querySelectorAll(`section[data-step="${CSS.escape(step)}"]`)].find(s => s.offsetParent);
+      if (section) section.scrollIntoView();
+    }
   }
   choices.forEach(input => input.addEventListener('change', () => {
     pickSingles();
-    // the deepest choice of the shown chain
-    const deepest = choices.filter(c => c.checked && chainChecked(c)).pop();
-    history.replaceState(null, '', deepest ? '#' + route(deepest) : location.pathname);
+    updateStepLinks();
+    history.replaceState(null, '', deepest() ? '#' + route(deepest()) : location.pathname);
   }));
   addEventListener('hashchange', chooseFromAddress);
   chooseFromAddress();
