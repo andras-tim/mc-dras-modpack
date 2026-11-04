@@ -101,7 +101,7 @@ Only the changed keys are in `config/`; everything else is each mod's default.
 | `branding/` | the profile icon |
 | `docs/index.html` | template of the setup site for phones and PCs |
 | `docs/parts/` | step templates of the site (`step-download`, `step-apk`, `step-link`, `step-login`) and the Android install help they share, used as `<x-NAME>` tags in the template |
-| `docs/icons/` | app icons of the site's choices: `obtainium.svg` from [Obtainium](https://github.com/ImranR98/Obtainium) (`assets/graphics/icon.svg`, GPL-3.0; its `viewBox` cropped to the drawing), `amethyst-dras.webp` is the foreground layer of the [Amethyst::Dras](https://github.com/andras-tim/Amethyst-Android) launcher icon (`mipmap-xxhdpi/ic_launcher_foreground.webp`, LGPL-3.0), trimmed and scaled to 96 px |
+| `docs/icons/` | app icons of the site's choices: `obtainium.svg` from [Obtainium](https://github.com/ImranR98/Obtainium) (`assets/graphics/icon.svg`, GPL-3.0; its `viewBox` cropped to the drawing), `amethyst-dras.webp` is the foreground layer of the [Amethyst::Dras](https://github.com/andras-tim/Amethyst-Android) launcher icon (`mipmap-xxhdpi/ic_launcher_foreground.webp`, LGPL-3.0), trimmed and scaled to 96 px, `prism-launcher.svg` from [Prism Launcher](https://github.com/PrismLauncher/PrismLauncher) (`program_info/org.prismlauncher.PrismLauncher.svg`, GPL-3.0) |
 | `tools/site.py` | builds the site with its QR codes and the Prism zip; CI publishes it on GitHub Pages from `main` |
 | `tools/` | maintenance scripts |
 

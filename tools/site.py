@@ -122,7 +122,9 @@ def main():
     profile_link = profile.import_link('stable')
     prism_zip_url = SITE_URL + PRISM_ZIP
     values = {
+        # a launcher's name in the text, with its icon
         'AMETHYST': '<b class="app"><img src="icons/amethyst-dras.webp" alt="">Amethyst::Dras</b>',
+        'PRISM': '<b class="app"><img src="icons/prism-launcher.svg" alt="">Prism Launcher</b>',
         'APK_URL': APK_URL,
         'APK_QR': qr_svg(APK_URL),
         'APP_REPO_URL': APP_REPO_URL,

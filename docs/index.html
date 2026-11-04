@@ -39,6 +39,7 @@
     h2.title { font-size: 1.3rem; margin-bottom: .2rem; }
     /* a choice: radio cards side by side, the picked one shows its panel below them */
     .cards { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin: .3rem 0 1rem; }
+    .cards:has(> .card:only-child) { grid-template-columns: 1fr; }
     .card { position: relative; display: flex; flex-direction: column; align-items: center; gap: .35rem;
             text-align: center; background: var(--card); border: 2px solid var(--line); border-radius: 14px;
             padding: .9rem .6rem .8rem; cursor: pointer; font-weight: 700; line-height: 1.25; }
@@ -53,6 +54,7 @@
     .cards:has(input:checked) .card:not(:has(input:checked)) .icon { filter: grayscale(1); opacity: .5; }
     .panel { display: none; }
     main:has(#platform-android:checked) #panel-android, main:has(#platform-pc:checked) #panel-pc,
+    main:has(#launcher-amethyst:checked) #panel-amethyst, main:has(#launcher-prism:checked) #panel-prism,
     main:has(#mode-obtainium:checked) #panel-obtainium, main:has(#mode-apk:checked) #panel-apk,
     main:has([name="mode"]:checked) #panel-android-data,
     main:has([name="mode"]:checked) #panel-android-rest { display: block; }
@@ -65,6 +67,8 @@
                font-weight: 700; text-decoration: none; padding: .9rem 1rem; border-radius: 10px; margin: .8rem 0 .3rem; }
     .optional { font-size: .9rem; font-weight: 400; }
     .note { font-size: .92rem; margin: .3rem 0 0; }
+    .note a, .info a { color: var(--accent); }
+    .info + .note { margin-top: 1rem; }
     ol, ul { margin: .4rem 0 0; padding-left: 1.3rem; }
     li { margin: .25rem 0; }
     /* inline code as Markdown renders it: gray box, reddish text */
@@ -89,8 +93,10 @@
     .info p { margin: .4rem 0 0; }
     .info ul { padding-left: 1.1rem; }
     .info li { margin: .4rem 0; }
-    /* the launcher's name with its icon, see AMETHYST in tools/site.py */
+    /* a launcher's name with its icon, see AMETHYST and PRISM in tools/site.py */
     .app { white-space: nowrap; font-weight: 700; }
+    /* a size with its unit and suffix stays on one line */
+    .nowrap { white-space: nowrap; }
     .inline-icon { width: 1.15em; height: 1.15em; vertical-align: -.2em; fill: currentColor; }
     .app img { width: 1.2em; height: 1.2em; vertical-align: -.25em; margin-right: .15em; }
     footer { color: var(--muted); font-size: .85rem; margin-top: 1.5rem; }
@@ -110,28 +116,37 @@
   <h2 class="title">Telepítés</h2>
   <p class="note">Hol játszol?</p>
   <div class="cards" role="radiogroup">
-    <label class="card"><input type="radio" name="platform" id="platform-android" data-hash="android">
+    <label class="card"><input type="radio" name="platform" id="platform-android" data-key="android">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg>Android telefon</label>
-    <label class="card"><input type="radio" name="platform" id="platform-pc" data-hash="pc">
+    <label class="card"><input type="radio" name="platform" id="platform-pc" data-key="pc">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3.5" width="20" height="13" rx="2"/><path d="M12 16.5v4M8 20.5h8"/></svg>Gép vagy Steam Deck</label>
   </div>
 
   <div class="panel steps" id="panel-android">
-  <p class="note">Hogyan telepíted?</p>
+  <p class="note">Melyik launcherrel játszol?</p>
   <div class="cards" role="radiogroup">
-    <label class="card"><input type="radio" name="mode" id="mode-obtainium" data-hash="android-obtainium"
+    <label class="card"><input type="radio" name="launcher" id="launcher-amethyst" data-key="amethyst"
         data-parent="platform-android">
-      <img class="icon" src="icons/obtainium.svg" alt="">Obtainiummal
-      <span class="optional">szól, ha van új kiadás</span></label>
-    <label class="card"><input type="radio" name="mode" id="mode-apk" data-hash="android-apk"
-        data-parent="platform-android">
-      <img class="icon" src="icons/amethyst-dras.webp" alt="">Csak az alkalmazás
-      <span class="optional">frissítés kézzel</span></label>
+      <img class="icon" src="icons/amethyst-dras.webp" alt="">Amethyst::Dras</label>
+  </div>
+
+  <div class="panel" id="panel-amethyst">
+  <div class="info">Az @@AMETHYST@@ az <a href="https://github.com/AngelAuraMC/Amethyst-Android">Amethyst</a> launcher
+    kiegészített változata: automatikusan frissíti a <a href="https://packwiz.infra.link/">packwiz</a> modcsomagokat, és
+    linkről egy koppintással felvesz egy profilt, amire az eredeti még nem képes. A <a href="@@APP_REPO_URL@@">forráskódja</a> nyilvános.</div>
+  <p class="note">Automatikusan frissüljön a launcher?</p>
+  <div class="cards" role="radiogroup">
+    <label class="card"><input type="radio" name="mode" id="mode-obtainium" data-key="obtainium"
+        data-parent="launcher-amethyst">
+      <img class="icon" src="icons/obtainium.svg" alt="">Igen, Obtainiummal</label>
+    <label class="card"><input type="radio" name="mode" id="mode-apk" data-key="manual"
+        data-parent="launcher-amethyst">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v11M7.5 10l4.5 4.5 4.5-4.5M4 19.5h16"/></svg>Nem, kézzel frissítem</label>
   </div>
 
   <div class="panel" id="panel-android-data">
   <section class="warn">
-    <p class="note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 2.5 20h19z"/><path d="M12 10v4.5M12 17.3v.2"/></svg><b>Wifi ajánlott:</b> a telepítés és az első indítás összesen kb. 1,1 GB-ot tölt le.</p>
+    <p class="note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 2.5 20h19z"/><path d="M12 10v4.5M12 17.3v.2"/></svg><b>Wifi ajánlott:</b> a telepítés és az első indítás összesen <b class="nowrap">~1100 MiB-ot</b> tölt le.</p>
   </section>
   </div>
 
@@ -168,9 +183,9 @@
     <p class="note">Az első indításkor a játék több lépésben tölti le, amire szüksége van, ezért a <b>Play</b> gombot
       többször is meg kell nyomni.</p>
     <ol class="note">
-      <li>Koppints a <b>Play</b> gombra: letölti a modokat (kb. 210 MB), majd magától elindul a <b>Forge</b>
+      <li>Koppints a <b>Play</b> gombra: letölti a modokat (<span class="nowrap">~220 MiB</span>), majd magától elindul a <b>Forge</b>
         telepítője, és üzenet nélkül bezárul. Ez normális.</li>
-      <li>Indítsd el újra a <b>Play</b> gombbal: most magát a <b>Minecraftot</b> tölti le (kb. 700 MB), utána pedig
+      <li>Indítsd el újra a <b>Play</b> gombbal: most magát a <b>Minecraftot</b> tölti le (<span class="nowrap">~710 MiB</span>), utána pedig
         elindul a játék.</li>
       <li>Később minden indításnál csak a változások jönnek le.</li>
     </ol>
@@ -182,18 +197,28 @@
   </section>
   </div>
   </div>
+  </div>
 
   <div class="panel steps" id="panel-pc">
+  <p class="note">Melyik launcherrel játszol?</p>
+  <div class="cards" role="radiogroup">
+    <label class="card"><input type="radio" name="launcher" id="launcher-prism" data-key="prism"
+        data-parent="platform-pc">
+      <img class="icon" src="icons/prism-launcher.svg" alt="">Prism Launcher</label>
+  </div>
+
+  <div class="panel" id="panel-prism">
   <x-step-download title="A Prism Launcher telepítése" label="Prism Launcher letöltése"
       url="https://prismlauncher.org/download/" do="Töltsd le, és telepítsd a gépedhez illő változatot."></x-step-download>
 
-  <x-step-login app="A <b>Prism Launcher</b>"
+  <x-step-login app="A @@PRISM@@"
       add="Kattints a jobb felső sarokban a fiók gombra, majd <b>Manage Accounts…</b> › <b>Add Microsoft</b>."
       login="Jelentkezz be a megnyíló böngészőben."></x-step-login>
 
   <x-step-link title="Az MC dras.hu profil hozzáadása" label="Profil hozzáadása" href="@@PRISM_LINK@@"
-      manual="A <b>Prismben</b>: <b>Add Instance › Import</b>" manual-url="@@PRISM_ZIP_URL@@"
+      manual="A @@PRISM@@ menüjében: <b>Add Instance › Import</b>" manual-url="@@PRISM_ZIP_URL@@"
       after="A modok minden indításkor maguktól frissülnek."></x-step-link>
+  </div>
   </div>
 
   <footer>
@@ -204,17 +229,38 @@
   </footer>
 </main>
 <script>
-  // The choice is in the address (#android, #android-obtainium, #android-apk, #pc), so it can be bookmarked or shared
-  const choices = document.querySelectorAll('input[data-hash]');
+  // The route of the choices is in the address (#android-amethyst-obtainium, #pc-prism, ...), so it can be bookmarked
+  const choices = [...document.querySelectorAll('input[data-key]')];
+  const parentOf = input => document.getElementById(input.dataset.parent);
+  function route(input) {
+    const keys = [];
+    for (; input; input = parentOf(input)) keys.unshift(input.dataset.key);
+    return keys.join('-');
+  }
+  function chainChecked(input) {
+    for (let p = parentOf(input); p; p = parentOf(p)) if (!p.checked) return false;
+    return true;
+  }
+  // a shown choice with one option (e.g. the only launcher of a platform) is picked by itself
+  function pickSingles() {
+    for (let picked = true; picked;) {
+      picked = false;
+      document.querySelectorAll('.cards').forEach(group => {
+        const inputs = group.querySelectorAll('input');
+        if (inputs.length === 1 && !inputs[0].checked && group.offsetParent) picked = inputs[0].checked = true;
+      });
+    }
+  }
   function chooseFromAddress() {
-    let input = document.querySelector(`input[data-hash="${CSS.escape(location.hash.slice(1))}"]`);
-    for (; input; input = document.getElementById(input.dataset.parent)) input.checked = true;
+    let input = choices.find(c => route(c) === location.hash.slice(1));
+    for (; input; input = parentOf(input)) input.checked = true;
+    pickSingles();
   }
   choices.forEach(input => input.addEventListener('change', () => {
-    // the deepest choice wins: picking Android again keeps its picked mode in the address
-    const mode = document.querySelector('input[name="mode"]:checked');
-    const android = document.getElementById('platform-android').checked;
-    history.replaceState(null, '', '#' + (android && mode ? mode : input).dataset.hash);
+    pickSingles();
+    // the deepest choice of the shown chain
+    const deepest = choices.filter(c => c.checked && chainChecked(c)).pop();
+    history.replaceState(null, '', deepest ? '#' + route(deepest) : location.pathname);
   }));
   addEventListener('hashchange', chooseFromAddress);
   chooseFromAddress();
