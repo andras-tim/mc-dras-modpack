@@ -12,7 +12,7 @@ stored here.
 
 The server and every client read the same `pack.toml`, so they always run the same mods.
 
-**Phone setup page: <https://mc.dras.hu/>** (the launcher download and the profile link).
+**Phone setup page: <https://mc.dras.hu/>** (the launcher download with an optional Obtainium link for its updates, and the profile link).
 
 | where | how |
 |---|---|
@@ -100,6 +100,8 @@ Only the changed keys are in `config/`; everything else is each mod's default.
 | `prism/` | settings of a new PC install: `instance.cfg` (memory, pre-launch command), `options.txt` (view distance 10) |
 | `branding/` | the profile icon |
 | `docs/index.html` | template of the setup site for phones and PCs |
+| `docs/parts/` | step templates of the site (`step-download`, `step-apk`, `step-link`, `step-login`) and the Android install help they share, used as `<x-NAME>` tags in the template |
+| `docs/icons/` | app icons of the site's choices: `obtainium.svg` from [Obtainium](https://github.com/ImranR98/Obtainium) (`assets/graphics/icon.svg`, GPL-3.0; its `viewBox` cropped to the drawing), `amethyst-dras.webp` is the foreground layer of the [Amethyst::Dras](https://github.com/andras-tim/Amethyst-Android) launcher icon (`mipmap-xxhdpi/ic_launcher_foreground.webp`, LGPL-3.0), trimmed and scaled to 96 px |
 | `tools/site.py` | builds the site with its QR codes and the Prism zip; CI publishes it on GitHub Pages from `main` |
 | `tools/` | maintenance scripts |
 

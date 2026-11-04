@@ -10,11 +10,17 @@
     :root {
       --bg: #f4f6f2; --fg: #1d2a1f; --muted: #5b6b5e; --card: #ffffff; --line: #d8e0d6;
       --accent: #2e8b3a; --accent-fg: #ffffff;
+      --code-bg: #f2f2f0; --code-line: #dcdcd8; --code-fg: #c7254e;
+      --info-bg: #eef4fb; --info-line: #7fa7d6;
+      --warn-bg: #fdf6e3; --warn-line: #e0a526;
     }
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #121812; --fg: #e4ece2; --muted: #9aaa9b; --card: #1b241c; --line: #2c3a2d;
         --accent: #4caf50; --accent-fg: #0b130b;
+        --code-bg: #232823; --code-line: #363d36; --code-fg: #ff7b9c;
+        --info-bg: #19222c; --info-line: #4f78a6;
+        --warn-bg: #2a2416; --warn-line: #b8862a;
       }
     }
     * { box-sizing: border-box; }
@@ -26,27 +32,67 @@
     header { display: flex; align-items: center; gap: .9rem; margin-bottom: 1.5rem; }
     header img { width: 56px; height: 56px; image-rendering: pixelated; }
     h1 { font-size: 1.6rem; margin: 0; }
-    header p { margin: .1rem 0 0; color: var(--muted); }
+    header p { margin: .1rem 0 0; }
     section { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1.1rem 1.1rem;
               margin-bottom: 1rem; }
     h2 { font-size: 1.1rem; margin: 0 0 .6rem; }
-    details { margin-bottom: .8rem; }
-    summary { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1rem 1.1rem;
-              font-size: 1.2rem; font-weight: 700; cursor: pointer; }
-    details[open] summary { margin-bottom: .8rem; }
-    .step { display: inline-block; min-width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--accent);
-            color: var(--accent-fg); text-align: center; font-weight: 700; margin-right: .4rem; }
+    h2.title { font-size: 1.3rem; margin-bottom: .2rem; }
+    /* a choice: radio cards side by side, the picked one shows its panel below them */
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin: .3rem 0 1rem; }
+    .card { position: relative; display: flex; flex-direction: column; align-items: center; gap: .35rem;
+            text-align: center; background: var(--card); border: 2px solid var(--line); border-radius: 14px;
+            padding: .9rem .6rem .8rem; cursor: pointer; font-weight: 700; line-height: 1.25; }
+    .card input { position: absolute; opacity: 0; pointer-events: none; }
+    .card .icon { width: 2.6rem; height: 2.6rem; }
+    .card svg.icon { fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .card .optional { display: block; }
+    .card:has(input:checked) { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+    .card:has(input:focus-visible) { outline: 2px solid var(--fg); outline-offset: 2px; }
+    /* colored until one is picked, then the others turn gray */
+    .cards:has(input:checked) .card:not(:has(input:checked)) { color: var(--muted); }
+    .cards:has(input:checked) .card:not(:has(input:checked)) .icon { filter: grayscale(1); opacity: .5; }
+    .panel { display: none; }
+    main:has(#platform-android:checked) #panel-android, main:has(#platform-pc:checked) #panel-pc,
+    main:has(#mode-obtainium:checked) #panel-obtainium, main:has(#mode-apk:checked) #panel-apk,
+    main:has([name="mode"]:checked) #panel-android-data,
+    main:has([name="mode"]:checked) #panel-android-rest { display: block; }
+    /* step numbers count the shown steps only, so every path is numbered from 1 */
+    .steps { counter-reset: step; }
+    h2.step::before { counter-increment: step; content: counter(step); display: inline-block; min-width: 1.6rem;
+                      height: 1.6rem; border-radius: 50%; background: var(--accent); color: var(--accent-fg);
+                      text-align: center; font-weight: 700; margin-right: .4rem; }
     a.button { display: block; text-align: center; background: var(--accent); color: var(--accent-fg);
                font-weight: 700; text-decoration: none; padding: .9rem 1rem; border-radius: 10px; margin: .8rem 0 .3rem; }
-    .note { color: var(--muted); font-size: .92rem; margin: .3rem 0 0; }
-    ol { margin: .4rem 0 0; padding-left: 1.3rem; }
+    .optional { font-size: .9rem; font-weight: 400; }
+    .note { font-size: .92rem; margin: .3rem 0 0; }
+    ol, ul { margin: .4rem 0 0; padding-left: 1.3rem; }
     li { margin: .25rem 0; }
-    code { font-size: .9em; word-break: break-all; }
-    .qr { display: block; width: min(15rem, 100%); margin: .9rem auto .5rem; padding: .4rem; background: #fff;
+    /* inline code as Markdown renders it: gray box, reddish text */
+    code { font-size: .9em; word-break: break-all; background: var(--code-bg); color: var(--code-fg);
+           border: 1px solid var(--code-line); border-radius: 4px; padding: .05em .3em; }
+    .qr { display: block; width: 70%; margin: .9rem auto .5rem; padding: .4rem; background: #fff;
           border-radius: 10px; }
+    /* on a phone the code is shown to another phone: as wide as the card */
+    @media (max-width: 32rem) { .qr { width: 100%; } }
     .qr svg { display: block; width: 100%; height: auto; }
-    .link { display: block; font-size: .78rem; color: var(--muted); user-select: all; word-break: break-all;
-            margin-top: .3rem; }
+    /* as wide as the text: a short URL is an inline box, a wrapped one fills the card like a code block */
+    .link { display: inline-block; max-width: 100%; font-size: .78rem; user-select: all; margin-top: .3rem;
+            padding: .2em .45em; }
+    section.warn { background: var(--warn-bg); border: none; border-left: 4px solid var(--warn-line); }
+    section.warn p { margin: 0; }
+    section.warn .icon { width: 1.35em; height: 1.35em; vertical-align: -.25em; margin-right: .35em; fill: none;
+                         stroke: var(--warn-line); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    /* a step's help, inside its card */
+    .info { background: var(--info-bg); border-left: 4px solid var(--info-line); border-radius: 8px;
+            padding: .6rem .8rem; margin-top: .8rem; font-size: .92rem; }
+    .info summary { font-weight: 700; cursor: pointer; }
+    .info p { margin: .4rem 0 0; }
+    .info ul { padding-left: 1.1rem; }
+    .info li { margin: .4rem 0; }
+    /* the launcher's name with its icon, see AMETHYST in tools/site.py */
+    .app { white-space: nowrap; font-weight: 700; }
+    .inline-icon { width: 1.15em; height: 1.15em; vertical-align: -.2em; fill: currentColor; }
+    .app img { width: 1.2em; height: 1.2em; vertical-align: -.25em; margin-right: .15em; }
     footer { color: var(--muted); font-size: .85rem; margin-top: 1.5rem; }
     footer a { color: inherit; }
   </style>
@@ -61,63 +107,94 @@
     </div>
   </header>
 
-  <details id="android" name="platform">
-    <summary>Android telefon</summary>
+  <h2 class="title">Telepítés</h2>
+  <p class="note">Hol játszol?</p>
+  <div class="cards" role="radiogroup">
+    <label class="card"><input type="radio" name="platform" id="platform-android" data-hash="android">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg>Android telefon</label>
+    <label class="card"><input type="radio" name="platform" id="platform-pc" data-hash="pc">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3.5" width="20" height="13" rx="2"/><path d="M12 16.5v4M8 20.5h8"/></svg>Gép vagy Steam Deck</label>
+  </div>
 
-  <section>
-    <h2><span class="step">1</span>Az alkalmazás</h2>
-    <div class="qr">@@APK_QR@@</div>
-    <a class="button" href="@@APK_URL@@">Amethyst::Dras letöltése</a>
-    <code class="link">@@APK_URL@@</code>
-    <p class="note">A legfrissebb kiadás. Letöltés után nyisd meg és telepítsd; ha a telefon kéri, engedélyezd a
-      telepítést a böngészőnek.</p>
+  <div class="panel steps" id="panel-android">
+  <p class="note">Hogyan telepíted?</p>
+  <div class="cards" role="radiogroup">
+    <label class="card"><input type="radio" name="mode" id="mode-obtainium" data-hash="android-obtainium"
+        data-parent="platform-android">
+      <img class="icon" src="icons/obtainium.svg" alt="">Obtainiummal
+      <span class="optional">szól, ha van új kiadás</span></label>
+    <label class="card"><input type="radio" name="mode" id="mode-apk" data-hash="android-apk"
+        data-parent="platform-android">
+      <img class="icon" src="icons/amethyst-dras.webp" alt="">Csak az alkalmazás
+      <span class="optional">frissítés kézzel</span></label>
+  </div>
+
+  <div class="panel" id="panel-android-data">
+  <section class="warn">
+    <p class="note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 2.5 20h19z"/><path d="M12 10v4.5M12 17.3v.2"/></svg><b>Wifi ajánlott:</b> a telepítés és az első indítás összesen kb. 1,1 GB-ot tölt le.</p>
   </section>
+  </div>
+
+  <div class="panel" id="panel-obtainium">
+  <x-step-apk title="Az Obtainium telepítése" label="Obtainium letöltése" url="@@OBTAINIUM_APK_URL@@"
+      qr="@@OBTAINIUM_APK_QR@@"></x-step-apk>
+
+  <x-step-link title="Az Amethyst::Dras telepítése az Obtainiummal" label="Amethyst::Dras hozzáadása"
+      href="@@OBTAINIUM_LINK@@" qr="@@OBTAINIUM_QR@@"
+      do="Erősítsd meg az importálást, majd koppints az @@AMETHYST@@-ra és a <b>Telepítés</b> gombra."
+      manual="Az <b>Obtainiumban</b>: <b>Hozzáadás</b>" manual-url="@@APP_REPO_URL@@" android="yes"
+      after="Ha az alkalmazás már fent van, az <b>Obtainium</b> felismeri, és innentől ő frissíti."></x-step-link>
+  </div>
+
+  <div class="panel" id="panel-apk">
+  <x-step-apk title="Az Amethyst::Dras telepítése" label="Amethyst::Dras letöltése" url="@@APK_URL@@"
+      qr="@@APK_QR@@" after="Mindig a legfrissebb kiadás jön le innen: frissíteni ugyanígy lehet."></x-step-apk>
+  </div>
+
+  <div class="panel" id="panel-android-rest">
+  <x-step-login app="Az @@AMETHYST@@"
+      add="Koppints a bal felső sarokban a <b>+&nbsp;Fiók&nbsp;hozzáadása</b> sorra, majd a <b>Microsoft Account</b> gombra."
+      login="Jelentkezz be a megnyíló oldalon. Gyorsabb, ha a jobb felső sarokban megjelenő <svg class='inline-icon' viewBox='0 0 24 24' aria-hidden='true'><path d='M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3z'/></svg> ikonnal a telefon böngészőjében nyitod meg."
+      help="Passkey-vel csak a telefon böngészőjében tudsz belépni: koppints a jobb felső sarokban megjelenő <svg class='inline-icon' viewBox='0 0 24 24' aria-hidden='true'><path d='M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3z'/></svg> ikonra."></x-step-login>
+
+  <x-step-link title="Az MC dras.hu profil hozzáadása" label="Profil hozzáadása" href="@@PROFILE_LINK@@"
+      qr="@@PROFILE_QR@@" do="Az alkalmazás megmutatja, mit állít be; erősítsd meg a <b>Mentés</b> gombbal."
+      manual="A <b>Play</b> gomb feletti profilválasztóban: <b>+ Új profil létrehozása</b> › <b>Create packwiz pack profile (URL)</b>"
+      manual-url="@@PROFILE_PACK_URL@@"
+      more="Erősítsd meg a <b>Mentés</b> gombbal, majd a profil szerkesztésében állítsd be: <b>Memory (MB)</b>: @@PROFILE_RAM_MB@@."></x-step-link>
 
   <section>
-    <h2><span class="step">2</span>Bejelentkezés</h2>
-    <p class="note">Nyisd meg az Amethyst::Dras-t, és jelentkezz be a Microsoft-fiókkal, amelyikhez a Minecraft tartozik.</p>
-  </section>
-
-  <section>
-    <h2><span class="step">3</span>Az MC dras.hu profil</h2>
-    <div class="qr">@@PROFILE_QR@@</div>
-    <a class="button" href="@@PROFILE_LINK@@">Profil hozzáadása</a>
-    <code class="link">@@PROFILE_LINK@@</code>
-    <p class="note">Az alkalmazás megmutatja, mit állít be; erősítsd meg a „Save” gombbal.</p>
-  </section>
-
-  <section>
-    <h2><span class="step">4</span>Az első indítás</h2>
-    <ol>
-      <li><b>Play</b>: letölti a modokat (kb. 210 MB).</li>
-      <li>Elindul a Forge telepítője, majd az alkalmazás üzenet nélkül bezárul. Ez így rendben van.</li>
-      <li>Nyisd meg újra, <b>Play</b>: egyszer letölti magát a Minecraftot (kb. 700 MB, wifin), és indul a játék.</li>
+    <h2 class="step">Az első indítás</h2>
+    <p class="note">Az első indításkor a játék több lépésben tölti le, amire szüksége van, ezért a <b>Play</b> gombot
+      többször is meg kell nyomni.</p>
+    <ol class="note">
+      <li>Koppints a <b>Play</b> gombra: letölti a modokat (kb. 210 MB), majd magától elindul a <b>Forge</b>
+        telepítője, és üzenet nélkül bezárul. Ez normális.</li>
+      <li>Indítsd el újra a <b>Play</b> gombbal: most magát a <b>Minecraftot</b> tölti le (kb. 700 MB), utána pedig
+        elindul a játék.</li>
       <li>Később minden indításnál csak a változások jönnek le.</li>
     </ol>
-    <p class="note">Ha a játék lassú vagy homályos: az alkalmazás beállításaiban (jobb felső ikon), a
-      <b>Videó és renderelő</b> alatt a <b>Felbontás skálája</b> csúszkával. Kisebb érték gyorsabb, nagyobb élesebb.</p>
+    <details class="info">
+      <summary>A játék lassú vagy homályos?</summary>
+      <p>Állíts a felbontáson: az alkalmazás beállításaiban (jobb felső ikon) a <b>Videó és renderelő</b> alatt, a
+        <b>Felbontás skálája</b> csúszkával (kisebb érték: gyorsabb játék, nagyobb érték: élesebb kép).</p>
+    </details>
   </section>
+  </div>
+  </div>
 
-  </details>
+  <div class="panel steps" id="panel-pc">
+  <x-step-download title="A Prism Launcher telepítése" label="Prism Launcher letöltése"
+      url="https://prismlauncher.org/download/" do="Töltsd le, és telepítsd a gépedhez illő változatot."></x-step-download>
 
-  <details id="pc" name="platform">
-    <summary>Gép vagy Steam Deck</summary>
+  <x-step-login app="A <b>Prism Launcher</b>"
+      add="Kattints a jobb felső sarokban a fiók gombra, majd <b>Manage Accounts…</b> › <b>Add Microsoft</b>."
+      login="Jelentkezz be a megnyíló böngészőben."></x-step-login>
 
-  <section>
-    <h2><span class="step">1</span>Prism Launcher</h2>
-    <p class="note">Telepítsd a <a href="https://prismlauncher.org/">Prism Launchert</a>, és jelentkezz be a
-      Microsoft-fiókkal.</p>
-  </section>
-
-  <section>
-    <h2><span class="step">2</span>Az MC dras.hu profil</h2>
-    <a class="button" href="@@PRISM_LINK@@">Megnyitás a Prism Launcherben</a>
-    <code class="link">@@PRISM_ZIP_URL@@</code>
-    <p class="note">Ha a gomb nem nyitja meg, a Prismben: Add Instance, Import, és illeszd be ezt a címet. A
-      modok minden indításkor maguktól frissülnek.</p>
-  </section>
-
-  </details>
+  <x-step-link title="Az MC dras.hu profil hozzáadása" label="Profil hozzáadása" href="@@PRISM_LINK@@"
+      manual="A <b>Prismben</b>: <b>Add Instance › Import</b>" manual-url="@@PRISM_ZIP_URL@@"
+      after="A modok minden indításkor maguktól frissülnek."></x-step-link>
+  </div>
 
   <footer>
     A modok listája és leírása: <a href="https://github.com/andras-tim/mc-dras-modpack">mc-dras-modpack</a>.
@@ -127,18 +204,20 @@
   </footer>
 </main>
 <script>
-  // The open part is in the address (#android, #pc), so it can be bookmarked or shared
-  const parts = document.querySelectorAll('details');
-  function openFromAddress() {
-    const part = document.getElementById(location.hash.slice(1));
-    if (part && part.tagName === 'DETAILS') part.open = true;
+  // The choice is in the address (#android, #android-obtainium, #android-apk, #pc), so it can be bookmarked or shared
+  const choices = document.querySelectorAll('input[data-hash]');
+  function chooseFromAddress() {
+    let input = document.querySelector(`input[data-hash="${CSS.escape(location.hash.slice(1))}"]`);
+    for (; input; input = document.getElementById(input.dataset.parent)) input.checked = true;
   }
-  parts.forEach(part => part.addEventListener('toggle', () => {
-    if (part.open) history.replaceState(null, '', '#' + part.id);
-    else if (location.hash === '#' + part.id) history.replaceState(null, '', location.pathname);
+  choices.forEach(input => input.addEventListener('change', () => {
+    // the deepest choice wins: picking Android again keeps its picked mode in the address
+    const mode = document.querySelector('input[name="mode"]:checked');
+    const android = document.getElementById('platform-android').checked;
+    history.replaceState(null, '', '#' + (android && mode ? mode : input).dataset.hash);
   }));
-  addEventListener('hashchange', openFromAddress);
-  openFromAddress();
+  addEventListener('hashchange', chooseFromAddress);
+  chooseFromAddress();
 </script>
 </body>
 </html>
