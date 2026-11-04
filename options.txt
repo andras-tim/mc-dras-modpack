@@ -3,3 +3,7 @@ simulationDistance:6
 graphicsMode:0
 particles:2
 maxFps:60
+key_key.journeymap.create_waypoint:key.keyboard.unknown
+key_key.journeymap.toggle_entity_names:key.keyboard.unknown
+key_key.loadToolbarActivator:key.keyboard.h
+key_key.saveToolbarActivator:key.keyboard.k

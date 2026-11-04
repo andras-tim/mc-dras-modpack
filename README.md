@@ -56,9 +56,9 @@ Earth is harmless: the pack has no air or temperature mechanic there. Ad Astra's
 | Mercury, Venus | no | 167 °C, 464 °C | netherite or jet suit with oxygen |
 | orbits | no | -270 °C | space suit with oxygen |
 
-Statboard records every player's statistics on the server and shows them with leaderboards: `B`, or `/stats` in the
-chat (phones have no `B` key). Its optional PixelView2 interface runs only on Windows, so it is not in the pack; the
-dashboard uses the vanilla interface.
+Statboard records every player's statistics on the server and shows them with leaderboards: `B` (on phones the Stats
+button of the touch layout), or `/stats` in the chat. Its optional PixelView2 interface runs only on Windows, so it is
+not in the pack; the dashboard uses the vanilla interface.
 
 ## Settings
 
@@ -72,9 +72,22 @@ Only the changed keys are in `config/`; everything else is each mod's default.
 | `modernfix-mixins.properties` | `dynamic_resources`, `faster_item_rendering` on; branding, the missing-mods warning and `release_protochunks` off | as in the reference pack |
 | `packetfixer.properties` | larger packet sizes, as in the reference pack; `timeout = 15` | see below |
 | `jei/jei-client.ini` | `LowMemorySlowSearchEnabled = true` | saves memory on phones |
-| `options.txt` | view and simulation distance 6, fast graphics, minimal particles, 60 FPS limit | defaults of a new install |
+| `options.txt` | view and simulation distance 6, fast graphics, minimal particles, 60 FPS limit; key bindings below | defaults of a new install |
 | `servers.dat` | the server in the multiplayer list of a new install (`preserve`), written by `tools/servers-dat.py` |
 | `paxi/datapacks/mc-dras-fixes/` | disables Ad Astra's 7 Create crushing recipes that collide with `create_ad_astra_compat` and `cp_tweaks` | one recipe per ore |
+
+Key bindings of a new install: every mod keeps its own defaults, as in large packs, except where two bindings share a
+key in the game. Forge fires every binding on a pressed key, so a shared key does two things at once.
+
+| binding | default | in the pack | why |
+|---|---|---|---|
+| JourneyMap: create waypoint | `B` | none | `B` opens Statboard; the full-screen map still creates waypoints on `B` |
+| JourneyMap: toggle entity names | `G` | none | `G` opens the Curios inventory |
+| Load and Save Hotbar Activator | `X`, `C` | `H`, `K` | `X` and `C` are Cataclysm armor abilities; `H` and `K` sit at the same place on Hungarian and US keyboards, and do nothing without a number key |
+
+Shared keys left as they are: `S` (Immersive Engineering's magnet equip is a double tap of walk back by design: it
+pulls a magnet-upgraded shield into the off hand), `V` (Ad Astra suit flight, Cataclysm boots: both are boots), and the
+keys of JEI and the full-screen map, which work on their own screens only.
 
 ## Known limitations
 
