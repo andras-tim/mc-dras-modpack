@@ -1,0 +1,22 @@
+[
+  {
+    "key": "key.chat",
+    "color": "YELLOW"
+  },
+  {
+    "key": "key.journeymap.map_toggle_alt.custom",
+    "color": "GREEN"
+  },
+  {
+    "key": "key.statboard.open.custom",
+    "color": "GREEN"
+  },
+  {
+    "key": "key.advancements",
+    "color": "YELLOW"
+  },
+  {
+    "key": "controllable.key.open_controllable_settings",
+    "color": "BLUE"
+  }
+]

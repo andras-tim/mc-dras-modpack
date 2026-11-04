@@ -1,0 +1,8 @@
+name = "Controllable (mc.dras.hu fork)"
+filename = "dras-gamepad-forge-1.20.1-0.21.9-dras.1-release.jar"
+side = "client"
+
+[download]
+hash-format = "sha256"
+hash = "8b2616ce25320c70175526f2786f6999dd7e6486e06c19f8ba44c2e2f67843c2"
+url = "https://github.com/andras-tim/Controllable/releases/download/0.21.9-dras.1/dras-gamepad-forge-1.20.1-0.21.9-dras.1-release.jar"

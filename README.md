@@ -43,8 +43,8 @@ fetch what changed.
 | world and mobs | Alex's Mobs, L_Ender's Cataclysm, Biomes O' Plenty |
 | tools | Just Enough Items, JourneyMap, Patchouli, Almost Unified, Statboard |
 | stability, server and both sides | AllTheLeaks, Clumps, Cupboard, DEUF, Dimensional Sync Fixes, Feature Recycler, FerriteCore, Load My F***ing Tags, ModernFix, NaNny Reforked, Neruina, Packet Fixer, spark, Structure Essentials, Structure Layout Optimizer |
-| client only | Embeddium, ImmediatelyFast, fix GPU memory leak |
-| libraries | Botarium, Citadel, Curios API, GeckoLib, GlitchCore, Lionfish API, Paxi, Puzzles Lib, Resourceful Config, Resourceful Lib, TerraBlender, YUNG's API |
+| client only | Embeddium, ImmediatelyFast, fix GPU memory leak, Controllable (our fork) |
+| libraries | Botarium, Citadel, Curios API, Framework, GeckoLib, GlitchCore, Lionfish API, Paxi, Puzzles Lib, Resourceful Config, Resourceful Lib, TerraBlender, YUNG's API |
 
 Earth is harmless: the pack has no air or temperature mechanic there. Ad Astra's planets and orbits are dangerous:
 
@@ -60,6 +60,11 @@ Statboard records every player's statistics on the server and shows them with le
 button of the touch layout), or `/stats` in the chat. Its optional PixelView2 interface runs only on Windows, so it is
 not in the pack; the dashboard uses the vanilla interface.
 
+Gamepads (Xbox and the like) work through [our fork of Controllable](https://github.com/andras-tim/Controllable), which
+also runs on Android launchers. Defaults of a new install: D-pad left opens the map, D-pad right the radial menu (chat,
+map, Statboard, advancements, Controllable settings), D-pad up switches the camera, D-pad down drops the item; the stick
+clicks sprint and sneak, `B` goes back on every screen. Everything can be changed in Controllable's settings.
+
 ## Settings
 
 Only the changed keys are in `config/`; everything else is each mod's default.
@@ -72,6 +77,9 @@ Only the changed keys are in `config/`; everything else is each mod's default.
 | `modernfix-mixins.properties` | `dynamic_resources`, `faster_item_rendering` on; branding, the missing-mods warning and `release_protochunks` off | as in the reference pack |
 | `packetfixer.properties` | larger packet sizes, as in the reference pack; `timeout = 15` | see below |
 | `jei/jei-client.ini` | `LowMemorySlowSearchEnabled = true` | saves memory on phones |
+| `controllable/bindings.properties` | pick block unbound (`preserve`) | D-pad left is free for the map |
+| `controllable/key_adapters.properties` | JourneyMap's map on D-pad left, Statboard for the radial menu (`preserve`) | |
+| `controllable/radial_menu_items.json` | chat, map, Statboard, advancements, Controllable settings (`preserve`) | screenshot and fullscreen are no use on a phone |
 | `options.txt` | view and simulation distance 6, fast graphics, minimal particles, 60 FPS limit; key bindings below | defaults of a new install |
 | `servers.dat` | the server in the multiplayer list of a new install (`preserve`), written by `tools/servers-dat.py` |
 | `paxi/datapacks/mc-dras-fixes/` | disables Ad Astra's 7 Create crushing recipes that collide with `create_ad_astra_compat` and `cp_tweaks` | one recipe per ore |

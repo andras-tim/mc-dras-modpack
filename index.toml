@@ -5,6 +5,21 @@ file = "config/alexsmobs.toml"
 hash = "da751b84809873123bd908fc85339afed6c2bf085d3c35fa19e76bba6eaf171e"
 
 [[files]]
+file = "config/controllable/bindings.properties"
+hash = "c8be5443da41a25f8adf985968bd09b56b988d7cc67d1d45cb9918515361c3e0"
+preserve = true
+
+[[files]]
+file = "config/controllable/key_adapters.properties"
+hash = "c437d0ea35196e9590f3999139a89958bf57fc8d7cafd67b53f45a90426dc0dc"
+preserve = true
+
+[[files]]
+file = "config/controllable/radial_menu_items.json"
+hash = "48366b315094afdb8177dec21e423a1244ed1b6b55765436bbb68c1dbbc2987a"
+preserve = true
+
+[[files]]
 file = "config/create_new_age-common.toml"
 hash = "2261906202fb7669a18bbc9906eb09e4b20255edb068ba54fa39d0ab83d1a88c"
 
@@ -172,6 +187,11 @@ hash = "35547176391591595111e337ac4b32c8f0e7014d262624972db8a8edab1c2828"
 metafile = true
 
 [[files]]
+file = "mods/dras-gamepad.pw.toml"
+hash = "065d0f788fea75c618f5d8cc39bfa5506ad467036f4ca94725d43c4d595c4071"
+metafile = true
+
+[[files]]
 file = "mods/dynamic-village.pw.toml"
 hash = "e46b1a86a669d2326960a9f7745bb474d8b71f1a68524f6ba4bc53cb1cc93d14"
 metafile = true
@@ -194,6 +214,11 @@ metafile = true
 [[files]]
 file = "mods/fix-gpu-memory-leak.pw.toml"
 hash = "71bf1b28d29d8f5611937b16488f38322a3132aa67015368adcc26b7e80e4c32"
+metafile = true
+
+[[files]]
+file = "mods/framework.pw.toml"
+hash = "19a627122df77a33ce0f8a0a51d59a474d9b9d1d1cb12c9708c282a31e42b05c"
 metafile = true
 
 [[files]]
