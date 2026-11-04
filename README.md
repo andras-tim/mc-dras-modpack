@@ -43,8 +43,8 @@ fetch what changed.
 | world and mobs | Alex's Mobs, L_Ender's Cataclysm, Biomes O' Plenty |
 | tools | Just Enough Items, JourneyMap, Patchouli, Almost Unified, Statboard |
 | stability, server and both sides | AllTheLeaks, Clumps, Cupboard, DEUF, Dimensional Sync Fixes, Feature Recycler, FerriteCore, Load My F***ing Tags, ModernFix, NaNny Reforked, Neruina, Packet Fixer, spark, Structure Essentials, Structure Layout Optimizer |
-| client only | Embeddium, ImmediatelyFast, fix GPU memory leak, Controllable (our fork) |
-| libraries | Botarium, Citadel, Curios API, Framework, GeckoLib, GlitchCore, Lionfish API, Paxi, Puzzles Lib, Resourceful Config, Resourceful Lib, TerraBlender, YUNG's API |
+| client only | Embeddium, ImmediatelyFast, fix GPU memory leak, Controllable (our fork), Controlling |
+| libraries | Botarium, Citadel, Curios API, Framework, GeckoLib, GlitchCore, Lionfish API, Paxi, Puzzles Lib, Resourceful Config, Resourceful Lib, Searchables, TerraBlender, YUNG's API |
 
 Earth is harmless: the pack has no air or temperature mechanic there. Ad Astra's planets and orbits are dangerous:
 
@@ -95,7 +95,8 @@ key in the game. Forge fires every binding on a pressed key, so a shared key doe
 
 Shared keys left as they are: `S` (Immersive Engineering's magnet equip is a double tap of walk back by design: it
 pulls a magnet-upgraded shield into the off hand), `V` (Ad Astra suit flight, Cataclysm boots: both are boots), and the
-keys of JEI and the full-screen map, which work on their own screens only.
+keys of JEI and the full-screen map, which work on their own screens only. Controlling (in the pack) lists the
+conflicts in the Controls screen.
 
 ## Known limitations
 

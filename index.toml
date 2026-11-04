@@ -112,6 +112,11 @@ hash = "5e97f663033c3730b6daf1e197844e2542eadee888c0cd324a7d7424594a8fef"
 metafile = true
 
 [[files]]
+file = "mods/controlling.pw.toml"
+hash = "4063abe583282834b2f78e3b3e6b9ee4d231a680f74c020e405a4ef196f21ee4"
+metafile = true
+
+[[files]]
 file = "mods/create-ad-astra-compatibility.pw.toml"
 hash = "d05650de0e933f7aa71d7cad3ad6ccf4da2b05a3d611aa17f01dc702a536a570"
 metafile = true
@@ -319,6 +324,11 @@ metafile = true
 [[files]]
 file = "mods/resourceful-lib.pw.toml"
 hash = "762ad5b414d4cfe4a5f8ae5521e66cc257c79fa21f9780824feb05fa9169a036"
+metafile = true
+
+[[files]]
+file = "mods/searchables.pw.toml"
+hash = "8a72c34f31d93ad7b952a2bcc3f3714c29ddf4d8b34b484135cddd66fdb83f3f"
 metafile = true
 
 [[files]]
