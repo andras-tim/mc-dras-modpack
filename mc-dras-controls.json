@@ -212,7 +212,7 @@
       "cornerRadius": 100,
       "displayInGame": true,
       "displayInMenu": true,
-      "dynamicX": "1.0 * ${screen_width} - (px(40) / 100.0 * ${preferred_scale})",
+      "dynamicX": "1.0 * ${screen_width} - (px(64) / 100.0 * ${preferred_scale})",
       "dynamicY": "0.0",
       "height": 40,
       "isSwipeable": false,
@@ -228,7 +228,30 @@
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 40
+      "width": 64
+    },
+    {
+      "bgColor": 1291845632,
+      "cornerRadius": 100,
+      "displayInGame": true,
+      "displayInMenu": true,
+      "dynamicX": "1.0 * ${screen_width} - (px(112) / 100.0 * ${preferred_scale})",
+      "dynamicY": "1.0 * ${screen_height} - (px(40) / 100.0 * ${preferred_scale})",
+      "height": 40,
+      "isSwipeable": false,
+      "isToggle": false,
+      "keycodes": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "name": "\u2328",
+      "opacity": 1,
+      "passThruEnabled": false,
+      "strokeColor": -1,
+      "strokeWidth": 0,
+      "width": 64
     },
     {
       "bgColor": 1291845632,
@@ -498,12 +521,12 @@
           "isSwipeable": false,
           "isToggle": false,
           "keycodes": [
-            -1,
+            74,
             0,
             0,
             0
           ],
-          "name": "Keyboard",
+          "name": "Map",
           "opacity": 1,
           "passThruEnabled": false,
           "strokeColor": -1,
@@ -590,12 +613,12 @@
           "isSwipeable": false,
           "isToggle": false,
           "keycodes": [
-            74,
+            66,
             0,
             0,
             0
           ],
-          "name": "Map",
+          "name": "Stats",
           "opacity": 1,
           "passThruEnabled": false,
           "strokeColor": -1,
