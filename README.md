@@ -81,7 +81,7 @@ Only the changed keys are in `config/`; everything else is each mod's default.
 | `controllable/bindings.properties` | pick block unbound (`preserve`) | D-pad left is free for the map |
 | `controllable/key_adapters.properties` | JourneyMap's map on D-pad left, Statboard for the radial menu (`preserve`) | |
 | `controllable/radial_menu_items.json` | chat, map, Statboard, advancements, Controllable settings (`preserve`) | screenshot and fullscreen are no use on a phone |
-| `options.txt` | view and simulation distance 6, fast graphics, minimal particles, 60 FPS limit; key bindings below | defaults of a new install |
+| `options.txt` | view and simulation distance 6, fast graphics, minimal particles, 60 FPS limit; key bindings below | defaults of a new install; the `version:` line keeps Minecraft from dropping the file as broken |
 | `servers.dat` | the server in the multiplayer list of a new install (`preserve`), written by `tools/servers-dat.py` |
 | `paxi/datapacks/mc-dras-fixes/` | disables Ad Astra's 7 Create crushing recipes that collide with `create_ad_astra_compat` and `cp_tweaks` | one recipe per ore |
 
