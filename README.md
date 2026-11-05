@@ -62,7 +62,7 @@ not in the pack; the dashboard uses the vanilla interface.
 
 Gamepads (Xbox and the like) work through [Controllable::Dras](https://github.com/andras-tim/Controllable), our fork of
 Controllable that also runs on Android launchers. Defaults of a new install: D-pad left opens the map, D-pad right the
-radial menu (chat, map, Statboard, advancements, Controllable settings), D-pad up switches the camera, D-pad down drops
+radial menu (chat, Curios, Statboard, advancements, Controllable settings), D-pad up switches the camera, D-pad down drops
 the item; the stick clicks sprint and sneak, `B` goes back on every screen. Everything can be changed in Controllable's
 settings.
 
@@ -79,8 +79,8 @@ Only the changed keys are in `config/`; everything else is each mod's default.
 | `packetfixer.properties` | larger packet sizes, as in the reference pack; `timeout = 15` | see below |
 | `jei/jei-client.ini` | `LowMemorySlowSearchEnabled = true` | saves memory on phones |
 | `controllable/bindings.properties` | pick block unbound (`preserve`) | D-pad left is free for the map |
-| `controllable/key_adapters.properties` | JourneyMap's map on D-pad left, Statboard for the radial menu (`preserve`) | |
-| `controllable/radial_menu_items.json` | chat, map, Statboard, advancements, Controllable settings (`preserve`) | screenshot and fullscreen are no use on a phone |
+| `controllable/key_adapters.properties` | JourneyMap's map on D-pad left, Statboard and Curios for the radial menu (`preserve`) | |
+| `controllable/radial_menu_items.json` | chat, Curios, Statboard, advancements, Controllable settings (`preserve`) | screenshot and fullscreen are no use on a phone |
 | `options.txt` | view and simulation distance 6, fast graphics, minimal particles, 60 FPS limit; key bindings below | defaults of a new install; the `version:` line keeps Minecraft from dropping the file as broken |
 | `servers.dat` | the server in the multiplayer list of a new install (`preserve`), written by `tools/servers-dat.py` |
 | `paxi/datapacks/mc-dras-fixes/` | disables Ad Astra's 7 Create crushing recipes that collide with `create_ad_astra_compat` and `cp_tweaks` | one recipe per ore |

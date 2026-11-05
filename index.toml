@@ -11,12 +11,12 @@ preserve = true
 
 [[files]]
 file = "config/controllable/key_adapters.properties"
-hash = "c437d0ea35196e9590f3999139a89958bf57fc8d7cafd67b53f45a90426dc0dc"
+hash = "7c00ae4432c646cbb57a6ec4aa117cf2afa16c70f692e8b2c09241ae861105e5"
 preserve = true
 
 [[files]]
 file = "config/controllable/radial_menu_items.json"
-hash = "48366b315094afdb8177dec21e423a1244ed1b6b55765436bbb68c1dbbc2987a"
+hash = "61f0e3e87deaf61b04f66d49fc5244cde6a69d9f5e293172b262de0c37791467"
 preserve = true
 
 [[files]]
