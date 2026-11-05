@@ -30,9 +30,9 @@ def latest_apk():
     with urllib.request.urlopen(urllib.request.Request(LATEST_RELEASE, headers={'User-Agent': 'mc-dras-modpack'})) as r:
         release = json.load(r)
     for asset in release['assets']:
-        if asset['name'].startswith('amethyst-dras-') and asset['name'].endswith('.apk'):
+        if asset['name'] == 'amethyst-dras.apk':
             return release['tag_name'], asset['browser_download_url']
-    sys.exit(f'No amethyst-dras-*.apk in release {release["tag_name"]}')
+    sys.exit(f'No amethyst-dras.apk in release {release["tag_name"]}')
 
 
 def import_link(ref):
