@@ -6,7 +6,7 @@
 2. The import link of this pack: scan after installing; the launcher adds the MC dras.hu profile and asks first.
 
 Neither code holds a secret. Needs `qrencode`.
-Usage: python3 -I tools/phone-qr.py [--ref <git tag or branch of the pack>]   (default: stable)
+Usage: python3 -I tools/phone-qr.py [--ref <git tag or branch of the pack>]   (default: the released pack)
 """
 import argparse
 import json
@@ -35,8 +35,8 @@ def latest_apk():
     sys.exit(f'No amethyst-dras.apk in release {release["tag_name"]}')
 
 
-def import_link(ref):
-    base = RELEASED if ref == 'stable' else RAW.format(ref=ref)
+def import_link(ref=None):
+    base = RAW.format(ref=ref) if ref else RELEASED
     query = urllib.parse.urlencode({
         'url': base + 'pack.toml',
         'name': PROFILE_NAME,
@@ -54,7 +54,7 @@ def show(title, text):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('--ref', default='stable', help='pack tag or branch the profile follows (default: stable)')
+    parser.add_argument('--ref', help='pack tag or branch the profile follows (default: the released pack)')
     args = parser.parse_args()
     if not shutil.which('qrencode'):
         sys.exit('qrencode is missing (apt / pkg install qrencode)')

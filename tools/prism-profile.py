@@ -6,7 +6,7 @@ install). This tool adds the Minecraft and Forge versions from pack.toml and pac
 
 Prism imports the zip from a file or a URL (Add Instance, Import). The zip holds no secret.
 Usage: python3 -I tools/prism-profile.py -o <file.zip> [--url <pack.toml URL>] [--name <profile name>]
-       (from the pack root; default URL: the stable tag on GitHub)
+       (from the pack root; default URL: the released pack on mc.dras.hu)
 """
 import argparse
 import hashlib

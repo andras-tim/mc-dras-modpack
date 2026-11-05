@@ -1,33 +1,26 @@
 name: Site
 
+# every push checks that the site builds; only a published release, or a manual run, deploys it
 on:
   push:
     branches:
-      - main
-    tags:
-      - stable
+      - '**'
+  release:
+    types:
+      - released
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-24.04
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      # the site comes from main, the pack in it from the stable tag
+      # the site comes from the checked-out commit (a release: its tag), the pack in it from the release tag (else the
+      # latest release)
       - uses: actions/checkout@v4
         with:
-          ref: main
           fetch-depth: 0
           fetch-tags: true
 
@@ -35,11 +28,29 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y qrencode
 
       - name: Build the site
-        run: python3 -I tools/site.py _site
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: python3 -I tools/site.py _site "${RELEASE_TAG:-$(gh release view --json tagName -q .tagName)}"
 
-      - uses: actions/upload-pages-artifact@v3
+      - if: github.event_name != 'push'
+        uses: actions/upload-pages-artifact@v3
         with:
           path: _site
 
+  deploy:
+    if: github.event_name != 'push'
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v4

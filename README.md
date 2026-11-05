@@ -20,13 +20,13 @@ The server and every client read the same `pack.toml`, so they always run the sa
 | Android | [Amethyst::Dras](https://github.com/andras-tim/Amethyst-Android/tree/dras) (an Amethyst fork with packwiz support): open `amethyst://profile/import?url=<pack.toml URL>`; the pack is synced on every Play. `tools/phone-qr.py` shows a QR code for the APK and one for this link |
 | server | [itzg/minecraft-server](https://github.com/itzg/docker-minecraft-server) with `TYPE=FORGE`, the versions of `pack.toml`, and `PACKWIZ_URL=<pack.toml URL>` |
 
-Released pack for the launchers: `https://mc.dras.hu/pack/pack.toml`, published from the `stable` tag. Next to it is
-`mc-dras-controls.json`, the touch layout of Amethyst::Dras: the app's default layout with a Map button (`J`) in the More
-drawer. It is not a game file, so packwiz ignores it, and the site publishes it from `main`, as the profile icon
-`branding/profile-icon.png`.
+Released pack for the launchers: `https://mc.dras.hu/pack/pack.toml`, published from the latest GitHub release. Next to
+it is `mc-dras-controls.json`, the touch layout of Amethyst::Dras: the app's default layout with a Map button (`J`) in
+the More drawer. It is not a game file, so packwiz ignores it; the site publishes it with the profile icon
+`branding/profile-icon.png`, from the release or, on a manual run, from `main`.
 
 Pack URLs (GitHub raw): `https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/<tag>/pack.toml`. The server
-pins a release tag (`1.20.1-<n>`); clients follow the `stable` tag, which moves to a release after the server runs it.
+pins a release tag (`1.20.1-<n>`); clients follow the latest release, published after the server runs it.
 
 On Android the first start takes three steps, all expected: Play downloads the mods (about 210 MB); the Forge
 installer runs and the app closes without a message (the launcher runs Java in its own process and exits after

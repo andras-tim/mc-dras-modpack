@@ -3,8 +3,8 @@
 
 A page template uses the parts under docs/parts/ as `<x-NAME attr="...">` tags, see expand_parts().
 
-The main branch's CI publishes it on GitHub Pages. Needs `qrencode`.
-Usage (from the pack root): python3 -I tools/site.py <output dir>
+CI publishes it on GitHub Pages when a release is published. Needs `qrencode`.
+Usage (from the pack root): python3 -I tools/site.py <output dir> <release tag of the pack>
 """
 import importlib.util
 import io
@@ -97,29 +97,30 @@ def qr_svg(text):
                           check=True, capture_output=True, text=True).stdout
 
 
-def publish_pack(output):
-    """The files of the `stable` tag under pack/: the launchers get what is released, never main."""
-    index = tomllib.loads(subprocess.run(['git', 'show', 'stable:index.toml'], check=True, capture_output=True,
+def publish_pack(output, tag):
+    """The files of the release tag under pack/: the launchers get what is released, never main."""
+    index = tomllib.loads(subprocess.run(['git', 'show', f'{tag}:index.toml'], check=True, capture_output=True,
                                          text=True).stdout)
     paths = ['pack.toml', 'index.toml'] + [item['file'] for item in index['files']]
-    archive = subprocess.run(['git', 'archive', 'stable', '--', *paths], check=True, capture_output=True).stdout
+    archive = subprocess.run(['git', 'archive', tag, '--', *paths], check=True, capture_output=True).stdout
     with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
         tar.extractall(os.path.join(output, 'pack'), filter='data')
-    # the launcher's touch layout and the profile icon are not game files: they go out with the site, before a release
+    # the launcher's touch layout and the profile icon are not game files: they come with the site's commit, so a
+    # manual run from main publishes them before a release
     shutil.copy('mc-dras-controls.json', os.path.join(output, 'pack'))
     os.makedirs(os.path.join(output, 'pack', 'branding'), exist_ok=True)
     shutil.copy('branding/profile-icon.png', os.path.join(output, 'pack', 'branding'))
 
 
 def main():
-    output = sys.argv[1]
+    output, tag = sys.argv[1:3]
     os.makedirs(output, exist_ok=True)
-    publish_pack(output)
+    publish_pack(output, tag)
     shutil.copytree('docs/icons', os.path.join(output, 'icons'), dirs_exist_ok=True)
     subprocess.run([sys.executable, '-I', 'tools/prism-profile.py', '-o', os.path.join(output, PRISM_ZIP)], check=True)
 
     profile = phone_qr()
-    profile_link = profile.import_link('stable')
+    profile_link = profile.import_link()
     prism_zip_url = SITE_URL + PRISM_ZIP
     values = {
         # a launcher's name in the text, with its icon
