@@ -72,6 +72,11 @@ file = "config/paxi/datapacks/mc-dras-fixes/pack.mcmeta"
 hash = "c97d29120aa84c227e4dd617964dd68b043d8c7834d41d8fc4feee9d1c22c3f8"
 
 [[files]]
+file = "config/statboard-client.toml"
+hash = "f99158439b5f8a86962877f2fa6cea566c1682697316786a697a721f1364b658"
+preserve = true
+
+[[files]]
 file = "mods/ad-astra.pw.toml"
 hash = "08a7c6d39cf9e99ea09659c40f4515b2865d5e7e6849c8b60d3da92e78d86798"
 metafile = true
