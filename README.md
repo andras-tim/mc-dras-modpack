@@ -43,7 +43,7 @@ fetch what changed.
 | world and mobs | Alex's Mobs, L_Ender's Cataclysm, Biomes O' Plenty |
 | tools | Just Enough Items, JourneyMap, Patchouli, Almost Unified, Statboard |
 | stability, server and both sides | AllTheLeaks, Clumps, Cupboard, DEUF, Dimensional Sync Fixes, Feature Recycler, FerriteCore, Load My F***ing Tags, ModernFix, NaNny Reforked, Neruina, Packet Fixer, spark, Structure Essentials, Structure Layout Optimizer |
-| client only | Embeddium, ImmediatelyFast, fix GPU memory leak, Controllable (our fork), Controlling |
+| client only | Embeddium, ImmediatelyFast, fix GPU memory leak, Controllable::Dras (our fork of Controllable), Controlling |
 | libraries | Botarium, Citadel, Curios API, Framework, GeckoLib, GlitchCore, Lionfish API, Paxi, Puzzles Lib, Resourceful Config, Resourceful Lib, Searchables, TerraBlender, YUNG's API |
 
 Earth is harmless: the pack has no air or temperature mechanic there. Ad Astra's planets and orbits are dangerous:
@@ -60,10 +60,11 @@ Statboard records every player's statistics on the server and shows them with le
 button of the touch layout), or `/stats` in the chat. Its optional PixelView2 interface runs only on Windows, so it is
 not in the pack; the dashboard uses the vanilla interface.
 
-Gamepads (Xbox and the like) work through [our fork of Controllable](https://github.com/andras-tim/Controllable), which
-also runs on Android launchers. Defaults of a new install: D-pad left opens the map, D-pad right the radial menu (chat,
-map, Statboard, advancements, Controllable settings), D-pad up switches the camera, D-pad down drops the item; the stick
-clicks sprint and sneak, `B` goes back on every screen. Everything can be changed in Controllable's settings.
+Gamepads (Xbox and the like) work through [Controllable::Dras](https://github.com/andras-tim/Controllable), our fork of
+Controllable that also runs on Android launchers. Defaults of a new install: D-pad left opens the map, D-pad right the
+radial menu (chat, map, Statboard, advancements, Controllable settings), D-pad up switches the camera, D-pad down drops
+the item; the stick clicks sprint and sneak, `B` goes back on every screen. Everything can be changed in Controllable's
+settings.
 
 ## Settings
 

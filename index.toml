@@ -112,6 +112,11 @@ hash = "5e97f663033c3730b6daf1e197844e2542eadee888c0cd324a7d7424594a8fef"
 metafile = true
 
 [[files]]
+file = "mods/controllable-dras.pw.toml"
+hash = "28afd12747d7a3b6132e5eb72014d4404ea1350bf494f351fb5a0a4b2ec35de3"
+metafile = true
+
+[[files]]
 file = "mods/controlling.pw.toml"
 hash = "4063abe583282834b2f78e3b3e6b9ee4d231a680f74c020e405a4ef196f21ee4"
 metafile = true
@@ -189,11 +194,6 @@ metafile = true
 [[files]]
 file = "mods/dimensional-sync-fixes.pw.toml"
 hash = "35547176391591595111e337ac4b32c8f0e7014d262624972db8a8edab1c2828"
-metafile = true
-
-[[files]]
-file = "mods/dras-gamepad.pw.toml"
-hash = "065d0f788fea75c618f5d8cc39bfa5506ad467036f4ca94725d43c4d595c4071"
 metafile = true
 
 [[files]]
