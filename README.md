@@ -21,8 +21,10 @@ The server and every client read the same `pack.toml`, so they always run the sa
 | server | [itzg/minecraft-server](https://github.com/itzg/docker-minecraft-server) with `TYPE=FORGE`, the versions of `pack.toml`, and `PACKWIZ_URL=<pack.toml URL>` |
 
 Released pack for the launchers: `https://mc.dras.hu/pack/pack.toml`, published from the latest GitHub release. Next to
-it is `mc-dras-controls.json`, the touch layout of Amethyst::Dras: the app's default layout with a Map button (`J`) in
-the More drawer. It is not a game file, so packwiz ignores it; the site publishes it with the profile icon
+it is `mc-dras-controls.json`, the touch layout of Amethyst::Dras: the app's default layout with an icon above each
+label (the `icon` field; an older launcher shows the labels only), one smaller size for the rarely used buttons, gaps
+between all of them, a Map button (`J`) in the More drawer and an invisible one over the JourneyMap minimap, and a
+keyboard button in the bottom right corner. It is not a game file, so packwiz ignores it; the site publishes it with the profile icon
 `branding/profile-icon.png`, from the release or, on a manual run, from `main`.
 
 Pack URLs (GitHub raw): `https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/<tag>/pack.toml`. The server

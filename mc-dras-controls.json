@@ -1,12 +1,35 @@
 {
   "mControlDataList": [
     {
+      "bgColor": 0,
+      "cornerRadius": 100,
+      "displayInGame": true,
+      "displayInMenu": false,
+      "dynamicX": "${screen_width} - px(113.5) / 100.0 * ${preferred_scale}",
+      "dynamicY": "px(25.9) / 100.0 * ${preferred_scale}",
+      "height": 101.8,
+      "isSwipeable": false,
+      "isToggle": false,
+      "keycodes": [
+        74,
+        0,
+        0,
+        0
+      ],
+      "name": "",
+      "opacity": 1,
+      "passThruEnabled": false,
+      "strokeColor": 0,
+      "strokeWidth": 0,
+      "width": 101.8
+    },
+    {
       "bgColor": 1291845632,
       "cornerRadius": 100,
       "displayInGame": true,
       "displayInMenu": false,
-      "dynamicX": "1 * ${screen_width} - (${width} * 3.3) - (px(40.6) / (((${screen_width} + 2340 - abs(${screen_width} - 2340)) / 2) / 2340) * ((((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 + 0.5 + abs(((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 - 0.5 )) / 2) / 100.0 * ${preferred_scale} - (((((((1.78 - (${screen_width} / ${screen_height})) * 10000) + 1 - abs(((1.78 - (${screen_width} / ${screen_height})) * 10000) - 1)) / 2) + 0 + abs(((((1.78 - (${screen_width} / ${screen_height})) * 10000) + 1 - abs(((1.78 - (${screen_width} / ${screen_height})) * 10000) - 1)) / 2) - 0)) / 2) * (px(76.0) /100.0 * ${preferred_scale}))) - ${margin}",
-      "dynamicY": " 1 * ${screen_height} - ${height} - (px(125.6) / (((${screen_height} + 1080 - abs(${screen_height} - 1080)) / 2) / 1080) * ((((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1 )) / 2 + 0.5 + abs(((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1)) / 2 - 0.5)) / 2) / 100.0 * ${preferred_scale} - (((((((1.78 - (${screen_width} / ${screen_height})) * 10000) + 1 - abs(((1.78 - (${screen_width} / ${screen_height})) * 10000) - 1)) / 2) + 0 + abs(((((1.78 - (${screen_width} / ${screen_height})) * 10000) + 1 - abs(((1.78 - (${screen_width} / ${screen_height})) * 10000) - 1)) / 2) - 0)) / 2) * (px(15.0) /100.0 * ${preferred_scale})))",
+      "dynamicX": "${screen_width} - px(267) / 100.0 * ${preferred_scale}",
+      "dynamicY": "${screen_height} - px(179.6) / 100.0 * ${preferred_scale}",
       "height": 69.6,
       "isSwipeable": false,
       "isToggle": false,
@@ -21,15 +44,16 @@
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 69.6
+      "width": 69.6,
+      "icon": "keyboard_double_arrow_up"
     },
     {
       "bgColor": 1291845632,
       "cornerRadius": 100,
       "displayInGame": true,
       "displayInMenu": false,
-      "dynamicX": "1 * ${screen_width} - ${width} * 3.3 - (px(40.6) / (((${screen_width} + 2340 - abs(${screen_width} - 2340)) / 2) / 2340) * ((((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 + 0.5 + abs(((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 - 0.5 )) / 2) / 100.0 * ${preferred_scale} - (px(75.0) /100.0 * ${preferred_scale}) + (((((((1.78 - (${screen_width} / ${screen_height})) * 10000) + 1 - abs(((1.78 - (${screen_width} / ${screen_height})) * 10000) - 1)) / 2) + 0 + abs(((((1.78 - (${screen_width} / ${screen_height})) * 10000) + 1 - abs(((1.78 - (${screen_width} / ${screen_height})) * 10000) - 1)) / 2) - 0)) / 2) * (px(76.0) /100.0 * ${preferred_scale}))) - ${margin}",
-      "dynamicY": " 1 * ${screen_height} - ${height} - (px(115.6) / (((${screen_height} + 1080 - abs(${screen_height} - 1080)) / 2) / 1080) * ((((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1 )) / 2 + 0.5 + abs(((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1)) / 2 - 0.5)) / 2) / 100.0 * ${preferred_scale} + (1-(((((((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2 + abs((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2)) / 2) + (((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2 + abs((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2)) / 2)) + 1 - abs(((((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2 + abs((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2)) / 2) + (((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2 + abs((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2)) / 2)) - 1)) / 2)) * (px(80.0) / 100.0 * ${preferred_scale} + ${margin}*2 + (1 * ${screen_height}))) / 100.0 * ${preferred_scale})",
+      "dynamicX": "${screen_width} - px(191.4) / 100.0 * ${preferred_scale}",
+      "dynamicY": "${screen_height} - px(179.6) / 100.0 * ${preferred_scale}",
       "height": 69.6,
       "isSwipeable": false,
       "isToggle": false,
@@ -39,21 +63,22 @@
         0,
         0
       ],
-      "name": "Off\nHand",
+      "name": "Off Hand",
       "opacity": 1,
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 69.6
+      "width": 69.6,
+      "icon": "swap_horiz"
     },
     {
       "bgColor": 1291845632,
       "cornerRadius": 100,
       "displayInGame": true,
       "displayInMenu": true,
-      "dynamicX": "1.0 * ${screen_width} - (px(174.4) / 100.0 * ${preferred_scale}) - ${margin}",
-      "dynamicY": "0 * ${screen_height}",
-      "height": 39.2,
+      "dynamicX": "${screen_width} - px(189) / 100.0 * ${preferred_scale}",
+      "dynamicY": "0",
+      "height": 40.0,
       "isSwipeable": false,
       "isToggle": false,
       "keycodes": [
@@ -67,15 +92,16 @@
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 104.8
+      "width": 64.0,
+      "icon": "menu"
     },
     {
       "bgColor": 1291845632,
       "cornerRadius": 100,
       "displayInGame": true,
       "displayInMenu": false,
-      "dynamicX": "1 * ${screen_width} - ${width} * 1.70 - (px(40.6) / (((${screen_width} + 2340 - abs(${screen_width} - 2340)) / 2) / 2340) * ((((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 + 0.5 + abs(((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 - 0.5 )) / 2) / 100.0 * ${preferred_scale})",
-      "dynamicY": " 1 * ${screen_height} - ${height} - (px(185.6) / (((${screen_height} + 1080 - abs(${screen_height} - 1080)) / 2) / 1080) * ((((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1 )) / 2 + 0.5 + abs(((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1)) / 2 - 0.5)) / 2) / 100.0 * ${preferred_scale})",
+      "dynamicX": "${screen_width} - px(153.2) / 100.0 * ${preferred_scale}",
+      "dynamicY": "${screen_height} - px(255.2) / 100.0 * ${preferred_scale}",
       "height": 69.6,
       "isSwipeable": false,
       "isToggle": true,
@@ -90,15 +116,16 @@
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 69.6
+      "width": 69.6,
+      "icon": "keyboard_double_arrow_down"
     },
     {
       "bgColor": 1291845632,
       "cornerRadius": 100,
       "displayInGame": true,
       "displayInMenu": true,
-      "dynamicX": "1 * ${screen_width} - ${width} * 1.60 - (px(50.6) / (((${screen_width} + 2340 - abs(${screen_width} - 2340)) / 2) / 2340) * ((((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 + 0.5 + abs(((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 - 0.5 )) / 2) / 100.0 * ${preferred_scale})",
-      "dynamicY": " 1 * ${screen_height} - ${height} - (px(45.6) / (((${screen_height} + 1080 - abs(${screen_height} - 1080)) / 2) / 1080) * ((((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1 )) / 2 + 0.5 + abs(((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1)) / 2 - 0.5)) / 2) / 100.0 * ${preferred_scale})",
+      "dynamicX": "${screen_width} - px(153.2) / 100.0 * ${preferred_scale}",
+      "dynamicY": "${screen_height} - px(104) / 100.0 * ${preferred_scale}",
       "height": 69.6,
       "isSwipeable": true,
       "isToggle": false,
@@ -108,20 +135,21 @@
         0,
         0
       ],
-      "name": "Right\nClick",
+      "name": "Use",
       "opacity": 1,
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 69.6
+      "width": 69.6,
+      "icon": "back_hand"
     },
     {
       "bgColor": 1291845632,
       "cornerRadius": 100,
       "displayInGame": true,
       "displayInMenu": true,
-      "dynamicX": "1 * ${screen_width} - ${width} * 2.60 - (px(50.6) / (((${screen_width} + 2340 - abs(${screen_width} - 2340)) / 2) / 2340) * ((((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 + 0.5 + abs(((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 - 0.5 )) / 2) / 100.0 * ${preferred_scale}) - ${margin}",
-      "dynamicY": " 1 * ${screen_height} - ${height} - (px(45.6) / (((${screen_height} + 1080 - abs(${screen_height} - 1080)) / 2) / 1080) * ((((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1 )) / 2 + 0.5 + abs(((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1)) / 2 - 0.5)) / 2) / 100.0 * ${preferred_scale})",
+      "dynamicX": "${screen_width} - px(228.8) / 100.0 * ${preferred_scale}",
+      "dynamicY": "${screen_height} - px(104) / 100.0 * ${preferred_scale}",
       "height": 69.6,
       "isSwipeable": true,
       "isToggle": false,
@@ -131,20 +159,21 @@
         0,
         0
       ],
-      "name": "Left\nClick",
+      "name": "Attack",
       "opacity": 1,
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 69.6
+      "width": 69.6,
+      "icon": "swords"
     },
     {
       "bgColor": 1291845632,
       "cornerRadius": 100,
       "displayInGame": true,
       "displayInMenu": true,
-      "dynamicX": "1 * ${screen_width} - ${width} - (px(50.6) / (((${screen_width} + 2340 - abs(${screen_width} - 2340)) / 2) / 2340) * ((((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 + 0.5 + abs(((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 - 0.5 )) / 2) / 100.0 * ${preferred_scale})",
-      "dynamicY": " 1 * ${screen_height} - ${height} - (px(105.6) / (((${screen_height} + 1080 - abs(${screen_height} - 1080)) / 2) / 1080) * ((((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1 )) / 2 + 0.5 + abs(((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1)) / 2 - 0.5)) / 2) / 100.0 * ${preferred_scale})",
+      "dynamicX": "${screen_width} - px(115.8) / 100.0 * ${preferred_scale}",
+      "dynamicY": "${screen_height} - px(179.6) / 100.0 * ${preferred_scale}",
       "height": 69.6,
       "isSwipeable": true,
       "isToggle": false,
@@ -154,43 +183,21 @@
         0,
         0
       ],
-      "name": "Middle\nClick",
+      "name": "Pick",
       "opacity": 1,
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 69.6
+      "width": 69.6,
+      "icon": "colorize"
     },
     {
       "bgColor": 1291845632,
       "cornerRadius": 100,
       "displayInGame": true,
       "displayInMenu": false,
-      "dynamicX": "1 * ${screen_width} - ${width} - (px(50.6) / (((${screen_width} + 2340 - abs(${screen_width} - 2340)) / 2) / 2340) * ((((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 + 0.5 + abs(((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 - 0.5 )) / 2) / 100.0 * ${preferred_scale})",
-      "dynamicY": " 1 * ${screen_height} - ${height} * 2 - (px(185.6) / (((${screen_height} + 1080 - abs(${screen_height} - 1080)) / 2) / 1080) * ((((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1 )) / 2 + 0.5 + abs(((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1)) / 2 - 0.5)) / 2) / 100.0 * ${preferred_scale} + ((-1 + ((((((1.78 - (${screen_width} / ${screen_height})) * 10000) + 1 - abs(((1.78 - (${screen_width} / ${screen_height})) * 10000) - 1)) / 2) + 0 + abs(((((1.78 - (${screen_width} / ${screen_height})) * 10000) + 1 - abs(((1.78 - (${screen_width} / ${screen_height})) * 10000) - 1)) / 2) - 0)) / 2)) * (2 * ${screen_width})))",
-      "height": 69.6,
-      "isSwipeable": false,
-      "isToggle": false,
-      "keycodes": [
-        69,
-        0,
-        0,
-        0
-      ],
-      "name": "Inv.",
-      "opacity": 1,
-      "passThruEnabled": false,
-      "strokeColor": -1,
-      "strokeWidth": 0,
-      "width": 69.6
-    },
-    {
-      "bgColor": 1291845632,
-      "cornerRadius": 100,
-      "displayInGame": true,
-      "displayInMenu": false,
-      "dynamicX": "1 * ${screen_width} - ${width} * 2.70 - (px(40.6) / (((${screen_width} + 2340 - abs(${screen_width} - 2340)) / 2) / 2340) * ((((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 + 0.5 + abs(((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 - 0.5 )) / 2) / 100.0 * ${preferred_scale})",
-      "dynamicY": " 1 * ${screen_height} - ${height} - (px(185.6) / (((${screen_height} + 1080 - abs(${screen_height} - 1080)) / 2) / 1080) * ((((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1 )) / 2 + 0.5 + abs(((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1)) / 2 - 0.5)) / 2) / 100.0 * ${preferred_scale})",
+      "dynamicX": "${screen_width} - px(228.8) / 100.0 * ${preferred_scale}",
+      "dynamicY": "${screen_height} - px(255.2) / 100.0 * ${preferred_scale}",
       "height": 69.6,
       "isSwipeable": false,
       "isToggle": true,
@@ -205,16 +212,17 @@
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 69.6
+      "width": 69.6,
+      "icon": "sprint"
     },
     {
       "bgColor": 1291845632,
       "cornerRadius": 100,
       "displayInGame": true,
       "displayInMenu": true,
-      "dynamicX": "1.0 * ${screen_width} - (px(64) / 100.0 * ${preferred_scale})",
-      "dynamicY": "0.0",
-      "height": 40,
+      "dynamicX": "${screen_width} - px(64) / 100.0 * ${preferred_scale}",
+      "dynamicY": "0",
+      "height": 40.0,
       "isSwipeable": false,
       "isToggle": false,
       "keycodes": [
@@ -228,16 +236,16 @@
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 64
+      "width": 64.0
     },
     {
       "bgColor": 1291845632,
       "cornerRadius": 100,
       "displayInGame": true,
       "displayInMenu": true,
-      "dynamicX": "1.0 * ${screen_width} - (px(112) / 100.0 * ${preferred_scale})",
-      "dynamicY": "1.0 * ${screen_height} - (px(40) / 100.0 * ${preferred_scale})",
-      "height": 40,
+      "dynamicX": "${right}",
+      "dynamicY": "${bottom}",
+      "height": 40.0,
       "isSwipeable": false,
       "isToggle": false,
       "keycodes": [
@@ -246,21 +254,22 @@
         0,
         0
       ],
-      "name": "\u2328",
+      "name": "Keyboard",
       "opacity": 1,
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 64
+      "width": 64.0,
+      "icon": "keyboard"
     },
     {
       "bgColor": 1291845632,
       "cornerRadius": 100,
       "displayInGame": true,
       "displayInMenu": false,
-      "dynamicX": "1.0 * ${screen_width} - (px(279.2) / 100.0 * ${preferred_scale}) - (${margin} * 2)",
-      "dynamicY": "0 * ${screen_height}",
-      "height": 39.2,
+      "dynamicX": "${screen_width} - px(259) / 100.0 * ${preferred_scale}",
+      "dynamicY": "0",
+      "height": 40.0,
       "isSwipeable": false,
       "isToggle": false,
       "keycodes": [
@@ -274,16 +283,17 @@
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 104.8
+      "width": 64.0,
+      "icon": "pause"
     },
     {
       "bgColor": 1291845632,
       "cornerRadius": 100,
       "displayInGame": true,
       "displayInMenu": false,
-      "dynamicX": "1.0 * ${screen_width} - (px(384) / 100.0 * ${preferred_scale}) - (${margin} * 2) + (((((((1.78 - (${screen_width} / ${screen_height})) * 10000) + 1 - abs(((1.78 - (${screen_width} / ${screen_height})) * 10000) - 1)) / 2) + 0 + abs(((((1.78 - (${screen_width} / ${screen_height})) * 10000) + 1 - abs(((1.78 - (${screen_width} / ${screen_height})) * 10000) - 1)) / 2) - 0)) / 2) * (2 * ${screen_width}))",
-      "dynamicY": "0 * ${screen_height}",
-      "height": 40,
+      "dynamicX": "${screen_width} - px(329) / 100.0 * ${preferred_scale}",
+      "dynamicY": "0",
+      "height": 40.0,
       "isSwipeable": false,
       "isToggle": false,
       "keycodes": [
@@ -297,7 +307,8 @@
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 100
+      "width": 64.0,
+      "icon": "backpack"
     },
     {
       "bgColor": 1291845632,
@@ -327,9 +338,9 @@
       "cornerRadius": 100,
       "displayInGame": false,
       "displayInMenu": true,
-      "dynamicX": "1.0 * ${screen_width} - (px(279.2) / 100.0 * ${preferred_scale}) - (${margin} * 2)",
-      "dynamicY": "0 * ${screen_height}",
-      "height": 39.2,
+      "dynamicX": "${screen_width} - px(259) / 100.0 * ${preferred_scale}",
+      "dynamicY": "0",
+      "height": 40.0,
       "isSwipeable": false,
       "isToggle": false,
       "keycodes": [
@@ -338,20 +349,21 @@
         0,
         0
       ],
-      "name": "Exit\nMenu",
+      "name": "Close",
       "opacity": 1,
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 104.8
+      "width": 64.0,
+      "icon": "close"
     },
     {
       "bgColor": 1291845632,
       "cornerRadius": 100,
       "displayInGame": false,
       "displayInMenu": true,
-      "dynamicX": "1 * ${screen_width} - ${width} * 2.70 - (px(40.6) / (((${screen_width} + 2340 - abs(${screen_width} - 2340)) / 2) / 2340) * ((((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 + 0.5 + abs(((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 - 0.5 )) / 2) / 100.0 * ${preferred_scale})",
-      "dynamicY": " 1 * ${screen_height} - ${height} - (px(185.6) / (((${screen_height} + 1080 - abs(${screen_height} - 1080)) / 2) / 1080) * ((((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1 )) / 2 + 0.5 + abs(((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1)) / 2 - 0.5)) / 2) / 100.0 * ${preferred_scale})",
+      "dynamicX": "${screen_width} - px(228.8) / 100.0 * ${preferred_scale}",
+      "dynamicY": "${screen_height} - px(255.2) / 100.0 * ${preferred_scale}",
       "height": 69.6,
       "isSwipeable": false,
       "isToggle": true,
@@ -361,20 +373,21 @@
         0,
         0
       ],
-      "name": "CTRL",
+      "name": "Ctrl",
       "opacity": 1,
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 69.6
+      "width": 69.6,
+      "icon": "keyboard_control_key"
     },
     {
       "bgColor": 1291845632,
       "cornerRadius": 100,
       "displayInGame": false,
       "displayInMenu": true,
-      "dynamicX": "1 * ${screen_width} - ${width} * 1.70 - (px(40.6) / (((${screen_width} + 2340 - abs(${screen_width} - 2340)) / 2) / 2340) * ((((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 + 0.5 + abs(((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) + 1 - abs((((2.80002*(10^-13)) * (${screen_width}^4)) - ((1.1389*10^-9) * (${screen_width}^3)) + (0.00000131447 * (${screen_width}^2))) - 1 )) / 2 - 0.5 )) / 2) / 100.0 * ${preferred_scale})",
-      "dynamicY": " 1 * ${screen_height} - ${height} - (px(185.6) / (((${screen_height} + 1080 - abs(${screen_height} - 1080)) / 2) / 1080) * ((((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1 )) / 2 + 0.5 + abs(((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) + 1 - abs((((6.17062*(10^-12)) * (${screen_height}^4)) - ((1.15841*10^-8) * (${screen_height}^3)) + (0.00000617072 * (${screen_height}^2))) - 1)) / 2 - 0.5)) / 2) / 100.0 * ${preferred_scale})",
+      "dynamicX": "${screen_width} - px(153.2) / 100.0 * ${preferred_scale}",
+      "dynamicY": "${screen_height} - px(255.2) / 100.0 * ${preferred_scale}",
       "height": 69.6,
       "isSwipeable": false,
       "isToggle": true,
@@ -389,7 +402,8 @@
       "passThruEnabled": false,
       "strokeColor": -1,
       "strokeWidth": 0,
-      "width": 69.6
+      "width": 69.6,
+      "icon": "shift"
     }
   ],
   "mDrawerDataList": [
@@ -400,9 +414,9 @@
           "cornerRadius": 100,
           "displayInGame": true,
           "displayInMenu": true,
-          "dynamicX": "0 * ${screen_width} + (px(96.0) / 100.0 * ${preferred_scale}) + ${margin}",
-          "dynamicY": "0 * ${screen_height}",
-          "height": 40,
+          "dynamicX": "px(70) / 100.0 * ${preferred_scale}",
+          "dynamicY": "0",
+          "height": 40.0,
           "isSwipeable": false,
           "isToggle": false,
           "keycodes": [
@@ -411,21 +425,22 @@
             0,
             0
           ],
-          "name": "Third\nPerson",
+          "name": "Camera",
           "opacity": 1,
           "passThruEnabled": false,
           "strokeColor": -1,
           "strokeWidth": 0,
-          "width": 96
+          "width": 64.0,
+          "icon": "videocam"
         },
         {
           "bgColor": 1291845632,
           "cornerRadius": 100,
           "displayInGame": true,
           "displayInMenu": true,
-          "dynamicX": "0 * ${screen_width} + ((px(96.0) / 100.0 * ${preferred_scale}) + ${margin}) * 3",
-          "dynamicY": "0 * ${screen_height} + ((((((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2 + abs((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2)) / 2) + (((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2 + abs((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2)) / 2)) + 1 - abs(((((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2 + abs((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2)) / 2) + (((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2 + abs((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2)) / 2)) - 1)) / 2) * (px(40.0) / 100.0 * ${preferred_scale} + ${margin})",
-          "height": 40,
+          "dynamicX": "px(210) / 100.0 * ${preferred_scale}",
+          "dynamicY": "0",
+          "height": 40.0,
           "isSwipeable": false,
           "isToggle": false,
           "keycodes": [
@@ -434,12 +449,13 @@
             0,
             0
           ],
-          "name": "Debug\nMenu",
+          "name": "Debug",
           "opacity": 1,
           "passThruEnabled": false,
           "strokeColor": -1,
           "strokeWidth": 0,
-          "width": 96
+          "width": 64.0,
+          "icon": "bug_report"
         },
         {
           "bgColor": 1291845632,
@@ -469,9 +485,9 @@
           "cornerRadius": 100,
           "displayInGame": true,
           "displayInMenu": true,
-          "dynamicX": "0 * ${screen_width} + ((px(96.0) / 100.0 * ${preferred_scale}) + ${margin})*2",
-          "dynamicY": "0 * ${screen_height} + (px(40.0) /100.0 * ${preferred_scale}) + ${margin}",
-          "height": 40,
+          "dynamicX": "px(140) / 100.0 * ${preferred_scale}",
+          "dynamicY": "px(46) / 100.0 * ${preferred_scale}",
+          "height": 40.0,
           "isSwipeable": false,
           "isToggle": false,
           "keycodes": [
@@ -480,21 +496,22 @@
             0,
             0
           ],
-          "name": "Mouse\nToggle",
+          "name": "Mouse",
           "opacity": 1,
           "passThruEnabled": false,
           "strokeColor": -1,
           "strokeWidth": 0,
-          "width": 96
+          "width": 64.0,
+          "icon": "mouse"
         },
         {
           "bgColor": 1291845632,
           "cornerRadius": 100,
           "displayInGame": true,
           "displayInMenu": true,
-          "dynamicX": "0 * ${screen_width}",
-          "dynamicY": "0 * ${screen_height} + (px(40.0) /100.0 * ${preferred_scale}) + ${margin}",
-          "height": 40,
+          "dynamicX": "0",
+          "dynamicY": "px(46) / 100.0 * ${preferred_scale}",
+          "height": 40.0,
           "isSwipeable": false,
           "isToggle": false,
           "keycodes": [
@@ -508,16 +525,17 @@
           "passThruEnabled": false,
           "strokeColor": -1,
           "strokeWidth": 0,
-          "width": 96
+          "width": 64.0,
+          "icon": "chat"
         },
         {
           "bgColor": 1291845632,
           "cornerRadius": 100,
           "displayInGame": true,
           "displayInMenu": true,
-          "dynamicX": "0 * ${screen_width} + (px(96.0) / 100.0 * ${preferred_scale}) + ${margin}",
-          "dynamicY": "0 * ${screen_height} + (px(40.0) /100.0 * ${preferred_scale}) + ${margin}",
-          "height": 40,
+          "dynamicX": "px(70) / 100.0 * ${preferred_scale}",
+          "dynamicY": "px(46) / 100.0 * ${preferred_scale}",
+          "height": 40.0,
           "isSwipeable": false,
           "isToggle": false,
           "keycodes": [
@@ -531,16 +549,17 @@
           "passThruEnabled": false,
           "strokeColor": -1,
           "strokeWidth": 0,
-          "width": 96
+          "width": 64.0,
+          "icon": "map"
         },
         {
           "bgColor": 1291845632,
           "cornerRadius": 100,
           "displayInGame": true,
           "displayInMenu": true,
-          "dynamicX": "0 * ${screen_width} + (px(96.0) / 100.0 * ${preferred_scale})*3 + ${margin}*3 - ((((((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2 + abs((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2)) / 2) + (((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2 + abs((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2)) / 2)) + 1 - abs(((((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2 + abs((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2)) / 2) + (((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2 + abs((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2)) / 2)) - 1)) / 2) * (px(96.0)*3 / 100.0 * ${preferred_scale} + ${margin}*3) + ((((((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2 + abs((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2)) / 2) + (((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2 + abs((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2)) / 2)) + 1 - abs(((((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2 + abs((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2)) / 2) + (((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2 + abs((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2)) / 2)) - 1)) / 2) * (px(96.0) / 100.0 * ${preferred_scale} + ${margin})",
-          "dynamicY": "0 * ${screen_height} + (px(40.0) /100.0 * ${preferred_scale}) + ${margin} + ((((((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2 + abs((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2)) / 2) + (((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2 + abs((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2)) / 2)) + 1 - abs(((((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2 + abs((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2)) / 2) + (((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2 + abs((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2)) / 2)) - 1)) / 2) * (px(40.0) / 100.0 * ${preferred_scale} + ${margin})",
-          "height": 40,
+          "dynamicX": "px(210) / 100.0 * ${preferred_scale}",
+          "dynamicY": "px(46) / 100.0 * ${preferred_scale}",
+          "height": 40.0,
           "isSwipeable": false,
           "isToggle": false,
           "keycodes": [
@@ -549,21 +568,22 @@
             0,
             0
           ],
-          "name": "HUD\nToggle",
+          "name": "HUD",
           "opacity": 1,
           "passThruEnabled": false,
           "strokeColor": -1,
           "strokeWidth": 0,
-          "width": 96
+          "width": 64.0,
+          "icon": "layers"
         },
         {
           "bgColor": 1291845632,
           "cornerRadius": 100,
           "displayInGame": true,
           "displayInMenu": true,
-          "dynamicX": "0 * ${screen_width} + ((((((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2 + abs((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2)) / 2) + (((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2 + abs((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2)) / 2)) + 1 - abs(((((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2 + abs((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2)) / 2) + (((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2 + abs((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2)) / 2)) - 1)) / 2) * (0) + ((((((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2 + abs((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2)) / 2) + (((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2 + abs((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2)) / 2)) + 1 - abs(((((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2 + abs((((1920 - ${screen_width}) * 1000) + 1 - abs(((1920 - ${screen_width}) * 1000) - 1)) / 2)) / 2) + (((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2 + abs((((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) + 1 - abs(((${preferred_scale} - (257.833333333*(${screen_height}/${screen_width}))) * 1000) - 1)) / 2)) / 2)) - 1)) / 2) * (px(96.0) / 100.0 * ${preferred_scale} + ${margin}) * 2",
-          "dynamicY": "0 * ${screen_height} + ((px(40.0) /100.0 * ${preferred_scale}) + ${margin}) * 2",
-          "height": 40,
+          "dynamicX": "0",
+          "dynamicY": "px(92) / 100.0 * ${preferred_scale}",
+          "height": 40.0,
           "isSwipeable": false,
           "isToggle": false,
           "keycodes": [
@@ -572,21 +592,22 @@
             0,
             0
           ],
-          "name": "Drop\nItem",
+          "name": "Drop",
           "opacity": 1,
           "passThruEnabled": false,
           "strokeColor": -1,
           "strokeWidth": 0,
-          "width": 96
+          "width": 64.0,
+          "icon": "vertical_align_bottom"
         },
         {
           "bgColor": 1291845632,
           "cornerRadius": 100,
           "displayInGame": true,
           "displayInMenu": true,
-          "dynamicX": "0 * ${screen_width} + ((px(96.0) / 100.0 * ${preferred_scale}) + ${margin}) * 2",
-          "dynamicY": "0 * ${screen_height}",
-          "height": 40,
+          "dynamicX": "px(140) / 100.0 * ${preferred_scale}",
+          "dynamicY": "0",
+          "height": 40.0,
           "isSwipeable": false,
           "isToggle": true,
           "keycodes": [
@@ -595,21 +616,22 @@
             0,
             0
           ],
-          "name": "Player\nList",
+          "name": "Players",
           "opacity": 1,
           "passThruEnabled": false,
           "strokeColor": -1,
           "strokeWidth": 0,
-          "width": 96
+          "width": 64.0,
+          "icon": "group"
         },
         {
           "bgColor": 1291845632,
           "cornerRadius": 100,
           "displayInGame": true,
           "displayInMenu": true,
-          "dynamicX": "0 * ${screen_width} + (px(96.0) / 100.0 * ${preferred_scale}) + ${margin}",
-          "dynamicY": "0 * ${screen_height} + ((px(40.0) /100.0 * ${preferred_scale}) + ${margin}) * 2",
-          "height": 40,
+          "dynamicX": "px(70) / 100.0 * ${preferred_scale}",
+          "dynamicY": "px(92) / 100.0 * ${preferred_scale}",
+          "height": 40.0,
           "isSwipeable": false,
           "isToggle": false,
           "keycodes": [
@@ -623,7 +645,8 @@
           "passThruEnabled": false,
           "strokeColor": -1,
           "strokeWidth": 0,
-          "width": 96
+          "width": 64.0,
+          "icon": "leaderboard"
         }
       ],
       "orientation": "FREE",
@@ -632,9 +655,9 @@
         "cornerRadius": 100,
         "displayInGame": true,
         "displayInMenu": true,
-        "dynamicX": "0 * ${screen_width}",
-        "dynamicY": "0 * ${screen_height}",
-        "height": 40,
+        "dynamicX": "0",
+        "dynamicY": "0",
+        "height": 40.0,
         "isSwipeable": false,
         "isToggle": false,
         "keycodes": [
@@ -648,7 +671,8 @@
         "passThruEnabled": false,
         "strokeColor": -1,
         "strokeWidth": 1.5,
-        "width": 96
+        "width": 64.0,
+        "icon": "more_horiz"
       }
     }
   ],
