@@ -109,6 +109,18 @@ conflicts in the Controls screen.
 
 ## Known limitations
 
+- **Create items lost at startup** ([Create#8825](https://github.com/Creators-of-Create/Create/issues/8825), open;
+  Create 6.0.8, Steam 'n' Rails 1.7.3, createprism 1.1.0). Forge builds the mods in parallel by default, and Rails and
+  createprism initialize Create's registry classes from their own thread while Create fills the same unsynchronized
+  Registrate. Some starts then lose a Create item: a crash at startup ("Registry entry not present: create:..."), a
+  failed join ("Failed to synchronize registry data"), and on a server an item that a saved world would drop. The pack
+  works around it with `maxThreads = 1` in `config/fml.toml` (2-4 s slower start); Create's maintainers expect no fix
+  for the 1.20.1 versions.
+  - Keep `config/fml.toml` while #8825 is open, and while any mod in the pack still initializes Create's classes in its
+    constructor: before removing it, check #8825 and the changelogs of Create, Rails and createprism, and run
+    `tools/ctor-graph.py` on each Create addon.
+  - Before adding a Create addon, run `tools/ctor-graph.py` on it: one that initializes `AllBlocks`, `AllItems` or
+    another Create holder class from its constructor needs `maxThreads = 1` too.
 - **Ad Astra space stations** (1.15.21): an orbit is empty until you build a station from the rocket's planet screen:
   choose the planet, then the `+` next to "Space Stations", with the materials in your inventory (Earth: 64 iron plates,
   32 steel ingots, 32 desh ingots, 32 desh plates). The `+` builds at once and takes you there. Choosing "Land" without
@@ -138,6 +150,7 @@ conflicts in the Controls screen.
 | `docs/parts/` | step templates of the site (`step-download`, `step-apk`, `step-link`, `step-login`) and the Android install help they share, used as `<x-NAME>` tags in the template |
 | `docs/icons/` | app icons of the site's choices: `obtainium.svg` from [Obtainium](https://github.com/ImranR98/Obtainium) (`assets/graphics/icon.svg`, GPL-3.0; its `viewBox` cropped to the drawing), `amethyst-dras.webp` is the foreground layer of the [Amethyst::Dras](https://github.com/andras-tim/Amethyst-Android) launcher icon (`mipmap-xxhdpi/ic_launcher_foreground.webp`, LGPL-3.0), trimmed and scaled to 96 px, `prism-launcher.svg` from [Prism Launcher](https://github.com/PrismLauncher/PrismLauncher) (`program_info/org.prismlauncher.PrismLauncher.svg`, GPL-3.0) |
 | `tools/site.py` | builds the site with its QR codes and the Prism zip; CI publishes it on GitHub Pages from `main` |
+| `tools/ctor-graph.py` | lists the Create classes a mod's constructor initializes on its own thread; run it on a new Create addon before adding it (see `config/fml.toml` above) |
 | `tools/` | maintenance scripts |
 
 ## Differences from the reference pack
