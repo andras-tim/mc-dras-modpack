@@ -400,11 +400,21 @@ def controls_page(mods, cells, controls):
                            f'<span class="a">{esc(row["action"])}{where(row.get("where"))}</span>{link}</li>')
         gamepad.append('  </ul>')
 
-    touch_rows = [f'<li><span class="k"><span class="tb">{material_icon(row["icon"])}{esc(row.get("label", ""))}</span></span>'
-                  f'<span class="a">{esc(row["action"])}{where(row.get("where"))}</span></li>'
-                  for row in controls['touch']]
-    touch_html = card('Érintéses gombok', 'Az Amethyst launcher gombjai a képernyőn.', profile_icon, touch_rows,
-                      'kl touch')
+    def long_press(row):
+        return f'<span class="w"><b>Hosszan:</b> {esc(row["long"])}</span>' if row.get('long') else ''
+
+    touch = []
+    for group in controls['touch']:
+        touch.append(f'  <p class="pt">{esc(group["title"])}</p>\n  <ul class="kl touch">')
+        for row in group['rows']:
+            touch.append(f'    <li><span class="k"><span class="tb">{material_icon(row["icon"])}{esc(row.get("label", ""))}'
+                         f'</span></span><span class="a">{esc(row["action"])}{where(row.get("where"))}'
+                         f'{long_press(row)}</span></li>')
+        touch.append('  </ul>')
+    touch_html = ('  <section class="act">\n    <div class="hero"><div class="amb" aria-hidden="true">'
+                  f'{profile_icon}</div><div><h2>Érintéses gombok</h2><p>Az Amethyst::Dras gombjai a képernyőn. '
+                  'A View vált a mindennapi gombok és az összes között.</p></div></div>\n'
+                  + '\n'.join(touch) + '\n  </section>')
     return keyboard_html, '\n'.join(gamepad), backdrop(['controllable-dras']), touch_html
 
 

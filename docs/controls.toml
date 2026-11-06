@@ -197,72 +197,41 @@ rows = [
   { button = "Bal kar", action = "Receptkönyv", where = "benyomva" },
 ]
 
-# mc-dras-controls.json; label: as in the launcher's button editor, icon: its Material Symbols name
+# mc-dras-controls.json, by when a button shows; label: as in the launcher's button editor (none: no label there either),
+# icon: its Material Symbols name, long: what a long press does
 [[touch]]
-# no label in the launcher either
-icon = "map"
-action = "A teljes térkép"
-where = "átlátszó gomb a minitérképen"
+title = "Játékban"
+rows = [
+  { label = "Jump", icon = "keyboard_double_arrow_up", action = "Ugrás", where = "húzva: nézelődés" },
+  { label = "Attack", icon = "swords", action = "Ütés, bányászás", where = "húzva: nézelődés" },
+  { label = "Use", icon = "back_hand", action = "Használat, lerakás", where = "húzva: nézelődés" },
+  { label = "Off Hand", icon = "swap_horiz", action = "Tárgycsere a másik kézbe" },
+  { label = "Pick", icon = "colorize", action = "A nézett blokk a kézbe", where = "ha van nálad, vagy kreatív módban" },
+  { label = "Inventory", icon = "inventory_2", action = "Leltár" },
+  { label = "Drop", icon = "vertical_align_bottom", action = "Tárgy eldobása" },
+  { label = "Sprint", icon = "sprint", action = "Futás", where = "kapcsoló" },
+  { label = "Crouch", icon = "keyboard_double_arrow_down", action = "Lopakodás", where = "kapcsoló" },
+  { icon = "map", action = "A teljes térkép", where = "átlátszó gomb a minitérképen" },
+  { label = "View", icon = "visibility", action = "A mindennapi gombok, vagy mind", long = "minden gomb elrejtése" },
+  { label = "Menu", icon = "menu", action = "Szünet menü", long = "az Amethyst menüje" },
+  { label = "Keyboard", icon = "keyboard", action = "Billentyűzet a chathez" },
+]
 
 [[touch]]
-label = "Jump"
-icon = "keyboard_double_arrow_up"
-action = "Ugrás"
+title = "Csak ha a View mind mutatja"
+rows = [
+  { label = "Camera", icon = "videocam", action = "Nézetváltás" },
+  { label = "Players", icon = "group", action = "Játékoslista", where = "kapcsoló" },
+  { label = "Chat", icon = "chat", action = "Chat" },
+  { label = "Stats", icon = "leaderboard", action = "Statisztikák és ranglisták" },
+  { label = "HUD", icon = "layers", action = "A kijelzés elrejtése" },
+  { label = "Debug", icon = "bug_report", action = "Hibakereső adatok" },
+]
 
 [[touch]]
-label = "Crouch"
-icon = "keyboard_double_arrow_down"
-action = "Lopakodás"
-where = "kapcsoló"
-
-[[touch]]
-label = "Sprint"
-icon = "sprint"
-action = "Futás"
-where = "kapcsoló"
-
-[[touch]]
-label = "Attack"
-icon = "swords"
-action = "Ütés, bányászás"
-
-[[touch]]
-label = "Use"
-icon = "back_hand"
-action = "Használat, lerakás"
-
-[[touch]]
-label = "Pick"
-icon = "colorize"
-action = "A nézett blokk a kézbe"
-where = "ha van nálad, vagy kreatív módban"
-
-[[touch]]
-label = "Off Hand"
-icon = "swap_horiz"
-action = "Tárgycsere a másik kézbe"
-
-[[touch]]
-label = "Inventory"
-icon = "backpack"
-action = "Leltár"
-
-[[touch]]
-label = "Pause"
-icon = "pause"
-action = "Szünet menü"
-
-[[touch]]
-label = "Keyboard"
-icon = "keyboard"
-action = "Billentyűzet a chathez"
-
-[[touch]]
-label = "▲"
-icon = "expand_less"
-action = "Gombok elrejtése és mutatása"
-
-[[touch]]
-label = "Menu"
-icon = "menu"
-action = "Az Amethyst menüje"
+title = "Menükben, a View, a Menu és a Keyboard mellett"
+rows = [
+  { label = "Mouse", icon = "mouse", action = "Egérmutató a menükhöz" },
+  { label = "Shift", icon = "shift", action = "Shift", where = "kapcsoló; a leltárban egész köteg áthelyezése" },
+  { label = "Use", icon = "back_hand", action = "Jobb kattintás" },
+]

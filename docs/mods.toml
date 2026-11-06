@@ -273,7 +273,7 @@ url = "https://www.curseforge.com/minecraft/mc-mods/interiors"
 icon = "https://cdn.modrinth.com/data/r4Knci2k/d0dd0604c63c68eaaf9ab5aa0a7166e9904412a8_96.webp"
 
 [mods.inventory-hud-forge]
-desc = "A tárgyaid és a hatások a képernyőn, megnyitás nélkül."
+desc = "A viselt páncél és a kezedben lévő tárgyak a képernyőn, a leltár megnyitása nélkül."
 url = "https://www.curseforge.com/minecraft/mc-mods/inventory-hud-forge"
 icon = "https://cdn.modrinth.com/data/Kp2uclYl/9a7a5546c3e77ecac35c07bf5ea3ec7e71c9a8f3_96.webp"
 
