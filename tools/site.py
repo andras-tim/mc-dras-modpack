@@ -148,6 +148,9 @@ MENU = [
 ]
 SVG_EXT = ('<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 '
            '1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>')
+# an open book: the documentation of a mod
+SVG_BOOK = ('<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h6a4 4 0 0 1 4 4v11a3 3 0 0 0-3-3H2z"/>'
+            '<path d="M22 5h-6a4 4 0 0 0-4 4v11a3 3 0 0 1 3-3h7z"/></svg>')
 SVG_DOWN = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>'
 SVG_KEYBOARD = ('<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" '
                 'rx="2.5"/><path d="M6.5 10h1M10.5 10h1M14.5 10h1M17.5 10h.5M8 14h8"/></svg>')
@@ -253,7 +256,8 @@ def load_mods(output):
         mods[key] = {
             'key': key, 'name': entry.get('name', pw['name']),
             'version': entry.get('version') or mod_version(pw['filename']),
-            'desc': entry['desc'], 'url': entry['url'], 'icon': entry['icon'], 'keys': entry.get('keys', []),
+            'desc': entry['desc'], 'url': entry['url'], 'docs': entry.get('docs'), 'icon': entry['icon'],
+            'keys': entry.get('keys', []),
             'panel': entry.get('panel'),
             'addons': [k for k in entry.get('addons', []) if k in released],
             'deps': [k for k in entry.get('deps', []) if k in released],
@@ -318,7 +322,9 @@ def mods_page(mods, activities, background, cells, controls):
     """The cards of docs/contents.html."""
     icon = lambda key, extra='': f'<i class="ic{extra}" style="{cells[key]}"></i>'
     ext = lambda m: (f'<a class="ext" href="{esc(m["url"])}" target="_blank" rel="noopener" '
-                     f'aria-label="{esc(m["name"])} oldala">{SVG_EXT}</a>')
+                     f'aria-label="{esc(m["name"])} oldala">{SVG_EXT}</a>'
+                     + (f'<a class="ext" href="{esc(m["docs"])}" target="_blank" rel="noopener" '
+                        f'aria-label="{esc(m["name"])} leírása">{SVG_BOOK}</a>' if m['docs'] else ''))
     meta = lambda m: f'<span class="nm">{esc(m["name"])}</span><span class="ver">{esc(m["version"])}</span>' + ext(m)
     key_rows = {row['id']: row for row in controls['keyboard']['mods']}
     on_page = {k for a in activities for k in a['mods']} | {k for a in activities for m in a['mods']

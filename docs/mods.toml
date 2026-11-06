@@ -65,6 +65,7 @@ title = "Közös kód"
 mods = ["paxi", "geckolib", "puzzles-lib"]
 
 # desc: what it is for, in Hungarian; url: its page; icon: its logo, the site trims and shrinks it
+# docs: its own documentation (a wiki), only when it has one apart from its page
 # addons: shown under it as a tree; deps: the mods it needs, folded; keys: its rows in docs/controls.toml
 # panel: a tab of the controls page it fills (kontroller), linked with its icon
 # name: overrides the name of the .pw.toml (which often carries a loader or a slogan)
@@ -75,6 +76,7 @@ addons = ["create-ad-astra-compatibility", "create-planetary-tweaks"]
 deps = ["botarium", "resourceful-config", "resourceful-lib"]
 keys = ["aa-fly"]
 url = "https://www.curseforge.com/minecraft/mc-mods/ad-astra"
+docs = "https://ad-astra.terrarium.wiki/ad-astra"
 icon = "https://cdn.modrinth.com/data/3ufwT9JF/2e903114b7d89b5e1adc7e15dcfd1ba7a1c59505_96.webp"
 
 [mods.alexs-mobs]
@@ -135,6 +137,7 @@ addons = [
   "create-new-age", "create-optical", "create-prismatic-shine", "create-steam-n-rails", "dynamic-village",
 ]
 url = "https://www.curseforge.com/minecraft/mc-mods/create"
+docs = "https://wiki.createmod.net"
 icon = "https://cdn.modrinth.com/data/LNytGWDc/61d716699bcf1ec42ed4926a9e1c7311be6087e2_96.webp"
 
 [mods.create-ad-astra-compatibility]
@@ -145,6 +148,7 @@ icon = "https://media.forgecdn.net/avatars/thumbnails/978/730/256/256/6384838101
 [mods.create-connected]
 desc = "Kényelmi blokkok, amik hiányoztak a Create-ből."
 url = "https://www.curseforge.com/minecraft/mc-mods/create-connected"
+docs = "https://github.com/hlysine/create_connected/wiki"
 icon = "https://cdn.modrinth.com/data/Vg5TIO6d/2e69151b9664c7f03f0568c5fdf1d44aa98db452_96.webp"
 
 [mods.create-deco]
@@ -185,6 +189,7 @@ icon = "https://cdn.modrinth.com/data/udEtt0b2/8e7b38e2717be23c3b92237d6243cd25d
 [mods.create-steam-n-rails]
 desc = "Bővebb vasúthálózat és gőzrendszer."
 url = "https://www.curseforge.com/minecraft/mc-mods/create-steam-n-rails"
+docs = "https://github.com/Layers-of-Railways/Railway/wiki"
 icon = "https://cdn.modrinth.com/data/ZzjhlDgM/efac0150d612ab52768620dd53a7e8c27ce2fb0d_96.webp"
 
 [mods.cupboard]
@@ -293,12 +298,14 @@ name = "Just Enough Items"
 desc = "Minden tárgy receptje egy kereshető listában."
 keys = ["jei-r", "jei-u"]
 url = "https://www.curseforge.com/minecraft/mc-mods/jei"
+docs = "https://github.com/mezz/JustEnoughItems/wiki"
 icon = "https://cdn.modrinth.com/data/u6dRKJwZ/4a3f18ac0d096c9f8e9176984c44be4e58f94c89_96.webp"
 
 [mods.journeymap]
 desc = "Minitérkép a sarokban és teljes térkép útpontokkal."
 keys = ["jm-map", "jm-wp"]
 url = "https://www.curseforge.com/minecraft/mc-mods/journeymap"
+docs = "https://journeymap.info/Documentation"
 icon = "https://cdn.modrinth.com/data/lfHFW1mp/a1c571a21a88f6fa59eab67829f216f65ab393ee_96.webp"
 
 [mods.lendercataclysm]
