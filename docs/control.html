@@ -62,6 +62,13 @@
           color: var(--fg); white-space: nowrap; }
     .tb svg { width: 20px; height: 20px; fill: currentColor; }
     .tb:has(> svg:only-child) { padding: .2rem .3rem; }
+    /* a touch button named in a sentence: smaller, on the line of the text */
+    .tb.in { gap: .25rem; padding: .05rem .4rem .05rem .2rem; border-radius: 7px; font-size: .78rem; vertical-align: .05em; }
+    .tb.in svg { width: 15px; height: 15px; }
+    .note:has(.tb.in) { line-height: 1.75; }
+    /* the tips under the touch buttons: a list in the note box */
+    ul.tips { padding-left: 1.9rem; }
+    ul.tips li { margin: .15rem 0; }
   </style>
 </head>
 <body>
@@ -118,9 +125,13 @@
 
   <div class="panel" id="panel-touch">
 @@TOUCH@@
-  <p class="note"><b>Nézelődés:</b> az Attack, a Use vagy a Jump gombról induló húzás nyomva tartja a gombot, és közben
-    forgatja a nézetet. A bekapcsolt kapcsolók körül vékony zöld gyűrű látszik. A gombszerkesztőben angol a felirat,
-    ezért az is itt van. Kontroller is köthető a telefonhoz, ugyanazzal a kiosztással, mint gépen.</p>
+  <ul class="note tips">
+    <li><b>Nézelődés:</b> az @@TB:Attack@@, a @@TB:Use@@ vagy a @@TB:Jump@@ gombról induló húzás nyomva tartja a
+      gombot, és közben forgatja a nézetet.</li>
+    <li><b>Kapcsolók:</b> a bekapcsoltak körül vékony zöld gyűrű látszik.</li>
+    <li><b>Feliratok:</b> angolul, ahogy a launcher gombszerkesztője is mutatja őket.</li>
+    <li><b>Kontroller:</b> kontrollerrel is játszhatsz, telefonon és gépen egyaránt.</li>
+  </ul>
   </div>
   <footer><p class="upd">@@UPDATED@@</p></footer>
 </main>

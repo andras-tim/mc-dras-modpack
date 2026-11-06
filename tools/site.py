@@ -445,19 +445,23 @@ def controls_page(mods, cells, controls):
     def long_press(row):
         return f'<span class="w"><b>Hosszan:</b> {esc(row["long"])}</span>' if row.get('long') else ''
 
+    # a touch button as the launcher's editor shows it; the text of the page names one by @@TB:<label>@@
+    buttons = {}
     touch = []
     for group in controls['touch']:
         touch.append(f'  <p class="pt">{esc(group["title"])}</p>\n  <ul class="kl touch">')
         for row in group['rows']:
-            touch.append(f'    <li><span class="k"><span class="tb">{material_icon(row["icon"])}{esc(row.get("label", ""))}'
-                         f'</span></span><span class="a">{esc(row["action"])}{where(row.get("where"))}'
-                         f'{long_press(row)}</span></li>')
+            button = f'<span class="tb">{material_icon(row["icon"])}{esc(row.get("label", ""))}</span>'
+            if row.get('label'):
+                buttons.setdefault(row['label'], button)
+            touch.append(f'    <li><span class="k">{button}</span><span class="a">{esc(row["action"])}'
+                         f'{where(row.get("where"))}{long_press(row)}</span></li>')
         touch.append('  </ul>')
     touch_html = ('  <section class="act">\n    <div class="hero"><div class="amb" aria-hidden="true">'
                   f'{profile_icon}</div><div><h2>Érintéses gombok</h2><p>Az Amethyst::Dras gombjai a képernyőn. '
                   'A View vált a mindennapi gombok és az összes között.</p></div></div>\n'
                   + '\n'.join(touch) + '\n  </section>')
-    return keyboard_html, '\n'.join(gamepad), backdrop(['controllable-dras']), touch_html
+    return keyboard_html, '\n'.join(gamepad), backdrop(['controllable-dras']), touch_html, buttons
 
 
 def build_pages(output, header, footer):
@@ -470,7 +474,7 @@ def build_pages(output, header, footer):
         sys.exit(f'{MODS_TOML}: keys without a row in {CONTROLS_TOML}: ' + ', '.join(unknown))
     cells, sprite_css = build_sprite(mods, output)
     common = {'UPDATED': footer, 'MOD_COUNT': str(len(mods)), 'SPRITE_CSS': sprite_css}
-    keyboard, gamepad, gamepad_backdrop, touch = controls_page(mods, cells, controls)
+    keyboard, gamepad, gamepad_backdrop, touch, buttons = controls_page(mods, cells, controls)
     pages = {
         'contents': {**common, 'HEADER': header('contents/', '../'),
                      'MODS': mods_page(mods, activities, background, cells, controls)},
@@ -482,6 +486,10 @@ def build_pages(output, header, footer):
             page = f.read()
         for key, value in values.items():
             page = page.replace('@@' + key + '@@', value)
+        unknown = sorted(set(re.findall(r'@@TB:([^@]+)@@', page)) - set(buttons))
+        if unknown:
+            sys.exit(f'docs/{name}.html: no touch button labelled ' + ', '.join(unknown))
+        page = re.sub(r'@@TB:([^@]+)@@', lambda m: buttons[m.group(1)].replace('class="tb"', 'class="tb in"'), page)
         os.makedirs(os.path.join(output, name), exist_ok=True)
         with open(os.path.join(output, name, 'index.html'), 'w', encoding='utf-8') as f:
             f.write(page)
