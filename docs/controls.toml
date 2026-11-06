@@ -1,5 +1,5 @@
-# The controls page of the site (mc.dras.hu/iranyitas/), read by tools/site.py: the defaults of a new install.
-# A row's id is its address (iranyitas/#jei-r); docs/mods.toml points a mod to its rows by these ids.
+# The controls page of the site (mc.dras.hu/control/), read by tools/site.py: the defaults of a new install.
+# A row's id is its address (control/#jei-r); docs/mods.toml points a mod to its rows by these ids.
 # keys: as printed; "2×S" is S pressed twice, the count is printed beside the key
 
 [keyboard]

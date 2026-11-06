@@ -1,4 +1,4 @@
-# The mod list of the site (mc.dras.hu/modok/), read by tools/site.py.
+# The mod list of the site (mc.dras.hu/contents/), read by tools/site.py.
 # Name, version and side come from the release's mods/*.pw.toml; a mod of the release without an entry here fails the
 # build, an entry without a mod in the release is left out (it may wait for the next release).
 

@@ -10,6 +10,7 @@ Usage: python3 -I tools/phone-qr.py [--ref <git tag or branch of the pack>]   (d
 """
 import argparse
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -30,9 +31,10 @@ def latest_apk():
     with urllib.request.urlopen(urllib.request.Request(LATEST_RELEASE, headers={'User-Agent': 'mc-dras-modpack'})) as r:
         release = json.load(r)
     for asset in release['assets']:
-        if asset['name'] == 'amethyst-dras.apk':
+        # amethyst-dras-<version>.apk; up to 1.1.7-dras.12 amethyst-dras.apk
+        if re.fullmatch(r'amethyst-dras(-[0-9].*)?\.apk', asset['name']):
             return release['tag_name'], asset['browser_download_url']
-    sys.exit(f'No amethyst-dras.apk in release {release["tag_name"]}')
+    sys.exit(f'No amethyst-dras APK in release {release["tag_name"]}')
 
 
 def import_link(ref=None):

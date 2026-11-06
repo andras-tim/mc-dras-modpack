@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modok · mc.dras.hu</title>
-  <meta name="description" content="A mc.dras.hu családi Minecraft-szerver modjai: mire valók, melyik verzió fut">
+  <title>MC dras.hu</title>
+  <meta name="description" content="Az MC dras.hu családi Minecraft-szerver modjai: mire valók, melyik verzió fut">
   <link rel="icon" href="../pack/branding/profile-icon.png">
   <link rel="stylesheet" href="../site.css">
+  <script src="../site.js" defer></script>
   <link rel="stylesheet" href="../cards.css">
   <style>
     @@SPRITE_CSS@@
@@ -80,17 +81,10 @@
 </head>
 <body>
 <main>
-  <header>
-    <img src="../pack/branding/profile-icon.png" alt="">
-    <div>
-      <h1>mc.dras.hu</h1>
-      <p>Családi Minecraft-szerver</p>
-    </div>
-  </header>
-  @@MENU@@
+  @@HEADER@@
   <p class="lead">Mit lehet csinálni a szerveren? A szerveren és minden játékosnál ugyanez a @@MOD_COUNT@@ mod fut.</p>
 @@MODS@@
-  <footer>Minecraft @@MINECRAFT@@ · Forge @@FORGE@@ · modcsomag @@PACK_VERSION@@ · @@MOD_COUNT@@ mod</footer>
+  <footer><p class="upd">@@UPDATED@@</p></footer>
 </main>
 <script>
   // a row reached by an address (#jei, from the controls page) lights up; again on a click of the same address

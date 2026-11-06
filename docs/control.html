@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Irányítás · mc.dras.hu</title>
-  <meta name="description" content="A mc.dras.hu családi Minecraft-szerver billentyűi, kontroller- és érintéses kiosztása">
+  <title>MC dras.hu</title>
+  <meta name="description" content="Az MC dras.hu családi Minecraft-szerver billentyűi, kontroller- és érintéses kiosztása">
   <link rel="icon" href="../pack/branding/profile-icon.png">
   <link rel="stylesheet" href="../site.css">
+  <script src="../site.js" defer></script>
   <link rel="stylesheet" href="../cards.css">
   <style>
     @@SPRITE_CSS@@
@@ -65,14 +66,7 @@
 </head>
 <body>
 <main>
-  <header>
-    <img src="../pack/branding/profile-icon.png" alt="">
-    <div>
-      <h1>mc.dras.hu</h1>
-      <p>Családi Minecraft-szerver</p>
-    </div>
-  </header>
-  @@MENU@@
+  @@HEADER@@
   <p class="lead">Az új telepítés alapbeállításai. Mindegyik átállítható a játékban: Beállítások, Irányítás.</p>
   <div class="seg" role="radiogroup" aria-label="Eszköz">
     <label><input type="radio" name="device" id="dev-keyboard" data-key="billentyuzet" checked>
@@ -128,7 +122,7 @@
     forgatja a nézetet. A bekapcsolt kapcsolók körül vékony zöld gyűrű látszik. A gombszerkesztőben angol a felirat,
     ezért az is itt van. Kontroller is köthető a telefonhoz, ugyanazzal a kiosztással, mint gépen.</p>
   </div>
-  <footer>Minecraft @@MINECRAFT@@ · Forge @@FORGE@@ · modcsomag @@PACK_VERSION@@</footer>
+  <footer><p class="upd">@@UPDATED@@</p></footer>
 </main>
 <script>
   // a tab has an address (#kontroller); a row lights up from its address (#jei-r, #pad-a: the drawing links them), #jei

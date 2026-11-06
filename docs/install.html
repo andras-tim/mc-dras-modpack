@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>mc.dras.hu</title>
-  <meta name="description" content="A mc.dras.hu családi Minecraft-szerver: telepítés telefonra és gépre">
-  <link rel="icon" href="pack/branding/profile-icon.png">
-  <link rel="stylesheet" href="site.css">
+  <title>MC dras.hu</title>
+  <meta name="description" content="Az MC dras.hu családi Minecraft-szerver: telepítés telefonra és gépre">
+  <link rel="icon" href="../pack/branding/profile-icon.png">
+  <link rel="stylesheet" href="../site.css">
+  <script src="../site.js" defer></script>
   <style>
     /* the colours of the site are in site.css; these boxes keep their own */
     :root {
@@ -84,6 +85,15 @@
     .info p { margin: .4rem 0 0; }
     .info ul { padding-left: 1.1rem; }
     .info li { margin: .4rem 0; }
+    /* the last card of a path: how an update shows and what to do, not a numbered step */
+    section.upd h2 { display: flex; align-items: center; gap: .5rem; }
+    section.upd h2 svg { width: 1.3rem; height: 1.3rem; flex: none; fill: none; stroke: var(--accent); stroke-width: 2;
+                         stroke-linecap: round; stroke-linejoin: round; }
+    .ul { list-style: none; margin: .5rem 0 0; padding: 0; }
+    .ul li { display: grid; gap: .1rem; margin: 0; padding: .6rem 0; border-top: 1px solid var(--line); font-size: .92rem; }
+    .ul li:first-child { border-top: 0; }
+    .upd-obtainium, .upd-apk { display: none !important; }
+    main:has(#mode-obtainium:checked) .upd-obtainium, main:has(#mode-apk:checked) .upd-apk { display: grid !important; }
     /* a launcher's name with its icon, see AMETHYST and PRISM in tools/site.py */
     .app { white-space: nowrap; font-weight: 700; }
     /* a size with its unit and suffix stays on one line */
@@ -94,14 +104,7 @@
 </head>
 <body>
 <main>
-  <header>
-    <img src="pack/branding/profile-icon.png" alt="">
-    <div>
-      <h1>mc.dras.hu</h1>
-      <p>Családi Minecraft-szerver</p>
-    </div>
-  </header>
-  @@MENU@@
+  @@HEADER@@
 
   <h2 class="title">Telepítés</h2>
   <p class="note">Hol játszol?</p>
@@ -117,7 +120,7 @@
   <div class="cards" role="radiogroup">
     <label class="card"><input type="radio" name="launcher" id="launcher-amethyst" data-key="amethyst"
         data-parent="platform-android">
-      <img class="icon" src="icons/amethyst-dras.webp" alt="">Amethyst::Dras</label>
+      <img class="icon" src="../icons/amethyst-dras.webp" alt="">Amethyst::Dras</label>
   </div>
 
   <div class="panel" id="panel-amethyst">
@@ -128,7 +131,7 @@
   <div class="cards" role="radiogroup">
     <label class="card"><input type="radio" name="mode" id="mode-obtainium" data-key="obtainium"
         data-parent="launcher-amethyst">
-      <img class="icon" src="icons/obtainium.svg" alt="">Igen, Obtainiummal</label>
+      <img class="icon" src="../icons/obtainium.svg" alt="">Igen, Obtainiummal</label>
     <label class="card"><input type="radio" name="mode" id="mode-apk" data-key="manual"
         data-parent="launcher-amethyst">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v11M7.5 10l4.5 4.5 4.5-4.5M4 19.5h16"/></svg>Nem, kézzel frissítem</label>
@@ -153,8 +156,10 @@
   </div>
 
   <div class="panel" id="panel-apk">
-  <x-step-apk step="install" title="Amethyst::Dras telepítése" label="Amethyst::Dras letöltése" url="@@APK_URL@@"
-      qr="@@APK_QR@@" after="Mindig a legfrissebb kiadás jön le innen: frissíteni ugyanígy lehet."></x-step-apk>
+  <x-step-download step="install" title="Amethyst::Dras telepítése" label="Amethyst::Dras kiadás megnyitása"
+      url="@@APP_RELEASE_URL@@" qr="@@APP_RELEASE_QR@@" android="yes"
+      do="A kiadás oldalán, az <b>Assets</b> alatt koppints az <b>amethyst-dras-….apk</b> fájlra, nyisd meg a letöltött fájlt, és telepítsd."
+      after="Mindig a legfrissebb kiadás oldala nyílik meg: frissíteni ugyanígy lehet."></x-step-download>
   </div>
 
   <div class="panel" id="panel-android-rest">
@@ -187,6 +192,21 @@
         <b>Felbontás skálája</b> csúszkával (kisebb érték: gyorsabb játék, nagyobb érték: élesebb kép).</p>
     </details>
   </section>
+  <section class="upd" data-step="updates">
+    <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v4.5h-4.5"/></svg>Frissítések</h2>
+    <p class="note">Honnan tudod, hogy frissíteni kell, és mit teszel ilyenkor?</p>
+    <ul class="ul">
+      <li><b>Modok és Minecraft</b><span>Maguktól frissülnek: minden <b>Play</b> előtt csak a változások jönnek le.
+        Nincs teendőd.</span></li>
+      <li class="upd-obtainium"><b>Amethyst::Dras</b><span>Az <b>Obtainium</b> a háttérben figyeli és telepíti az új
+        verziót. Ha mégis frissítést jelez, nyisd meg, és koppints a <b>Frissítés</b> gombra.</span></li>
+      <li class="upd-apk"><b>Amethyst::Dras</b><span>Magától nem jelez. Ha szólunk, hogy új verzió van, nyisd meg ezt az
+        oldalt, és a telepítés lépésével tedd fel a régi fölé: a profilod és a beállításaid megmaradnak.</span></li>
+      <li><b>Profil</b><span>Ritkán változik (memória, érintős gombok). Ha szólunk, koppints újra a
+        <b>Profil hozzáadása</b> gombra: az alkalmazás megmutatja, mi változik, és a <b>Mentés</b> a meglévő profilt
+        frissíti.</span></li>
+    </ul>
+  </section>
   </div>
   </div>
   </div>
@@ -196,7 +216,7 @@
   <div class="cards" role="radiogroup">
     <label class="card"><input type="radio" name="launcher" id="launcher-prism" data-key="prism"
         data-parent="platform-pc">
-      <img class="icon" src="icons/prism-launcher.svg" alt="">Prism Launcher</label>
+      <img class="icon" src="../icons/prism-launcher.svg" alt="">Prism Launcher</label>
   </div>
 
   <div class="panel" id="panel-prism">
@@ -210,6 +230,19 @@
   <x-step-link step="profile" title="MC dras.hu profil hozzáadása" label="Profil hozzáadása" href="@@PRISM_LINK@@"
       manual="A @@PRISM@@ menüjében: <b>Add Instance › Import</b>" manual-url="@@PRISM_ZIP_URL@@"
       after="A modok minden indításkor maguktól frissülnek."></x-step-link>
+  <section class="upd" data-step="updates">
+    <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v4.5h-4.5"/></svg>Frissítések</h2>
+    <p class="note">Honnan tudod, hogy frissíteni kell, és mit teszel ilyenkor?</p>
+    <ul class="ul">
+      <li><b>Modok és Minecraft</b><span>Maguktól frissülnek: a <b>Prism Launcher</b> minden indításkor letölti a
+        változásokat. Nincs teendőd.</span></li>
+      <li><b>Prism Launcher</b><span>Windowson és macOS-en indításkor szól, ha van új verziója: fogadd el. Steam Decken
+        és a Flatpakos Linuxokon nem szól, ott a rendszer frissíti (Steam Decken az asztali mód <b>Discover</b>
+        alkalmazása).</span></li>
+      <li><b>Profil</b><span>Ritkán változik (memória, indítási beállítások). Ha szólunk, add hozzá újra a
+        <b>Profil hozzáadása</b> gombbal: új profilként kerül be, a régit utána törölheted.</span></li>
+    </ul>
+  </section>
   </div>
   </div>
 
@@ -218,6 +251,7 @@
     Az alkalmazás: <a href="https://github.com/andras-tim/Amethyst-Android">Amethyst::Dras</a>, az Amethyst launcher
     egy változata.
     <i>Ha a régi weboldalt keresed: <a href="https://sites.google.com/site/minecraftdrashu/">minecraftdrashu</a></i>
+    <p class="upd">@@UPDATED@@</p>
   </footer>
 </main>
 <script>

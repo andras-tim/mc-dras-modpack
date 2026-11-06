@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the site: docs/index.html with its links and QR codes, the mods and controls pages, the Prism profile zip
+"""Build the site: docs/install.html with its links and QR codes, the mods and controls pages, the Prism profile zip
 and the released pack.
 
 A page template uses the parts under docs/parts/ as `<x-NAME attr="...">` tags, see expand_parts().
@@ -9,6 +9,7 @@ The mods and controls pages come from docs/mods.toml and docs/controls.toml, wit
 CI publishes it on GitHub Pages when a release is published. Needs `qrencode`, Pillow and the network (the icons).
 Usage (from the pack root): python3 -I tools/site.py <output dir> <release tag of the pack>
 """
+import datetime
 import html
 import importlib.util
 import io
@@ -22,22 +23,31 @@ import tarfile
 import tomllib
 import urllib.parse
 import urllib.request
+import zoneinfo
 
 SITE_URL = 'https://mc.dras.hu/'
 APP_REPO_URL = 'https://github.com/andras-tim/Amethyst-Android'
-APK_URL = APP_REPO_URL + '/releases/latest/download/amethyst-dras.apk'
+# the page of the latest release: its APK is named with its version, so no download link stays valid across releases
+APP_RELEASE_URL = APP_REPO_URL + '/releases/latest'
 # the release signing key's certificate: Obtainium refuses an update signed by anything else
 APK_CERT_SHA256 = '296EB0B2F9FD3EEA8D2607F0C0B95DA8210E7540E50008861C3D3AA4DE46D764'
 # the F-Droid flavour for arm64 (33 MB instead of 89 for every CPU): the launcher runs on arm64 only anyway
 OBTAINIUM_APK_URL = 'https://github.com/ImranR98/Obtainium/releases/latest/download/app-arm64-v8a-fdroid-release.apk'
 PRISM_ZIP = 'mc-dras-hu-prism-profile.zip'
+PACK_REPO_URL = 'https://github.com/andras-tim/mc-dras-modpack'
+# the header's version links
+MINECRAFT_URL = 'https://minecraft.wiki/w/Java_Edition_{}'
+FORGE_URL = 'https://files.minecraftforge.net/net/minecraftforge/forge/index_{}.html'
+# an anvil for Forge, in the 24 px grid of Material Symbols (they have none)
+SVG_ANVIL = ('<svg class="vi" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 6.5h18.5v2.8h-3.4c-.7 1.7-2.1 2.9-3.9 '
+             '3.3v2h2.4v2.6H7.7v-2.6h2.4v-2c-2.4-.5-4.1-1.9-4.8-3.6-1.2-.2-2.2-1.1-2.8-2.5zM6 19h12.5v2.5H6z"/></svg>')
 
 
 def obtainium_link():
     """An obtainium://app/ link that adds the launcher with its settings; unset settings get Obtainium's defaults.
 
-    Only the fields Obtainium requires, the source comes from the URL. The release tag is the APK's versionName, so
-    Obtainium's version detection works as is. `:/,` stay unquoted for a shorter link and QR code.
+    Only the fields Obtainium requires, the source comes from the URL. The release tag is the APK's versionName (since
+    1.1.7-dras.12), so Obtainium's version detection works as is. `:/,` stay unquoted for a shorter link and QR code.
     """
     app = {
         'id': 'hu.dras.amethyst',
@@ -45,8 +55,8 @@ def obtainium_link():
         'author': 'andras-tim',
         'name': 'Amethyst::Dras',
         'additionalSettings': json.dumps({
-            # every release has the APK twice, under its versioned and its fixed name
-            'apkFilterRegEx': r'^amethyst-dras\.apk$',
+            # amethyst-dras-1.1.7-dras.13.apk; up to 1.1.7-dras.12 the release named it amethyst-dras.apk
+            'apkFilterRegEx': r'^amethyst-dras(-[0-9].*)?\.apk$',
             'allowedSigningCertHashes': APK_CERT_SHA256,
         }, separators=(',', ':')),
     }
@@ -129,9 +139,10 @@ MATERIAL_SVG = ('https://raw.githubusercontent.com/google/material-design-icons/
                 'symbols/web/{0}/materialsymbolsoutlined/{0}_24px.svg')
 USER_AGENT = 'mc.dras.hu site build (github.com/andras-tim/mc-dras-modpack)'
 MENU = [
-    ('', 'Telepítés', '<path d="M12 3.5v11M7.5 10l4.5 4.5 4.5-4.5M4 19.5h16"/>'),
-    ('modok/', 'Modok', '<path d="M12 2.5 3.5 7v10l8.5 4.5 8.5-4.5V7z"/><path d="M3.5 7l8.5 4.5L20.5 7M12 11.5v10"/>'),
-    ('iranyitas/', 'Irányítás', '<path d="M7.2 7.5h9.6a4.2 4.2 0 0 1 4.1 4.9l-.7 4a2.3 2.3 0 0 1-4 1l-1.7-2.1H9.5l-1.7 '
+    ('install/', 'Telepítés', '<path d="M12 3.5v11M7.5 10l4.5 4.5 4.5-4.5M4 19.5h16"/>'),
+    ('contents/', 'Tartalom', '<path d="M12 2.5 3.5 7v10l8.5 4.5 8.5-4.5V7z"/>'
+                              '<path d="M3.5 7l8.5 4.5L20.5 7M12 11.5v10"/>'),
+    ('control/', 'Irányítás', '<path d="M7.2 7.5h9.6a4.2 4.2 0 0 1 4.1 4.9l-.7 4a2.3 2.3 0 0 1-4 1l-1.7-2.1H9.5l-1.7 '
                                 '2.1a2.3 2.3 0 0 1-4-1l-.7-4a4.2 4.2 0 0 1 4.1-4.9z"/><path d="M8 10.5v3M6.5 12h3M15.5 '
                                 '11h.01M17.5 13h.01"/>'),
 ]
@@ -158,6 +169,37 @@ SVG_CHEVRON = '<svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><pat
 def fetch(url):
     with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': USER_AGENT}), timeout=30) as r:
         return r.read()
+
+
+def masthead(pack, tag):
+    """The header of every page as a function of the page's place: the site's name, the versions of Minecraft, Forge
+    and the pack (each a link, the pack's to its release), and the menu in a bar that stays on top (see site.js)."""
+    cube = material_icon('deployed_code').replace('<svg ', '<svg class="vi" ', 1)
+    cube_path = re.search(r'<path d="([^"]+)"', cube).group(1)
+    # three cubes, two below and one on top, for the pack of mods
+    cubes = ('<svg class="vi" viewBox="0 -960 960 960" aria-hidden="true">'
+             + ''.join(f'<path transform="translate({x} {y}) scale(.5)" d="{cube_path}"/>'
+                       for x, y in ((240, -480), (0, 0), (480, 0))) + '</svg>')
+    mc, forge = pack['versions']['minecraft'], pack['versions']['forge']
+    parts = [('Minecraft', mc, MINECRAFT_URL.format(mc), cube),
+             ('Forge', forge, FORGE_URL.format(mc), SVG_ANVIL),
+             ('Modcsomag', pack['version'], f'{PACK_REPO_URL}/releases/tag/{tag}', cubes)]
+    links = ''.join(f'<a href="{esc(url)}" target="_blank" rel="noopener" title="{name} {esc(version)}" '
+                    f'aria-label="{name} {esc(version)}">{icon}<kbd>{esc(version)}</kbd></a>'
+                    for name, version, url, icon in parts)
+
+    def page(current, root):
+        icon = f'{root}pack/branding/profile-icon.png'
+        return (f'<header class="top"><img src="{icon}" alt=""><div class="tt"><h1>MC dras.hu</h1>'
+                f'<p>Családi Minecraft-szerver</p></div><div class="vcol" aria-label="Verziók">{links}</div></header>\n'
+                f'  <div class="sbar"><img src="{icon}" alt="">{menu(current, root)}</div>')
+    return page
+
+
+def updated():
+    """The time of the build: the site's last version."""
+    now = datetime.datetime.now(zoneinfo.ZoneInfo('Europe/Budapest')).replace(microsecond=0)
+    return f'Frissítve: <time datetime="{now.isoformat()}">{now.strftime("%Y-%m-%d %H:%M:%S")}</time>'
 
 
 def menu(current, root):
@@ -273,7 +315,7 @@ def key_caps(keys):
 
 
 def mods_page(mods, activities, background, cells, controls):
-    """The cards of docs/modok.html."""
+    """The cards of docs/contents.html."""
     icon = lambda key, extra='': f'<i class="ic{extra}" style="{cells[key]}"></i>'
     ext = lambda m: (f'<a class="ext" href="{esc(m["url"])}" target="_blank" rel="noopener" '
                      f'aria-label="{esc(m["name"])} oldala">{SVG_EXT}</a>')
@@ -298,10 +340,10 @@ def mods_page(mods, activities, background, cells, controls):
             keys = ''
             if m['keys']:
                 caps = key_caps([k for row in m['keys'] for k in key_rows[row]['keys']])
-                keys = (f'<span class="sp" aria-hidden="true"></span><a class="keys" href="../iranyitas/#{key}" '
+                keys = (f'<span class="sp" aria-hidden="true"></span><a class="keys" href="../control/#{key}" '
                         f'aria-label="{esc(m["name"])} billentyűi">{SVG_KEYBOARD}{caps}</a>')
             if m['panel']:
-                keys += (f'<span class="sp" aria-hidden="true"></span><a class="keys" href="../iranyitas/#{m["panel"]}" '
+                keys += (f'<span class="sp" aria-hidden="true"></span><a class="keys" href="../control/#{m["panel"]}" '
                          f'aria-label="A kontroller kiosztása">{SVG_GAMEPAD}</a>')
             row_class = ' has' if m['addons'] else ''
             out.append(f'      <li id="{key}"><div class="row{row_class}">{icon(key)}<div class="tx">'
@@ -347,14 +389,14 @@ def material_icon(name):
 
 
 def controls_page(mods, cells, controls):
-    """The panels of docs/iranyitas.html: keyboard, gamepad and touch."""
+    """The panels of docs/control.html: keyboard, gamepad and touch."""
     icon = lambda key: f'<i class="ic" style="{cells[key]}"></i>'
     backdrop = lambda keys: ''.join(icon(k) for k in keys if k in cells)
     profile_icon = '<img src="../pack/branding/profile-icon.png" alt="">'
 
     def mod_link(key):
         name = esc(mods[key]['name'])
-        return f'<a class="m" href="../modok/#{key}" aria-label="{name} a Modok oldalon">{icon(key)}</a>'
+        return f'<a class="m" href="../contents/#{key}" aria-label="{name} a Tartalom oldalon">{icon(key)}</a>'
 
     def card(title, text, amb, rows, list_class='kl'):
         return ('  <section class="act">\n'
@@ -376,7 +418,7 @@ def controls_page(mods, cells, controls):
                  for row in keyboard['base']]
     with_keys = list(dict.fromkeys(row['mod'] for row in keyboard['mods'] if row['mod'] in mods))
     keyboard_html = '\n'.join([
-        card('A modok billentyűi', 'Csak a modokban működnek. Az ikon a mod sorára visz a Modok oldalon.',
+        card('A modok billentyűi', 'Csak a modokban működnek. Az ikon a mod sorára visz a Tartalom oldalon.',
              backdrop(with_keys[:3]), mod_rows),
         f'  <p class="note">{keyboard["note"]}</p>',
         card('Alap Minecraft', 'A játék saját billentyűi, mod nélkül is így működnek.', profile_icon, base_rows),
@@ -418,8 +460,8 @@ def controls_page(mods, cells, controls):
     return keyboard_html, '\n'.join(gamepad), backdrop(['controllable-dras']), touch_html
 
 
-def build_pages(output):
-    """modok/ and iranyitas/: the mods of the released pack and the controls of a new install."""
+def build_pages(output, header, footer):
+    """contents/ and control/: the mods of the released pack and the controls of a new install."""
     mods, activities, background = load_mods(output)
     with open(CONTROLS_TOML, 'rb') as f:
         controls = tomllib.load(f)
@@ -427,16 +469,13 @@ def build_pages(output):
     if unknown:
         sys.exit(f'{MODS_TOML}: keys without a row in {CONTROLS_TOML}: ' + ', '.join(unknown))
     cells, sprite_css = build_sprite(mods, output)
-    with open(os.path.join(output, 'pack', 'pack.toml'), 'rb') as f:
-        pack = tomllib.load(f)
-    common = {'MINECRAFT': pack['versions']['minecraft'], 'FORGE': pack['versions']['forge'],
-              'PACK_VERSION': pack['version'], 'MOD_COUNT': str(len(mods)), 'SPRITE_CSS': sprite_css}
+    common = {'UPDATED': footer, 'MOD_COUNT': str(len(mods)), 'SPRITE_CSS': sprite_css}
     keyboard, gamepad, gamepad_backdrop, touch = controls_page(mods, cells, controls)
     pages = {
-        'modok': {**common, 'MENU': menu('modok/', '../'), 'MODS': mods_page(mods, activities, background, cells,
-                                                                               controls)},
-        'iranyitas': {**common, 'MENU': menu('iranyitas/', '../'), 'KEYBOARD': keyboard, 'GAMEPAD': gamepad,
-                      'GAMEPAD_BACKDROP': gamepad_backdrop, 'TOUCH': touch},
+        'contents': {**common, 'HEADER': header('contents/', '../'),
+                     'MODS': mods_page(mods, activities, background, cells, controls)},
+        'control': {**common, 'HEADER': header('control/', '../'), 'KEYBOARD': keyboard, 'GAMEPAD': gamepad,
+                    'GAMEPAD_BACKDROP': gamepad_backdrop, 'TOUCH': touch},
     }
     for name, values in pages.items():
         with open(os.path.join('docs', name + '.html'), encoding='utf-8') as f:
@@ -453,9 +492,12 @@ def main():
     os.makedirs(output, exist_ok=True)
     publish_pack(output, tag)
     shutil.copytree('docs/icons', os.path.join(output, 'icons'), dirs_exist_ok=True)
-    for name in ('site.css', 'cards.css'):
+    for name in ('site.css', 'cards.css', 'site.js'):
         shutil.copy(os.path.join('docs', name), output)
-    build_pages(output)
+    with open(os.path.join(output, 'pack', 'pack.toml'), 'rb') as f:
+        header = masthead(tomllib.load(f), tag)
+    footer = updated()
+    build_pages(output, header, footer)
     subprocess.run([sys.executable, '-I', 'tools/prism-profile.py', '-o', os.path.join(output, PRISM_ZIP)], check=True)
 
     profile = phone_qr()
@@ -463,10 +505,10 @@ def main():
     prism_zip_url = SITE_URL + PRISM_ZIP
     values = {
         # a launcher's name in the text, with its icon
-        'AMETHYST': '<b class="app"><img src="icons/amethyst-dras.webp" alt="">Amethyst::Dras</b>',
-        'PRISM': '<b class="app"><img src="icons/prism-launcher.svg" alt="">Prism Launcher</b>',
-        'APK_URL': APK_URL,
-        'APK_QR': qr_svg(APK_URL),
+        'AMETHYST': '<b class="app"><img src="../icons/amethyst-dras.webp" alt="">Amethyst::Dras</b>',
+        'PRISM': '<b class="app"><img src="../icons/prism-launcher.svg" alt="">Prism Launcher</b>',
+        'APP_RELEASE_URL': APP_RELEASE_URL,
+        'APP_RELEASE_QR': qr_svg(APP_RELEASE_URL),
         'APP_REPO_URL': APP_REPO_URL,
         'OBTAINIUM_APK_URL': OBTAINIUM_APK_URL,
         'OBTAINIUM_APK_QR': qr_svg(OBTAINIUM_APK_URL),
@@ -479,14 +521,32 @@ def main():
         'PROFILE_RAM_MB': str(profile.PROFILE_RAM_MB),
         'PRISM_ZIP_URL': prism_zip_url,
         'PRISM_LINK': 'prismlauncher://import?url=' + urllib.parse.quote(prism_zip_url, safe=''),
-        'MENU': menu('', ''),
+        'HEADER': header('install/', '../'),
+        'UPDATED': footer,
     }
-    with open('docs/index.html', encoding='utf-8') as f:
+    with open('docs/install.html', encoding='utf-8') as f:
         page = expand_parts(f.read())
     for name, value in values.items():
         page = page.replace('@@' + name + '@@', value)
-    with open(os.path.join(output, 'index.html'), 'w', encoding='utf-8') as f:
+    os.makedirs(os.path.join(output, 'install'), exist_ok=True)
+    with open(os.path.join(output, 'install', 'index.html'), 'w', encoding='utf-8') as f:
         f.write(page)
+    redirects(output)
+
+
+# the addresses before 2026-11-06, which links and bookmarks may still hold, and the site's root
+REDIRECTS = {'': 'install/', 'modok/': '../contents/', 'iranyitas/': '../control/'}
+
+
+def redirects(output):
+    """A page per old address that forwards to its new place, with the part after # (a route or a row)."""
+    for old, new in REDIRECTS.items():
+        os.makedirs(os.path.join(output, old), exist_ok=True)
+        with open(os.path.join(output, old, 'index.html'), 'w', encoding='utf-8') as f:
+            f.write('<!doctype html>\n<html lang="hu">\n<head>\n<meta charset="utf-8">\n<title>MC dras.hu</title>\n'
+                    f'<meta http-equiv="refresh" content="0; url={new}">\n'
+                    f'<script>location.replace({json.dumps(new)} + location.hash)</script>\n'
+                    f'</head>\n<body><a href="{new}">MC dras.hu</a></body>\n</html>\n')
 
 
 if __name__ == '__main__':

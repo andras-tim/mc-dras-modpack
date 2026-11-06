@@ -30,8 +30,9 @@
   }
 }
 * { box-sizing: border-box; }
-/* the scrollbar always shows: a short page or a closed card does not shift the page sideways */
-html { overflow-y: scroll; }
+/* the scrollbar always shows: a short page or a closed card does not shift the page sideways; an anchor stops below
+   the menu bar */
+html { overflow-y: scroll; scroll-padding-top: 4rem; --p: 0; }
 body {
   margin: 0; background: var(--bg); color: var(--fg);
   font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -41,11 +42,37 @@ header { display: flex; align-items: center; gap: .9rem; margin-bottom: 1rem; }
 header img { width: 56px; height: 56px; image-rendering: pixelated; }
 h1 { font-size: 1.6rem; margin: 0; }
 header p { margin: .1rem 0 0; }
+header .tt { min-width: 0; flex: 1; }
+/* the versions, muted beside the name: an icon and a key cap each, the icons in one column */
+.vcol { display: flex; flex-direction: column; gap: 2px; flex: none; color: var(--muted); }
+.vcol a { display: flex; align-items: center; gap: .3rem; min-height: 24px; padding: 0 .25rem; border-radius: 6px;
+          color: inherit; text-decoration: none; }
+.vcol a:hover, .vcol a:focus-visible { background: var(--tint); color: var(--accent); }
+.vcol .vi { width: 15px; height: 15px; flex: none; fill: currentColor; }
+.vcol kbd { font: 700 .68rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; padding: .24em .36em; border-radius: 5px;
+            background: var(--card); border: 1px solid var(--line); border-bottom-width: 2px; color: var(--fg); }
+/* the time of the site's last build: quiet, centered, below a short rule */
+footer .upd { margin: 2rem auto 0; padding-top: .9rem; width: min(100%, 16rem); border-top: 1px solid var(--line);
+              text-align: center; font-size: .74rem; letter-spacing: .02em; color: var(--muted); opacity: .8; }
+footer .upd time { font-variant-numeric: tabular-nums; }
 footer { color: var(--muted); font-size: .85rem; margin-top: 1.5rem; }
 footer a { color: inherit; }
+/* the menu stays on top while scrolling. Once the header's icon has gone behind it, the next few pixels of scrolling
+   (--p from 0 to 1, site.js) fade the bar's icon and backdrop in and narrow the menu beside it */
+.sbar { position: sticky; top: 0; z-index: 10; isolation: isolate; display: flex; align-items: center;
+        margin: 0 -1rem 1.2rem; padding: .35rem 1rem; }
+.sbar::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--bg); opacity: var(--p);
+                box-shadow: 0 1px 0 var(--line), 0 4px 12px rgb(0 0 0 / .06); }
+.sbar > img { width: calc(var(--p) * 32px); height: 32px; margin-right: calc(var(--p) * .5rem); opacity: var(--p);
+              flex: none; image-rendering: pixelated; }
+/* on a small phone the menu's own icons give way to the labels as the bar's icon comes in */
+@media (max-width: 400px) {
+  .sbar nav.menu a { gap: calc((1 - var(--p)) * .4rem); }
+  .sbar nav.menu svg { width: calc((1 - var(--p)) * 18px); }
+}
 
 /* the menu of the pages */
-nav.menu { display: grid; grid-template-columns: repeat(3, 1fr); gap: .3rem; padding: .3rem; margin-bottom: 1.2rem;
+nav.menu { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: .3rem; padding: .3rem;
            background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
 nav.menu a { display: flex; align-items: center; justify-content: center; gap: .4rem; min-height: 44px;
              border-radius: 9px; text-decoration: none; color: var(--fg); font-weight: 600; font-size: .95rem; }
