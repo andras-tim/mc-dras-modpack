@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Build a Prism Launcher profile zip of this pack, so importing it leaves nothing to fill in by hand.
 
-The settings live in prism/: instance.cfg (memory, pre-launch command) and options.txt (the graphics of a new PC
-install). This tool adds the Minecraft and Forge versions from pack.toml and packwiz-installer-bootstrap.
+The settings live in prism/: instance.cfg (memory, pre-launch command) and options.txt (what a new PC install sets
+otherwise than the pack's options.txt, e.g. a longer view distance). This tool adds the Minecraft and Forge versions
+from pack.toml and packwiz-installer-bootstrap.
 
 Prism imports the zip from a file or a URL (Add Instance, Import). The zip holds no secret.
 Usage: python3 -I tools/prism-profile.py -o <file.zip> [--url <pack.toml URL>] [--name <profile name>]
@@ -46,6 +47,20 @@ def mmc_pack(versions):
     }, indent=4) + '\n'
 
 
+def options():
+    """The pack's options.txt with the lines of prism/options.txt over it.
+
+    The instance must start with the whole file: packwiz keeps an existing options.txt (preserve), so a Prism profile
+    with only its own lines never got the pack's key bindings.
+    """
+    def read(path):
+        with open(path, encoding='utf-8') as f:
+            return dict(line.rstrip('\n').split(':', 1) for line in f if ':' in line)
+    merged = read('options.txt')
+    merged.update(read('prism/options.txt'))
+    return ''.join(f'{key}:{value}\n' for key, value in merged.items())
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('-o', '--output', required=True, help='zip file to write')
@@ -62,7 +77,7 @@ def main():
         z.writestr('instance.cfg', instance_cfg)
         z.writestr('mmc-pack.json', mmc_pack(versions))
         z.write('branding/profile-icon.png', ICON)
-        z.write('prism/options.txt', '.minecraft/options.txt')
+        z.writestr('.minecraft/options.txt', options())
         z.writestr(f'.minecraft/{BOOTSTRAP_NAME}', jar)
     print(args.output)
 

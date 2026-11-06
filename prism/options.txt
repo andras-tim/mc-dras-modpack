@@ -1,5 +1,1 @@
 renderDistance:10
-simulationDistance:6
-graphicsMode:0
-particles:2
-maxFps:60
