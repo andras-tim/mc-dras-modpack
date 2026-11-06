@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Irányítás · mc.dras.hu</title>
+  <meta name="description" content="A mc.dras.hu családi Minecraft-szerver billentyűi, kontroller- és érintéses kiosztása">
+  <link rel="icon" href="../pack/branding/profile-icon.png">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../cards.css">
+  <style>
+    @@SPRITE_CSS@@
+    /* the device: radio buttons styled as a segmented control, the picked one shows its panel */
+    .seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: .25rem; padding: .25rem; border-radius: 12px;
+           background: var(--chip); border: 1px solid var(--line); margin-bottom: 1rem; }
+    .seg label { position: relative; display: flex; align-items: center; justify-content: center; gap: .35rem;
+                 min-height: 40px; border-radius: 9px; font-size: .88rem; font-weight: 650; color: var(--muted);
+                 cursor: pointer; }
+    .seg input { position: absolute; opacity: 0; pointer-events: none; }
+    .seg label:has(input:checked) { background: var(--card); color: var(--fg); box-shadow: 0 1px 3px rgb(0 0 0 / .12); }
+    .seg label:has(input:focus-visible) { outline: 2px solid var(--accent); }
+    .seg .ico { width: 17px; height: 17px; }
+    .panel { display: none; }
+    main:has(#dev-keyboard:checked) #panel-keyboard, main:has(#dev-gamepad:checked) #panel-gamepad,
+    main:has(#dev-touch:checked) #panel-touch { display: block; }
+    .kl { list-style: none; margin: 0; padding: 0; }
+    .kl li { display: grid; grid-template-columns: 5.6rem 1fr auto; gap: .7rem; align-items: center; padding: .6rem 1.1rem;
+             border-top: 1px solid var(--line); min-height: 48px; scroll-margin-top: 1rem; }
+    .kl li:first-child { border-top: 0; }
+    .kl .k { display: flex; flex-wrap: wrap; gap: .2rem; }
+    .kl .a { font-weight: 600; line-height: 1.3; font-size: .94rem; }
+    .kl .w { display: block; font-size: .8rem; color: var(--muted); font-weight: 450; }
+    .kl .m { display: grid; place-items: center; width: 40px; height: 40px; margin: -.3rem -.4rem -.3rem 0; border-radius: 9px; }
+    .kl .m .ic { width: 28px; height: 28px; border-radius: 6px; }
+    .kl a.m:hover, .kl a.m:active, .kl a.m:focus-visible { background: var(--tint); }
+    .kl.touch li { grid-template-columns: 8.6rem 1fr; }
+    .pt { margin: 1rem 1.1rem .1rem; font-size: .72rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+          color: var(--muted); }
+    .pad { display: block; width: 100%; height: auto; padding: .8rem 1.1rem 0; }
+    .pad .body { fill: var(--card); stroke: var(--line); stroke-width: 2; }
+    .pad .btn { fill: var(--chip); stroke: var(--line); stroke-width: 1.5; }
+    .pad .body { filter: drop-shadow(0 2px 3px rgb(0 0 0 / .12)); }
+    .pad .cap { fill: var(--card); stroke: var(--line); stroke-width: 1.5; }
+    .pad .well { fill: none; stroke: var(--line); stroke-width: 1.5; }
+    .pad .logo { fill: var(--chip); stroke: var(--line); stroke-width: 1.5; }
+    .pad text { font: 700 11px system-ui, sans-serif; fill: var(--fg); text-anchor: middle; dominant-baseline: central; }
+    .pad text.s { font-size: 8.5px; font-weight: 650; fill: var(--muted); }
+    .pad a { cursor: pointer; }
+    .pad text, .pad .sym { pointer-events: none; }
+    .pad a:hover .btn, .pad a:focus-visible .btn { fill: var(--tint); stroke: var(--accent); }
+    .pad .sym { fill: none; stroke: var(--fg); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
+    .pb { display: inline-flex; align-items: center; justify-content: center; min-width: 1.9rem; height: 1.9rem;
+          padding: 0 .45rem; border-radius: 999px; background: var(--chip); border: 1.5px solid var(--line);
+          font: 700 .75rem/1 system-ui, sans-serif; color: var(--fg); white-space: nowrap; }
+    .pb.sq { border-radius: 7px; }
+    .pb .arrow { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2.8; stroke-linecap: round;
+                 stroke-linejoin: round; }
+    /* a touch button: its icon and its label as the launcher's editor shows them */
+    .tb { display: inline-flex; align-items: center; gap: .4rem; padding: .2rem .55rem .2rem .3rem; border-radius: 9px;
+          background: var(--chip); border: 1.5px solid var(--line); font: 650 .8rem/1.2 system-ui, sans-serif;
+          color: var(--fg); white-space: nowrap; }
+    .tb svg { width: 20px; height: 20px; fill: currentColor; }
+    .tb:has(> svg:only-child) { padding: .2rem .3rem; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="../pack/branding/profile-icon.png" alt="">
+    <div>
+      <h1>mc.dras.hu</h1>
+      <p>Családi Minecraft-szerver</p>
+    </div>
+  </header>
+  @@MENU@@
+  <p class="lead">Az új telepítés alapbeállításai. Mindegyik átállítható a játékban: Beállítások, Irányítás.</p>
+  <div class="seg" role="radiogroup" aria-label="Eszköz">
+    <label><input type="radio" name="device" id="dev-keyboard" data-key="billentyuzet" checked>
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2.5"/><path d="M6.5 10h1M10.5 10h1M14.5 10h1M17.5 10h.5M8 14h8"/></svg>Billentyűzet</label>
+    <label><input type="radio" name="device" id="dev-gamepad" data-key="kontroller">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 7.5h9.6a4.2 4.2 0 0 1 4.1 4.9l-.7 4a2.3 2.3 0 0 1-4 1l-1.7-2.1H9.5l-1.7 2.1a2.3 2.3 0 0 1-4-1l-.7-4a4.2 4.2 0 0 1 4.1-4.9z"/><path d="M8 10.5v3M6.5 12h3M15.5 11h.01M17.5 13h.01"/></svg>Kontroller</label>
+    <label><input type="radio" name="device" id="dev-touch" data-key="telefon">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>Telefon</label>
+  </div>
+
+  <div class="panel" id="panel-keyboard">
+@@KEYBOARD@@
+  </div>
+
+  <div class="panel" id="panel-gamepad">
+  <section class="act">
+    <div class="hero"><div class="amb" aria-hidden="true">@@GAMEPAD_BACKDROP@@</div>
+      <div><h2>Xbox-kontroller</h2><p>A Controllable::Dras alapkiosztása, gépen és telefonon is.</p></div></div>
+    <!-- a button links to its row below -->
+    <svg class="pad" viewBox="0 0 360 236" role="img" aria-label="Xbox-kontroller gombjai">
+    <a href="#pad-lt"><path class="btn" d="M66 34c2-16 10-26 22-26s20 10 22 26z"/><text class="s" x="88" y="24">LT</text></a>
+    <a href="#pad-rt"><path class="btn" d="M250 34c2-16 10-26 22-26s20 10 22 26z"/><text class="s" x="272" y="24">RT</text></a>
+    <a href="#pad-lb"><path class="btn" d="M38 64c20-20 56-30 96-30v11c-36 0-66 9-86 26z"/><text class="s" x="104" y="39.5">LB</text></a>
+    <a href="#pad-rb"><path class="btn" d="M322 64c-20-20-56-30-96-30v11c36 0 66 9 86 26z"/><text class="s" x="256" y="39.5">RB</text></a>
+    <path class="body" d="M48 60c22-12 52-17 86-17h92c34 0 64 5 86 17 14 10 24 44 32 92 6 34 8 56 2 66-8 12-30 13-42 3-12-10-22-20-42-22-32-3-132-3-164 0-20 2-30 12-42 22-12 10-34 9-42-3-6-10-4-32 2-66 8-48 18-82 32-92z"/>
+    <circle class="logo" cx="180" cy="76" r="12"/>
+    <rect class="logo" x="174" y="126" width="12" height="8" rx="3"/>
+    <circle class="well" cx="92" cy="111" r="27"/>
+    <a href="#pad-ls"><circle class="btn" cx="92" cy="111" r="20"/><circle class="cap" cx="92" cy="111" r="13"/><text x="92" y="111">L</text></a>
+    <circle class="well" cx="230" cy="164" r="26"/>
+    <a href="#pad-rs"><circle class="btn" cx="230" cy="164" r="19"/><circle class="cap" cx="230" cy="164" r="12"/><text x="230" y="164">R</text></a>
+    <circle class="well" cx="138" cy="160" r="29"/>
+    <rect class="btn" x="131" y="153" width="14" height="14"/>
+    <a href="#pad-up"><path class="btn" d="M131 153v-15a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v15z"/></a>
+    <a href="#pad-down"><path class="btn" d="M131 167v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-15z"/></a>
+    <a href="#pad-left"><path class="btn" d="M131 153h-15a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h15z"/></a>
+    <a href="#pad-right"><path class="btn" d="M145 153h15a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-15z"/></a>
+    <a href="#pad-view"><circle class="btn" cx="156" cy="111" r="8"/><path class="sym" d="M151.7 109.6h5.6v4.6h-5.6zM154.2 109.6v-1.8h5.6v4.6h-2.5"/></a>
+    <a href="#pad-menu"><circle class="btn" cx="204" cy="111" r="8"/><path class="sym" d="M200 108.4h8M200 111h8M200 113.6h8"/></a>
+    <a href="#pad-y"><circle class="btn" cx="266" cy="88" r="11"/><text x="266" y="88">Y</text></a>
+    <a href="#pad-x"><circle class="btn" cx="245" cy="109" r="11"/><text x="245" y="109">X</text></a>
+    <a href="#pad-b"><circle class="btn" cx="287" cy="109" r="11"/><text x="287" y="109">B</text></a>
+    <a href="#pad-a"><circle class="btn" cx="266" cy="130" r="11"/><text x="266" y="130">A</text></a>
+    </svg>
+@@GAMEPAD@@
+  </section>
+  <p class="note">Mindegyik átállítható a Controllable beállításaiban (gyorsmenü, Controllable beállítások).</p>
+  </div>
+
+  <div class="panel" id="panel-touch">
+@@TOUCH@@
+  <p class="note">A gombokon az ikon látszik, a gombszerkesztőben és a launcher menüjében angol a felirat, ezért mindkettő
+    itt van. Kontroller is köthető a telefonhoz, ugyanazzal a kiosztással, mint gépen.</p>
+  </div>
+  <footer>Minecraft @@MINECRAFT@@ · Forge @@FORGE@@ · modcsomag @@PACK_VERSION@@</footer>
+</main>
+<script>
+  // a tab has an address (#kontroller); a row lights up from its address (#jei-r, #pad-a: the drawing links them), #jei
+  // (from the mods page) every row of the mod
+  const tabs = [...document.querySelectorAll('.seg input')];
+  tabs.forEach(tab => tab.addEventListener('change', () => history.replaceState(null, '', '#' + tab.dataset.key)));
+  function flash() {
+    const key = decodeURIComponent(location.hash.slice(1));
+    if (!key) return;
+    const tab = tabs.find(t => t.dataset.key === key);
+    if (tab) {
+      tab.checked = true;
+      document.querySelector('.seg').scrollIntoView();
+      return;
+    }
+    const one = document.getElementById(key);
+    const rows = one ? [one] : [...document.querySelectorAll(`[data-mod="${CSS.escape(key)}"]`)];
+    if (!rows.length) return;
+    // the tab of the row's panel: panel-gamepad -> dev-gamepad
+    document.getElementById(rows[0].closest('.panel').id.replace('panel-', 'dev-')).checked = true;
+    rows[0].scrollIntoView({ block: 'center' });
+    rows.forEach(row => { row.classList.remove('flash'); void row.offsetWidth; row.classList.add('flash'); });
+  }
+  addEventListener('hashchange', flash);
+  flash();
+</script>
+</body>
+</html>

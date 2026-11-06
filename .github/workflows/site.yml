@@ -24,8 +24,9 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
-      - name: Install qrencode
-        run: sudo apt-get update && sudo apt-get install -y qrencode
+      # qrencode: the QR codes; Pillow: the mod icons in one image
+      - name: Install qrencode and Pillow
+        run: sudo apt-get update && sudo apt-get install -y qrencode python3-pil
 
       - name: Build the site
         env:

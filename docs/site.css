@@ -1,0 +1,54 @@
+/* The look every page of the site shares. One colour drives it: --base, the creeper's base colour (A of
+   creeper-icon.py). Every other colour keeps the lightness of the original green palette and takes the hue and part of
+   the chroma of --base, so a new base colour keeps the contrast. The hex values are the green palette for browsers
+   without relative colours (before Chrome 119, Safari 16.4, Firefox 128). */
+:root {
+  --base: #65bc5b;
+  --bg: #f4f6f2; --fg: #1d2a1f; --muted: #5b6b5e; --card: #ffffff; --line: #d8e0d6;
+  --accent: #2e8b3a; --accent-fg: #ffffff; --tint: #e7f2e3; --chip: #f1f5ef;
+}
+@supports (color: oklch(from red l c h)) {
+  :root {
+    --bg: oklch(from var(--base) .971 calc(c * .04) h); --fg: oklch(from var(--base) .269 calc(c * .17) h);
+    --muted: oklch(from var(--base) .51 calc(c * .18) h); --line: oklch(from var(--base) .898 calc(c * .1) h);
+    --accent: oklch(from var(--base) .563 calc(c * .93) h); --tint: oklch(from var(--base) .95 calc(c * .2) h);
+    --chip: oklch(from var(--base) .962 calc(c * .05) h);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121812; --fg: #e4ece2; --muted: #9aaa9b; --card: #1b241c; --line: #2c3a2d;
+    --accent: #4caf50; --accent-fg: #0b130b; --tint: #26382a; --chip: #212c22;
+  }
+  @supports (color: oklch(from red l c h)) {
+    :root {
+      --bg: oklch(from var(--base) .2 calc(c * .09) h); --fg: oklch(from var(--base) .934 calc(c * .1) h);
+      --muted: oklch(from var(--base) .721 calc(c * .18) h); --card: oklch(from var(--base) .249 calc(c * .12) h);
+      --line: oklch(from var(--base) .332 calc(c * .18) h); --accent: oklch(from var(--base) .673 calc(c * 1.03) h);
+      --tint: oklch(from var(--base) .31 calc(c * .28) h); --chip: oklch(from var(--base) .28 calc(c * .14) h);
+    }
+  }
+}
+* { box-sizing: border-box; }
+/* the scrollbar always shows: a short page or a closed card does not shift the page sideways */
+html { overflow-y: scroll; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+main { max-width: 34rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+header { display: flex; align-items: center; gap: .9rem; margin-bottom: 1rem; }
+header img { width: 56px; height: 56px; image-rendering: pixelated; }
+h1 { font-size: 1.6rem; margin: 0; }
+header p { margin: .1rem 0 0; }
+footer { color: var(--muted); font-size: .85rem; margin-top: 1.5rem; }
+footer a { color: inherit; }
+
+/* the menu of the pages */
+nav.menu { display: grid; grid-template-columns: repeat(3, 1fr); gap: .3rem; padding: .3rem; margin-bottom: 1.2rem;
+           background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+nav.menu a { display: flex; align-items: center; justify-content: center; gap: .4rem; min-height: 44px;
+             border-radius: 9px; text-decoration: none; color: var(--fg); font-weight: 600; font-size: .95rem; }
+nav.menu a[aria-current] { background: var(--accent); color: var(--accent-fg); }
+nav.menu svg { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 2;
+               stroke-linecap: round; stroke-linejoin: round; }

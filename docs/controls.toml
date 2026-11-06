@@ -1,0 +1,268 @@
+# The controls page of the site (mc.dras.hu/iranyitas/), read by tools/site.py: the defaults of a new install.
+# A row's id is its address (iranyitas/#jei-r); docs/mods.toml points a mod to its rows by these ids.
+# keys: as printed; "2×S" is S pressed twice, the count is printed beside the key
+
+[keyboard]
+# under the keys of the mods: a key that does two things
+note = """<b>Egy billentyű, két dolog:</b> a <kbd>B</kbd> a teljes térképen útpontot tesz le, máshol a statisztikát nyitja. \
+A <kbd>V</kbd> az űrruhát és a Cataclysm-csizmát is kezeli, de egyszerre csak az egyiket viseled. \
+Az ütközéseket a Controlling mutatja a billentyűbeállításokban."""
+
+# The keys of the mods; mod: the .pw.toml name, the row links to the mod on the mods page
+[[keyboard.mods]]
+id = "jei-r"
+keys = ["R"]
+action = "A tárgy receptje"
+mod = "jei"
+where = "leltárban, a tárgy fölött"
+
+[[keyboard.mods]]
+id = "jei-u"
+keys = ["U"]
+action = "Mire használható a tárgy"
+mod = "jei"
+where = "leltárban, a tárgy fölött"
+
+[[keyboard.mods]]
+id = "jm-map"
+keys = ["J"]
+action = "Teljes térkép"
+mod = "journeymap"
+where = "játékban"
+
+[[keyboard.mods]]
+id = "jm-wp"
+keys = ["B"]
+action = "Útpont ide"
+mod = "journeymap"
+where = "a teljes térképen"
+
+[[keyboard.mods]]
+id = "sb"
+keys = ["B"]
+action = "Statisztikák és ranglisták"
+mod = "statboard"
+where = "játékban, vagy /stats a chatben"
+
+[[keyboard.mods]]
+id = "cu"
+keys = ["G"]
+action = "Plusz tárgyhelyek (gyűrű, nyaklánc)"
+mod = "curios"
+where = "játékban"
+
+[[keyboard.mods]]
+id = "aa-fly"
+keys = ["V"]
+action = "Űrruha repülés be/ki"
+mod = "ad-astra"
+where = "jet suitban"
+
+[[keyboard.mods]]
+id = "cc-armor"
+keys = ["X", "C"]
+action = "A páncél különleges képessége"
+mod = "lendercataclysm"
+where = "Cataclysm-páncélban"
+
+[[keyboard.mods]]
+id = "cc-boots"
+keys = ["V"]
+action = "A csizma képessége"
+mod = "lendercataclysm"
+where = "Cataclysm-csizmában"
+
+[[keyboard.mods]]
+id = "ie-mag"
+keys = ["2×S"]
+action = "Mágneses pajzs a másik kézbe"
+mod = "immersive-engineering"
+where = "az S kétszeri gyors lenyomása (hátralépés), mágnessel fejlesztett pajzzsal"
+
+[[keyboard.base]]
+id = "mc-move"
+keys = ["W", "A", "S", "D"]
+action = "Mozgás"
+
+[[keyboard.base]]
+id = "mc-jump"
+keys = ["Szóköz"]
+action = "Ugrás, repülés kreatívban"
+
+[[keyboard.base]]
+id = "mc-sneak"
+keys = ["Shift"]
+action = "Lopakodás"
+
+[[keyboard.base]]
+id = "mc-sprint"
+keys = ["Ctrl"]
+action = "Futás"
+
+[[keyboard.base]]
+id = "mc-inv"
+keys = ["E"]
+action = "Leltár"
+
+[[keyboard.base]]
+id = "mc-drop"
+keys = ["Q"]
+action = "Tárgy eldobása"
+
+[[keyboard.base]]
+id = "mc-swap"
+keys = ["F"]
+action = "Tárgycsere a másik kézbe"
+
+[[keyboard.base]]
+id = "mc-chat"
+keys = ["T"]
+action = "Chat"
+
+[[keyboard.base]]
+id = "mc-list"
+keys = ["Tab"]
+action = "Játékoslista"
+
+[[keyboard.base]]
+id = "mc-adv"
+keys = ["L"]
+action = "Előrehaladás"
+
+[[keyboard.base]]
+id = "mc-cam"
+keys = ["F5"]
+action = "Nézetváltás"
+
+[[keyboard.base]]
+id = "mc-hotbar"
+keys = ["H", "K"]
+action = "Gyorssáv betöltése / mentése (+ számgomb)"
+where = "kreatív módban; a pack áthelyezte X és C helyéről"
+
+# Controllable::Dras; the D-pad and stick clicks are set in config/controllable/, the rest is Controllable's default
+[[gamepad]]
+title = "Mozgás és nézés"
+rows = [
+  { button = "Bal kar", action = "Mozgás", where = "benyomva: futás" },
+  { button = "Jobb kar", action = "Nézelődés", where = "benyomva: lopakodás" },
+]
+
+[[gamepad]]
+title = "Gombok"
+rows = [
+  { button = "A", action = "Ugrás" },
+  { button = "B", action = "Vissza", where = "minden menüben és képernyőn" },
+  { button = "X", action = "Tárgycsere a másik kézbe" },
+  { button = "Y", action = "Leltár" },
+]
+
+[[gamepad]]
+title = "Ravaszok és vállgombok"
+rows = [
+  { button = "RT", action = "Ütés, bányászás" },
+  { button = "LT", action = "Használat, lerakás" },
+  { button = "LB", action = "Gyorssáv balra" },
+  { button = "RB", action = "Gyorssáv jobbra" },
+]
+
+[[gamepad]]
+title = "D-pad"
+rows = [
+  { button = "←", action = "Térkép", mod = "journeymap" },
+  # where: the items of config/controllable/radial_menu_items.json
+  { button = "→", action = "Gyorsmenü: chat, Curios, Statboard, előrehaladás, beállítások", mod = "controllable-dras", where = "nyomva tartva; a jobb karral választasz, elengedve nyílik" },
+  { button = "↑", action = "Nézetváltás" },
+  { button = "↓", action = "Tárgy eldobása" },
+]
+
+[[gamepad]]
+title = "Középső gombok"
+rows = [
+  { button = "View", action = "Játékoslista", where = "a bal oldali, két ablakos gomb" },
+  { button = "Menu", action = "Szünet menü", where = "a jobb oldali, háromvonalas gomb" },
+]
+
+# in screens (inventory, menus); screen: the rows have no address, the drawing links the in-game rows
+[[gamepad]]
+title = "Menükben és a leltárban"
+screen = true
+rows = [
+  { button = "A", action = "Kattintás, tárgy felvétele" },
+  { button = "X", action = "Köteg megfelezése" },
+  { button = "Y", action = "Gyors áthelyezés" },
+  { button = "D-pad", action = "Lépés a gombok között" },
+  { button = "LB", action = "Kreatív fül balra", where = "RB: jobbra" },
+  { button = "LT", action = "Receptfül balra", where = "RT: jobbra" },
+  { button = "Bal kar", action = "Receptkönyv", where = "benyomva" },
+]
+
+# mc-dras-controls.json; label: as in the launcher's button editor, icon: its Material Symbols name
+[[touch]]
+# no label in the launcher either
+icon = "map"
+action = "A teljes térkép"
+where = "átlátszó gomb a minitérképen"
+
+[[touch]]
+label = "Jump"
+icon = "keyboard_double_arrow_up"
+action = "Ugrás"
+
+[[touch]]
+label = "Crouch"
+icon = "keyboard_double_arrow_down"
+action = "Lopakodás"
+where = "kapcsoló"
+
+[[touch]]
+label = "Sprint"
+icon = "sprint"
+action = "Futás"
+where = "kapcsoló"
+
+[[touch]]
+label = "Attack"
+icon = "swords"
+action = "Ütés, bányászás"
+
+[[touch]]
+label = "Use"
+icon = "back_hand"
+action = "Használat, lerakás"
+
+[[touch]]
+label = "Pick"
+icon = "colorize"
+action = "A nézett blokk a kézbe"
+where = "ha van nálad, vagy kreatív módban"
+
+[[touch]]
+label = "Off Hand"
+icon = "swap_horiz"
+action = "Tárgycsere a másik kézbe"
+
+[[touch]]
+label = "Inventory"
+icon = "backpack"
+action = "Leltár"
+
+[[touch]]
+label = "Pause"
+icon = "pause"
+action = "Szünet menü"
+
+[[touch]]
+label = "Keyboard"
+icon = "keyboard"
+action = "Billentyűzet a chathez"
+
+[[touch]]
+label = "▲"
+icon = "expand_less"
+action = "Gombok elrejtése és mutatása"
+
+[[touch]]
+label = "Menu"
+icon = "menu"
+action = "Az Amethyst menüje"
