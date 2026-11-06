@@ -43,7 +43,7 @@ fetch what changed.
 | space | Ad Astra, Create: Ad Astra Compatibility, Create Planetary Tweaks |
 | industry | Immersive Engineering, Immersive Fixes |
 | world and mobs | Alex's Mobs, L_Ender's Cataclysm, Biomes O' Plenty |
-| tools | Just Enough Items, JourneyMap, Patchouli, Almost Unified, Statboard |
+| tools | Just Enough Items, JourneyMap, Patchouli, Almost Unified, Statboard, Jade and Jade Addons (what the crosshair points at, Create details included), Inventory HUD+ (the worn armor and the hands' items on the screen) |
 | stability, server and both sides | AllTheLeaks, Clumps, Cupboard, DEUF, Dimensional Sync Fixes, Feature Recycler, FerriteCore, Load My F***ing Tags, ModernFix, NaNny Reforked, Neruina, Packet Fixer, spark, Structure Essentials, Structure Layout Optimizer |
 | client only | Embeddium, ImmediatelyFast, fix GPU memory leak, Controllable::Dras (our fork of Controllable), Controlling |
 | libraries | Botarium, Citadel, Curios API, Framework, GeckoLib, GlitchCore, Lionfish API, Paxi, Puzzles Lib, Resourceful Config, Resourceful Lib, Searchables, TerraBlender, YUNG's API |
@@ -81,6 +81,7 @@ Only the changed keys are in `config/`; everything else is each mod's default.
 | `packetfixer.properties` | larger packet sizes, as in the reference pack; `timeout = 15` | see below |
 | `jei/jei-client.ini` | `LowMemorySlowSearchEnabled = true` | saves memory on phones |
 | `statboard-client.toml` | `guiScale = 1.5` (`preserve`) | the default 2.5 cuts the dashboard off on a phone |
+| `inventoryhud-client.toml` | the inventory panel and the potion list off, the armor panel stays (`preserve`) | |
 | `controllable/bindings.properties` | pick block unbound (`preserve`) | D-pad left is free for the map |
 | `controllable/key_adapters.properties` | JourneyMap's map on D-pad left, Statboard and Curios for the radial menu (`preserve`) | |
 | `controllable/radial_menu_items.json` | chat, Curios, Statboard, advancements, Controllable settings (`preserve`) | screenshot and fullscreen are no use on a phone |

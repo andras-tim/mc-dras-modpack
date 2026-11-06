@@ -24,6 +24,11 @@ file = "config/create_new_age-common.toml"
 hash = "2261906202fb7669a18bbc9906eb09e4b20255edb068ba54fa39d0ab83d1a88c"
 
 [[files]]
+file = "config/inventoryhud-client.toml"
+hash = "954ccfa24c3f8506fb0cf462c54fb3ac8a6005621da540666b10834dcf0b3814"
+preserve = true
+
+[[files]]
 file = "config/jei/jei-client.ini"
 hash = "4cae976989e94a3d4c0002c3ac48c00fed81947da9103d85429458478c49383c"
 
@@ -259,6 +264,21 @@ metafile = true
 [[files]]
 file = "mods/interiors.pw.toml"
 hash = "c2a6db98e6f91b6bad5be627f4979ed4de4b6b57368c9d39fc90bc557722874a"
+metafile = true
+
+[[files]]
+file = "mods/inventory-hud-forge.pw.toml"
+hash = "097c69ac31bb227b7c43f84850007f0e3836a524125c75939cfb72e6853c5e16"
+metafile = true
+
+[[files]]
+file = "mods/jade-addons-forge.pw.toml"
+hash = "4796b7b7c7883daa1b1f481dcf769f82c53e7a9b0c18224580d4ef60693aa22b"
+metafile = true
+
+[[files]]
+file = "mods/jade.pw.toml"
+hash = "9fa0aae713fee3e5337b70b6bbb1f9504bee4be4c37a9a2d77b044d621ffcf6f"
 metafile = true
 
 [[files]]

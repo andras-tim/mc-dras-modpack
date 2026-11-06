@@ -1,0 +1,5 @@
+[inventoryhud]
+	byDefault = false
+
+[potionshud]
+	Potions = false
