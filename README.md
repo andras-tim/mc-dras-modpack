@@ -83,6 +83,7 @@ Only the changed keys are in `config/`; everything else is each mod's default.
 | `modernfix-mixins.properties` | `dynamic_resources`, `faster_item_rendering` on; branding, the missing-mods warning and `release_protochunks` off | as in the reference pack |
 | `packetfixer.properties` | larger packet sizes, as in the reference pack; `timeout = 15` | see below |
 | `jei/jei-client.ini` | `LowMemorySlowSearchEnabled = true` | saves memory on phones |
+| `fml.toml` | `maxThreads = 1`: Forge builds the mods one at a time; the whole file, as Forge writes it, without `preserve` | Steam 'n' Rails and createprism load Create's registry classes from their own constructor thread, which randomly loses Create items: a crash at startup or a failed join ([Create#8825](https://github.com/Creators-of-Create/Create/issues/8825)). Not `preserve`, so it replaces the file Forge already wrote |
 | `statboard-client.toml` | `guiScale = 1.5` (`preserve`) | the default 2.5 cuts the dashboard off on a phone |
 | `inventoryhud-client.toml` | the inventory panel and the potion list off, the armor panel stays (`preserve`) | |
 | `controllable/bindings.properties` | pick block unbound (`preserve`) | D-pad left is free for the map |

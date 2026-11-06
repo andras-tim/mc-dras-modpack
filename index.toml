@@ -24,6 +24,10 @@ file = "config/create_new_age-common.toml"
 hash = "2261906202fb7669a18bbc9906eb09e4b20255edb068ba54fa39d0ab83d1a88c"
 
 [[files]]
+file = "config/fml.toml"
+hash = "880337fc19424992df23ee27cba7057e01f5cac66b53c19e8920bcdcc1fc8e54"
+
+[[files]]
 file = "config/inventoryhud-client.toml"
 hash = "954ccfa24c3f8506fb0cf462c54fb3ac8a6005621da540666b10834dcf0b3814"
 preserve = true
