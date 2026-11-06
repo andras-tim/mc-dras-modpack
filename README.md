@@ -21,11 +21,14 @@ The server and every client read the same `pack.toml`, so they always run the sa
 | server | [itzg/minecraft-server](https://github.com/itzg/docker-minecraft-server) with `TYPE=FORGE`, the versions of `pack.toml`, and `PACKWIZ_URL=<pack.toml URL>` |
 
 Released pack for the launchers: `https://mc.dras.hu/pack/pack.toml`, published from the latest GitHub release. Next to
-it is `mc-dras-controls.json`, the touch layout of Amethyst::Dras: the app's default layout with an icon above each
-label (the `icon` field; an older launcher shows the labels only), one smaller size for the rarely used buttons, gaps
-between all of them, a Map button (`J`) in the More drawer and an invisible one over the JourneyMap minimap, and a
-keyboard button in the bottom right corner. It is not a game file, so packwiz ignores it; the site publishes it with the profile icon
-`branding/profile-icon.png`, from the release or, on a manual run, from `main`.
+it is `mc-dras-controls.json`, the touch layout of Amethyst::Dras. Its buttons carry icons and show only where they are
+of use: none while the game loads, in menus only Menu, View, Mouse, Shift, Use and the keyboard. A View eye switches
+between the everyday buttons and all of them, and hides them on a long press. A drag that starts on Attack, Use or Jump
+keeps the button down and turns the camera, and the other buttons on that side fade so the finger presses none of them.
+An invisible Map button (`J`) lies over the JourneyMap minimap. The layout sets how each button behaves (the fields are
+in the Amethyst::Dras README); an older launcher ignores what it does not know. It is not a game file, so packwiz
+ignores it; the site publishes it with the profile icon `branding/profile-icon.png`, from the release or, on a manual
+run, from `main`.
 
 Pack URLs (GitHub raw): `https://raw.githubusercontent.com/andras-tim/mc-dras-modpack/<tag>/pack.toml`. The server
 pins a release tag (`1.20.1-<n>`); clients follow the latest release, published after the server runs it.
