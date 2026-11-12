@@ -426,6 +426,16 @@ hash = "8d3d8423e83c23a07831671b9b41ed4a32019e2bfad91cd25719cccf5691931b"
 metafile = true
 
 [[files]]
+file = "mods/worldedit.pw.toml"
+hash = "810c63c5de675c9cb2f29c4e63231ae4d35d83f906d3279ac5c7a83132fe387c"
+metafile = true
+
+[[files]]
+file = "mods/worldeditcui-forge.pw.toml"
+hash = "bc6b6c847c51928cc2a716aca4c3e10bf300643554ee43a8476516adcf801f86"
+metafile = true
+
+[[files]]
 file = "mods/yungs-api.pw.toml"
 hash = "675b8e04389d46f1d077a6ef662928d46b00144397e7778de537bcb8341bd3eb"
 metafile = true

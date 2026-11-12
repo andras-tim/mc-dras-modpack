@@ -46,7 +46,7 @@ fetch what changed.
 | space | Ad Astra, Create: Ad Astra Compatibility, Create Planetary Tweaks |
 | industry | Immersive Engineering, Immersive Fixes |
 | world and mobs | Alex's Mobs, L_Ender's Cataclysm, Biomes O' Plenty |
-| tools | Just Enough Items, JourneyMap, Patchouli, Almost Unified, Statboard, Jade and Jade Addons (what the crosshair points at, Create details included), Inventory HUD+ (the worn armor and the hands' items on the screen), ClientSort (sorts a chest or the inventory) |
+| tools | Just Enough Items, JourneyMap, Patchouli, Almost Unified, Statboard, Jade and Jade Addons (what the crosshair points at, Create details included), Inventory HUD+ (the worn armor and the hands' items on the screen), ClientSort (sorts a chest or the inventory), WorldEdit and WorldEdit CUI (world editing for an op, the selection drawn) |
 | stability, server and both sides | AllTheLeaks, Clumps, Cupboard, DEUF, Dimensional Sync Fixes, Feature Recycler, FerriteCore, Load My F***ing Tags, ModernFix, NaNny Reforked, Neruina, Packet Fixer, spark, Structure Essentials, Structure Layout Optimizer |
 | client only | Embeddium, ImmediatelyFast, fix GPU memory leak, Controllable::Dras (our fork of Controllable), Controlling |
 | libraries | Botarium, Citadel, Cloth Config, Curios API, Framework, GeckoLib, GlitchCore, Lionfish API, Paxi, Puzzles Lib, Resourceful Config, Resourceful Lib, Searchables, TerraBlender, YUNG's API |

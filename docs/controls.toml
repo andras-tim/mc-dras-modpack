@@ -59,6 +59,20 @@ mod = "clientsort"
 where = "a rendezendő rész egy helye fölött; Shift, Ctrl, Alt: más sorrend"
 
 [[keyboard.mods]]
+id = "we-pos1"
+keys = ["Bal egérgomb"]
+action = "A WorldEdit-kijelölés egyik sarka"
+mod = "worldedit"
+where = "fa baltával a kézben, egy blokkra; op jog kell"
+
+[[keyboard.mods]]
+id = "we-pos2"
+keys = ["Jobb egérgomb"]
+action = "A WorldEdit-kijelölés másik sarka"
+mod = "worldedit"
+where = "fa baltával a kézben, egy blokkra; op jog kell"
+
+[[keyboard.mods]]
 id = "aa-fly"
 keys = ["V"]
 action = "Űrruha repülés be/ki"

@@ -44,6 +44,11 @@ text = "Egy kattintással rendezett láda és leltár, gépen, telefonon és kon
 mods = ["clientsort"]
 
 [[activity]]
+title = "Építs nagyban"
+text = "Falak, mezők és másolatok néhány paranccsal, a kijelölés látszik. A szerveren az adminé, egyjátékos világban csalásokkal bárkié."
+mods = ["worldedit", "worldeditcui-forge"]
+
+[[activity]]
 title = "Játssz kontrollerrel"
 text = "Xbox-kontroller a gépen és a telefonon, kereshető billentyűbeállítás."
 mods = ["controllable-dras", "controlling"]
@@ -432,6 +437,20 @@ name = "TerraBlender"
 desc = "Új biomok beillesztése a világba."
 url = "https://www.curseforge.com/minecraft/mc-mods/terrablender"
 icon = "https://cdn.modrinth.com/data/kkmrDlKT/ffe690c604b123c63ee77a5baf76cf008cb73663.png"
+
+[mods.worldedit]
+name = "WorldEdit"
+desc = "Világszerkesztés: kijelölés fa baltával, kitöltés, másolás, visszavonás. Op jog kell hozzá."
+keys = ["we-pos1", "we-pos2"]
+url = "https://modrinth.com/mod/1u6JkXh5"
+docs = "https://worldedit.enginehub.org/en/latest/"
+icon = "https://cdn.modrinth.com/data/1u6JkXh5/30698991048ced77e60c4e8284007d3782f2e6a3_96.webp"
+
+[mods.worldeditcui-forge]
+name = "WorldEdit CUI"
+desc = "Megmutatja a WorldEdit kijelölését."
+url = "https://modrinth.com/mod/lOELapP1"
+icon = "https://cdn.modrinth.com/data/lOELapP1/167a04724f813168ece7016212f90833f6fe7de3_96.webp"
 
 [mods.yungs-api]
 name = "YUNG's API"
