@@ -1,8 +1,8 @@
 name = "Controllable::Dras"
-filename = "controllable-dras-forge-1.20.1-0.21.9-dras.2-release.jar"
+filename = "controllable-dras-forge-1.20.1-0.21.9-dras.3-release.jar"
 side = "client"
 
 [download]
 hash-format = "sha256"
-hash = "4e009c17f5fb10ddbcc01530886f759ce503c8500147f4ced75fd42b064b381d"
-url = "https://github.com/andras-tim/Controllable/releases/download/0.21.9-dras.2/controllable-dras-forge-1.20.1-0.21.9-dras.2-release.jar"
+hash = "84d619ad359651f0a9dbfdfaa90a008c0df84d570b11528a2344b3239baefc39"
+url = "https://github.com/andras-tim/Controllable/releases/download/0.21.9-dras.3/controllable-dras-forge-1.20.1-0.21.9-dras.3-release.jar"
