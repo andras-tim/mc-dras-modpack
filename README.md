@@ -86,6 +86,10 @@ Only the changed keys are in `config/`; everything else is each mod's default.
 | `fml.toml` | `maxThreads = 1`: Forge builds the mods one at a time; the whole file, as Forge writes it, without `preserve` | Steam 'n' Rails and createprism load Create's registry classes from their own constructor thread, which randomly loses Create items: a crash at startup or a failed join ([Create#8825](https://github.com/Creators-of-Create/Create/issues/8825)). Not `preserve`, so it replaces the file Forge already wrote |
 | `statboard-client.toml` | `guiScale = 1.5` (`preserve`) | the default 2.5 cuts the dashboard off on a phone |
 | `inventoryhud-client.toml` | the inventory panel and the potion list off, the armor panel stays (`preserve`) | |
+| `journeymap/config/6.0/journeymap.waypoint.config` | death waypoints removed when you get back to them, players listed among the waypoints, the icon of a waypoint shown only near the crosshair, like its label (`preserve`) | waypoints in the middle of the screen covered the view |
+| `journeymap/config/6.0/journeymap.fullmap.config` | no grid on the full-screen map (`preserve`) | |
+| `journeymap/config/6.0/journeymap.minimap.config` | minimap preset 1: dimension and game time above the map, location and light level below it (`preserve`) | both presets have two lines above the map, so the map sits at the same place in both, under the touch layout's Map button |
+| `journeymap/config/6.0/journeymap.minimap2.config` | minimap preset 2: square, its map at the place and size of the round preset 1; FPS and game time above it, location and region below it (`preserve`) | an advanced view; both preset files set `active`, JourneyMap reads a missing one as off |
 | `controllable/bindings.properties` | pick block unbound (`preserve`) | D-pad left is free for the map |
 | `controllable/key_adapters.properties` | JourneyMap's map on D-pad left, Statboard and Curios for the radial menu (`preserve`) | |
 | `controllable/radial_menu_items.json` | chat, Curios, Statboard, advancements, Controllable settings (`preserve`) | screenshot and fullscreen are no use on a phone |

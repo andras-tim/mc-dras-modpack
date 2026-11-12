@@ -86,6 +86,26 @@ hash = "f99158439b5f8a86962877f2fa6cea566c1682697316786a697a721f1364b658"
 preserve = true
 
 [[files]]
+file = "journeymap/config/6.0/journeymap.fullmap.config"
+hash = "2278a806ea5368d5744e5544d30383c5310b673e9014302b3f344a124faa10c5"
+preserve = true
+
+[[files]]
+file = "journeymap/config/6.0/journeymap.minimap.config"
+hash = "2260665740764d651656132d77976afe8b9e7903ef1bd578c004534f2b1bfbba"
+preserve = true
+
+[[files]]
+file = "journeymap/config/6.0/journeymap.minimap2.config"
+hash = "962e15cf216bd0fc86cbc01ea7a674c7ad0d87c20946fe2cc213e25d69a438f4"
+preserve = true
+
+[[files]]
+file = "journeymap/config/6.0/journeymap.waypoint.config"
+hash = "d07e9cb954d2dbe7d3c253f52322757defb525c0dced0dc37cae068077e766d5"
+preserve = true
+
+[[files]]
 file = "mods/ad-astra.pw.toml"
 hash = "08a7c6d39cf9e99ea09659c40f4515b2865d5e7e6849c8b60d3da92e78d86798"
 metafile = true
