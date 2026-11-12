@@ -1,6 +1,6 @@
 name = "WorldEdit CUI (Unofficial Forge Port)"
 filename = "WorldEditCUI-1.20+01.jar"
-side = "client"
+side = "both"
 
 [download]
 url = "https://cdn.modrinth.com/data/lOELapP1/versions/SRJCpmta/WorldEditCUI-1.20%2B01.jar"
