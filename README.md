@@ -174,6 +174,7 @@ these differences:
 | Almost Unified | added, default config | Immersive Engineering, Ad Astra and Create add the same materials |
 | Thin Air, Create Air | left out | no suffocation on Earth |
 | FullStack Watchdog | left out | server-only, but declares no `displayTest`: every client sees a red "Incompatible" mark |
+| WorldEdit CUI | added, on the server too | client-only, but declares no `displayTest`: with the server lacking it, every client sees the red mark |
 | Ad Astra temperature | stays on | the reference turned it off for Cold Sweat, which we do not have; planets stay dangerous, Earth is normal |
 | Packet Fixer `timeout` | 15 instead of 120 | it also sets the keep-alive period: with 120 the server sends none for 2 minutes, and a client on the death screen, which sends nothing, is dropped after 30 s |
 | monorail recipe | stays enabled | no known bug behind the reference's ban |
