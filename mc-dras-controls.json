@@ -376,7 +376,7 @@
       "bgColor": 1291845632,
       "cornerRadius": 100,
       "displayInGame": true,
-      "displayInMenu": false,
+      "displayInMenu": true,
       "dynamicX": "${screen_width} - px(99.4) / 100.0 * ${preferred_scale}",
       "dynamicY": "${screen_height} - px(204.6) / 100.0 * ${preferred_scale}",
       "height": 60.8,

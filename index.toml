@@ -5,13 +5,18 @@ file = "config/alexsmobs.toml"
 hash = "da751b84809873123bd908fc85339afed6c2bf085d3c35fa19e76bba6eaf171e"
 
 [[files]]
+file = "config/clientsort-server.json"
+hash = "36c1e59d4d1bdfafeff9ddf00ab93c4c076d23169d5c031b8c81199f663d3adf"
+preserve = true
+
+[[files]]
 file = "config/controllable/bindings.properties"
 hash = "c8be5443da41a25f8adf985968bd09b56b988d7cc67d1d45cb9918515361c3e0"
 preserve = true
 
 [[files]]
 file = "config/controllable/key_adapters.properties"
-hash = "7c00ae4432c646cbb57a6ec4aa117cf2afa16c70f692e8b2c09241ae861105e5"
+hash = "e655ecb51d4b588bb0f6a5b57e0e87828500a1753cd00e303678bb1f649d7ce9"
 preserve = true
 
 [[files]]
@@ -138,6 +143,16 @@ metafile = true
 [[files]]
 file = "mods/citadel.pw.toml"
 hash = "ebeb8834f27e00b22340c373fd6e5fcb1b49c36c947cd8a5f841829f9050e5f0"
+metafile = true
+
+[[files]]
+file = "mods/clientsort.pw.toml"
+hash = "9f7967cef85bc86ebed58e6512f0aae216c900bd4d1272976b19966ccb67b744"
+metafile = true
+
+[[files]]
+file = "mods/cloth-config.pw.toml"
+hash = "d0b081abdb9b1223fcbf8783dfcadef2e8c60fcb05840a3cde63cccfa2ac55a1"
 metafile = true
 
 [[files]]

@@ -52,6 +52,13 @@ mod = "curios"
 where = "játékban"
 
 [[keyboard.mods]]
+id = "cs-sort"
+keys = ["Középső egérgomb"]
+action = "A láda vagy a leltár rendezése"
+mod = "clientsort"
+where = "a rendezendő rész egy helye fölött; Shift, Ctrl, Alt: más sorrend"
+
+[[keyboard.mods]]
 id = "aa-fly"
 keys = ["V"]
 action = "Űrruha repülés be/ki"
@@ -195,6 +202,7 @@ rows = [
   { button = "LB", action = "Kreatív fül balra", where = "RB: jobbra" },
   { button = "LT", action = "Receptfül balra", where = "RT: jobbra" },
   { button = "Bal kar", action = "Receptkönyv", where = "benyomva" },
+  { button = "View", action = "A láda vagy a leltár rendezése", where = "a kijelölt hely részét" },
 ]
 
 # mc-dras-controls.json, by when a button shows; label: as in the launcher's button editor (none: no label there either),
@@ -234,4 +242,5 @@ rows = [
   { label = "Mouse", icon = "mouse", action = "Egérmutató a menükhöz" },
   { label = "Shift", icon = "shift", action = "Shift", where = "kapcsoló; a leltárban egész köteg áthelyezése" },
   { label = "Use", icon = "back_hand", action = "Jobb kattintás" },
+  { label = "Pick", icon = "colorize", action = "A láda vagy a leltár rendezése", where = "az egérmutató alatti részt" },
 ]

@@ -22,7 +22,7 @@ The server and every client read the same `pack.toml`, so they always run the sa
 
 Released pack for the launchers: `https://mc.dras.hu/pack/pack.toml`, published from the latest GitHub release. Next to
 it is `mc-dras-controls.json`, the touch layout of Amethyst::Dras. Its buttons carry icons and show only where they are
-of use: none while the game loads, in menus only Menu, View, Mouse, Shift, Use and the keyboard. A View eye switches
+of use: none while the game loads, in menus only Menu, View, Mouse, Shift, Use, Pick and the keyboard. A View eye switches
 between the everyday buttons and all of them, and hides them on a long press. A drag that starts on Attack, Use or Jump
 keeps the button down and turns the camera, and the other buttons on that side fade so the finger presses none of them.
 An invisible Map button (`J`) lies over the JourneyMap minimap. The layout sets how each button behaves (the fields are
@@ -46,10 +46,10 @@ fetch what changed.
 | space | Ad Astra, Create: Ad Astra Compatibility, Create Planetary Tweaks |
 | industry | Immersive Engineering, Immersive Fixes |
 | world and mobs | Alex's Mobs, L_Ender's Cataclysm, Biomes O' Plenty |
-| tools | Just Enough Items, JourneyMap, Patchouli, Almost Unified, Statboard, Jade and Jade Addons (what the crosshair points at, Create details included), Inventory HUD+ (the worn armor and the hands' items on the screen) |
+| tools | Just Enough Items, JourneyMap, Patchouli, Almost Unified, Statboard, Jade and Jade Addons (what the crosshair points at, Create details included), Inventory HUD+ (the worn armor and the hands' items on the screen), ClientSort (sorts a chest or the inventory) |
 | stability, server and both sides | AllTheLeaks, Clumps, Cupboard, DEUF, Dimensional Sync Fixes, Feature Recycler, FerriteCore, Load My F***ing Tags, ModernFix, NaNny Reforked, Neruina, Packet Fixer, spark, Structure Essentials, Structure Layout Optimizer |
 | client only | Embeddium, ImmediatelyFast, fix GPU memory leak, Controllable::Dras (our fork of Controllable), Controlling |
-| libraries | Botarium, Citadel, Curios API, Framework, GeckoLib, GlitchCore, Lionfish API, Paxi, Puzzles Lib, Resourceful Config, Resourceful Lib, Searchables, TerraBlender, YUNG's API |
+| libraries | Botarium, Citadel, Cloth Config, Curios API, Framework, GeckoLib, GlitchCore, Lionfish API, Paxi, Puzzles Lib, Resourceful Config, Resourceful Lib, Searchables, TerraBlender, YUNG's API |
 
 Earth is harmless: the pack has no air or temperature mechanic there. Ad Astra's planets and orbits are dangerous:
 
@@ -91,7 +91,8 @@ Only the changed keys are in `config/`; everything else is each mod's default.
 | `journeymap/config/6.0/journeymap.minimap.config` | minimap preset 1: dimension and game time above the map, location and light level below it (`preserve`) | both presets have two lines above the map, so the map sits at the same place in both, under the touch layout's Map button |
 | `journeymap/config/6.0/journeymap.minimap2.config` | minimap preset 2: square, its map at the place and size of the round preset 1; FPS and game time above it, location and region below it (`preserve`) | an advanced view; both preset files set `active`, JourneyMap reads a missing one as off |
 | `controllable/bindings.properties` | pick block unbound (`preserve`) | D-pad left is free for the map |
-| `controllable/key_adapters.properties` | JourneyMap's map on D-pad left, Statboard and Curios for the radial menu (`preserve`) | |
+| `controllable/key_adapters.properties` | JourneyMap's map on D-pad left, ClientSort's sort on View, Statboard and Curios for the radial menu (`preserve`) | View does nothing else on a screen; sorting with it needs Controllable::Dras with mouse buttons in its key adapters |
+| `clientsort-server.json` | the server checks every sort and turns sorting off for a container that comes out different; no sorting in the Create and Immersive Engineering toolboxes (`preserve`) | the toolboxes lost or duplicated items with sorting mods; the check is off by default since ClientSort 2.1.5 |
 | `controllable/radial_menu_items.json` | chat, Curios, Statboard, advancements, Controllable settings (`preserve`) | screenshot and fullscreen are no use on a phone |
 | `options.txt` | view and simulation distance 6, fast graphics, minimal particles, 60 FPS limit; key bindings below | defaults of a new install; the `version:` line keeps Minecraft from dropping the file as broken |
 | `servers.dat` | the server in the multiplayer list of a new install (`preserve`), written by `tools/servers-dat.py` |

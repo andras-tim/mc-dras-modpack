@@ -39,6 +39,11 @@ text = "Ki bányászott a legtöbbet? Ranglisták a szerver játékosairól."
 mods = ["statboard"]
 
 [[activity]]
+title = "Tarts rendet"
+text = "Egy kattintással rendezett láda és leltár, gépen, telefonon és kontrollerrel is."
+mods = ["clientsort"]
+
+[[activity]]
 title = "Játssz kontrollerrel"
 text = "Xbox-kontroller a gépen és a telefonon, kereshető billentyűbeállítás."
 mods = ["controllable-dras", "controlling"]
@@ -116,6 +121,20 @@ icon = "https://cdn.modrinth.com/data/jJfV67b1/0aa5d9f63754fa9a39b9d3deff95e5819
 desc = "Összevonja az XP-gömböket, kevesebb akadás."
 url = "https://www.curseforge.com/minecraft/mc-mods/clumps"
 icon = "https://cdn.modrinth.com/data/Wnxd13zP/6a965bb7974c3e759a53a1c89c35de4acd4cf86a_96.webp"
+
+[mods.clientsort]
+name = "ClientSort"
+desc = "Ládák és a leltár rendezése egy kattintással."
+deps = ["cloth-config"]
+keys = ["cs-sort"]
+url = "https://www.curseforge.com/minecraft/mc-mods/clientsort"
+icon = "https://cdn.modrinth.com/data/K0AkAin6/7cf06458738334bd5d8cd77d086529d453f56ef6_96.webp"
+
+[mods.cloth-config]
+name = "Cloth Config"
+desc = "Beállítóképernyők közös kódja."
+url = "https://www.curseforge.com/minecraft/mc-mods/cloth-config"
+icon = "https://cdn.modrinth.com/data/9s6osm5g/ed8a2316cbb6f4fc5f510e8e13a59a85cbbbff4d_96.webp"
 
 [mods.controllable-dras]
 desc = "Kontrolleres játék (Xbox és társai), telefonon is. Saját változatunk."
