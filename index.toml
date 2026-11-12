@@ -201,6 +201,11 @@ hash = "cc9271b5ebe4ddb9ba6f9177f60212bd945871f2597db0e5c6bad2e0eba359e6"
 metafile = true
 
 [[files]]
+file = "mods/create-repair.pw.toml"
+hash = "f03ce5f0bde7db61052d1a3dec407d82cc0bb69222f3ebbcae46e8236ec25ad9"
+metafile = true
+
+[[files]]
 file = "mods/create-steam-n-rails.pw.toml"
 hash = "d98a9c01e09a25a7767423b6c3f8a93320d2ba9ec586a26405439db1710d5757"
 metafile = true

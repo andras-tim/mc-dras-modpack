@@ -134,7 +134,8 @@ icon = "https://cdn.modrinth.com/data/xv94TkTM/bdb6feb3d04ca37da4ed5aa73fef062a3
 desc = "Fogaskerekek, tengelyek és gépek: automata gyárak, malmok, szállítószalagok, vonatok."
 addons = [
   "create-connected", "create-deco", "create-easy-structures", "create-enchantment-industry", "interiors",
-  "create-new-age", "create-optical", "create-prismatic-shine", "create-steam-n-rails", "dynamic-village",
+  "create-new-age", "create-optical", "create-prismatic-shine", "create-repair", "create-steam-n-rails",
+  "dynamic-village",
 ]
 url = "https://www.curseforge.com/minecraft/mc-mods/create"
 docs = "https://wiki.createmod.net"
@@ -185,6 +186,11 @@ icon = "https://cdn.modrinth.com/data/ilo37cBQ/832d408703f1f356f97eae9051fb09566
 desc = "Üvegburkolatok és világító blokkok."
 url = "https://www.curseforge.com/minecraft/mc-mods/create-prismatic-shine"
 icon = "https://cdn.modrinth.com/data/udEtt0b2/8e7b38e2717be23c3b92237d6243cd25dcff0db4_96.webp"
+
+[mods.create-repair]
+desc = "A Create újabb verzióinak hibajavításai, és a vonatok a JourneyMap térképén."
+url = "https://www.curseforge.com/minecraft/mc-mods/create-repair"
+icon = "https://cdn.modrinth.com/data/G3K7UdxY/7d739c505593dffab69bf8aa7b38d923ea6656ec_96.webp"
 
 [mods.create-steam-n-rails]
 desc = "Bővebb vasúthálózat és gőzrendszer."

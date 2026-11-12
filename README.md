@@ -42,7 +42,7 @@ fetch what changed.
 
 | group | mods |
 |---|---|
-| Create | Create, Connected, Deco, Easy Structures, Enchantment Industry, Interiors, New Age, Optical, Prismatic Shine, Steam 'n' Rails, Dynamic Village |
+| Create | Create, Connected, Deco, Easy Structures, Enchantment Industry, Interiors, New Age, Optical, Prismatic Shine, Repair (fixes of Create backported from its 1.21.1 line, JourneyMap's train map), Steam 'n' Rails, Dynamic Village |
 | space | Ad Astra, Create: Ad Astra Compatibility, Create Planetary Tweaks |
 | industry | Immersive Engineering, Immersive Fixes |
 | world and mobs | Alex's Mobs, L_Ender's Cataclysm, Biomes O' Plenty |
@@ -138,6 +138,10 @@ conflicts in the Controls screen.
   - Only the owner can land on a station. Argonauts parties would share it, but that does not work on a dedicated
     server ([#535](https://github.com/terrarium-earth/Ad-Astra/issues/535),
     [#762](https://github.com/terrarium-earth/Ad-Astra/issues/762), open), so it is not in the pack.
+- **Create Repair** (1.3.0): Tree Fertilizer can duplicate saplings
+  ([Repair#19](https://github.com/VoidLeech/Repair/issues/19), open, a partial fix is not released yet). On JourneyMap
+  6.0.x the tooltip of a train or station on the full-screen map is missing or off the mouse. Mixin Booster, listed as
+  its dependency on CurseForge only, is left out: without it only the enchantment glint of the backtank is not fixed.
 
 ## Layout
 
