@@ -1,15 +1,16 @@
 /* The look every page of the site shares. One colour drives it: --base, the creeper's base colour (A of
    creeper-icon.py). Every other colour keeps the lightness of the original green palette and takes the hue and part of
-   the chroma of --base, so a new base colour keeps the contrast. The hex values are the green palette for browsers
-   without relative colours (before Chrome 119, Safari 16.4, Firefox 128). */
+   the chroma of --base, so a new base colour keeps the contrast. The background takes more of it than the green did:
+   blue at the green's share reads grey. The hex values are the same formulas computed for the current base, for
+   browsers without relative colours (before Chrome 119, Safari 16.4, Firefox 128). */
 :root {
-  --base: #65bc5b;
-  --bg: #f4f6f2; --fg: #1d2a1f; --muted: #5b6b5e; --card: #ffffff; --line: #d8e0d6;
-  --accent: #2e8b3a; --accent-fg: #ffffff; --tint: #e7f2e3; --chip: #f1f5ef;
+  --base: #3299f4;
+  --bg: #ebf5fe; --fg: #1c2733; --muted: #5a6877; --card: #ffffff; --line: #d5dee8;
+  --accent: #1178ca; --accent-fg: #ffffff; --tint: #dff1ff; --chip: #eef3f8;
 }
 @supports (color: oklch(from red l c h)) {
   :root {
-    --bg: oklch(from var(--base) .971 calc(c * .04) h); --fg: oklch(from var(--base) .269 calc(c * .17) h);
+    --bg: oklch(from var(--base) .965 calc(c * .1) h); --fg: oklch(from var(--base) .269 calc(c * .17) h);
     --muted: oklch(from var(--base) .51 calc(c * .18) h); --line: oklch(from var(--base) .898 calc(c * .1) h);
     --accent: oklch(from var(--base) .563 calc(c * .93) h); --tint: oklch(from var(--base) .95 calc(c * .2) h);
     --chip: oklch(from var(--base) .962 calc(c * .05) h);
@@ -17,15 +18,16 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #121812; --fg: #e4ece2; --muted: #9aaa9b; --card: #1b241c; --line: #2c3a2d;
-    --accent: #4caf50; --accent-fg: #0b130b; --tint: #26382a; --chip: #212c22;
+    --bg: #0b1723; --fg: #e1eaf4; --muted: #97a7b7; --card: #1a222b; --line: #2a3745;
+    --accent: #2e9af8; --accent-fg: #0a1119; --tint: #1e3247; --chip: #202a34;
   }
   @supports (color: oklch(from red l c h)) {
     :root {
-      --bg: oklch(from var(--base) .2 calc(c * .09) h); --fg: oklch(from var(--base) .934 calc(c * .1) h);
+      --bg: oklch(from var(--base) .2 calc(c * .18) h); --fg: oklch(from var(--base) .934 calc(c * .1) h);
       --muted: oklch(from var(--base) .721 calc(c * .18) h); --card: oklch(from var(--base) .249 calc(c * .12) h);
       --line: oklch(from var(--base) .332 calc(c * .18) h); --accent: oklch(from var(--base) .673 calc(c * 1.03) h);
       --tint: oklch(from var(--base) .31 calc(c * .28) h); --chip: oklch(from var(--base) .28 calc(c * .14) h);
+      --accent-fg: oklch(from var(--base) .176 calc(c * .12) h);
     }
   }
 }
